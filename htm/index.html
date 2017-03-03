@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<base href="../" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="assets/mui/js/mui.min.js"></script>
+		<link href="assets/mui/css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">课程互动</h1>
+		</header>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="images/1.jpg">
+							<p class="mui-slider-title">让孩子爱上英语</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/2.jpg">
+							<p class="mui-slider-title">现代教师学导论</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/3.jpg">
+							<p class="mui-slider-title">上班族如何买对房</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/4.jpg">
+							<p class="mui-slider-title">创意</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/5.jpg">
+							<p class="mui-slider-title">天才宝贝</p>
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="images/1.jpg">
+							<p class="mui-slider-title">让孩子爱上英语</p>
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator mui-text-right">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<!--
+            	作者：zero1814@126.com
+            	时间：2017-03-03
+            	描述：九宫格
+            -->
+			<ul class="mui-table-view mui-grid-view mui-grid-9" style="background-color: white;">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<span class="mui-icon mui-icon-home"></span>
+						<div class="mui-media-body">教师开课</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<span class="mui-icon mui-icon-email"></span>
+						<div class="mui-media-body">签到查看</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<span class="mui-icon mui-icon-chatbubble"></span>
+						<div class="mui-media-body">随机点人</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<span class="mui-icon mui-icon-location"></span>
+						<div class="mui-media-body">出题</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<span class="mui-icon mui-icon-search"></span>
+						<div class="mui-media-body">查看答题</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<span class="mui-icon mui-icon-phone"></span>
+						<div class="mui-media-body">查看提问</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		var slider = mui("#slider");
+		slider.slider({
+			interval: 5000
+		});
+	</script>
+
+</html>
