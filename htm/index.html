@@ -71,13 +71,13 @@
             -->
 			<ul class="mui-table-view mui-grid-view mui-grid-9" style="background-color: white;">
 				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-					<a href="#">
+					<a id="teacher-class" href="javascript:void(0)">
 						<span class="mui-icon mui-icon-home"></span>
 						<div class="mui-media-body">教师开课</div>
 					</a>
 				</li>
 				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-					<a href="#">
+					<a id="sign" href="javascript:void(0)">
 						<span class="mui-icon mui-icon-email"></span>
 						<div class="mui-media-body">签到查看</div>
 					</a>
@@ -111,10 +111,28 @@
 	</body>
 	<script type="text/javascript" charset="utf-8">
 		mui.init();
-		var slider = mui("#slider");
+		var slider = mui("#slider");   // 加载轮播图
 		slider.slider({
 			interval: 5000
 		});
+		
+		// tap为mui封装的单击事件
+		document.getElementById("teacher-class").addEventListener('tap' , function() {
+			mui.openWindow({  // 教师开课
+				url: 'htm/teacher/index.html', 
+			    id:'t-index'
+		  	});
+		})
+	
+		// 签到查看 
+		document.getElementById("sign").addEventListener('tap' , function() {
+			mui.openWindow({
+				url: 'http://dcloud.io/hellomui/', 
+			    id:'t-index'
+		  	});
+		})
+	
+		
 	</script>
 
 </html>
