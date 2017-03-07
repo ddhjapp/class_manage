@@ -173,8 +173,8 @@
 		</header>
 		<div class="mui-content">
 			<div id="qrcode" class="mui-content-padded">
-				<p>高等数学(下)</p>
-				<p>周唯真</p>
+				<p id="lesson">高等数学(下)</p>
+				<p id="teacher">周唯真</p>
 				<p style="text-align:center">
 					<img src="../../images/ins.jpg" data-preview-src="" data-preview-group="1" />
 				</p>
@@ -193,9 +193,16 @@
 //			var name = self.name;
 //			var version = self.version;
 
-			var lcode = localStorage.getItem("lcode"); 
-//			var url_ = 'http://localhost:8080/matrix-admin/edu/start_lesson.do';
+			var data = localStorage.getItem("data").split("@");    
+			var url_ = 'http://localhost:8080/matrix-admin/edu/start_lesson.do';
 //			var url_ = 'http://192.168.31.140:8080/matrix-admin/edu/start_lesson.do'; 
+			var data_ = {tcode:data[0] , lcode:data[1]};  
+			var res = sendAjax('post' , url_ , data_);
+			var obj = JSON.parse(res);
+			if(obj.status){
+				
+			}
+			
 			
 		});
 		
