@@ -81,31 +81,38 @@
 //			var version = self.version;
 
 			var lcode = localStorage.getItem("lcode"); 
-			mui.ajax('http://server-name/login.php',{
-				data:{
-					lcode:lcode
-				},
-				dataType:'json',//服务器返回json格式数据
-				type:'post',//HTTP请求类型
-				timeout:10000,//超时时间设置为10秒；
-				headers:{'Content-Type':'application/json'},	              
-				success:function(data){
-					var html_ = '';
-					if(data.status){
-						var arr = data.list;
-						for(var i = 0 ; i < arr.length ; i ++){
-							
-						}
-					}
-					
-					$("#slist").append(html_);
-				},
-				error:function(xhr,type,errorThrown){
+			var url_ = 'http://localhost:8080/matrix-admin/edu/sign_list.do';
+			var data = {lcode:lcode};
+			var res = sendAjax('post' , url_ , data);
+			var obj = JSON.parse(res);
+			if(obj.status && obj.list.length > 0){
+				var arr = obj.list;
+				var html = '';
+				for( var i = 0 ; i < arr.length ; i ++){
 					
 				}
-			});
+			}
+			
+		
 		})
 		
+	    function sendAjax(type_, url_ , data_){
+	        var msg_ = null;
+	        $.ajax({
+	            dataType : "text",
+	            type :type_,
+	            url : url_,
+	            data : data_,
+	            async : false,
+	            success : function(msg) {
+	                msg_ = msg;
+	            },
+	            error: function(msg) {
+	                msg_ = msg;
+	            }
+	        });
+	        return msg_;
+	    }
 		
 	</script>
 </html>
