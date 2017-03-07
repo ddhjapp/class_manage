@@ -118,6 +118,7 @@
 		
 		// tap为mui封装的单击事件
 		document.getElementById("teacher-class").addEventListener('tap' , function() {
+			localStorage.setItem("tcode" , "t1"); 
 			mui.openWindow({  // 教师开课
 				url: 'htm/teacher/index.html', 
 			    id:'t-index'
