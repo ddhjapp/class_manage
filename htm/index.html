@@ -126,9 +126,14 @@
 	
 		// 签到查看 
 		document.getElementById("sign").addEventListener('tap' , function() {
+			localStorage.setItem("lcode" , "l1");  
 			mui.openWindow({
 				url: 'htm/sign/list.html', 
-			    id:'t-index'
+			    id:'t-index',
+			    extras:{
+			        name:'mui',
+			        lcode:'l1' 
+			    }
 		  	});
 		})
 	
