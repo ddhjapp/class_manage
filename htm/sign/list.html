@@ -36,7 +36,7 @@
 				高等数学(下) 
 			</div>
 			<ul id ="slist" class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
+				<!--<li class="mui-table-view-cell mui-media">
 					<a class="mui-navigate-right">
 						<img class="mui-media-object mui-pull-left" src="http://image-family.huijiayou.cn/cfiles/staticfiles/upload/24a5e/7cd96bf1db854121bfa010b9c79017ed.jpg">
 						<div class="mui-media-body">
@@ -44,25 +44,7 @@
 							<p class='mui-ellipsis'>2017-03-07 10:01 签到</p>
 						</div>
 					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class='mui-navigate-right' href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="http://image-family.huijiayou.cn/cfiles/staticfiles/upload/24b36/198640d5ed8f45a2a68f579c061b614d.jpg">
-						<div class="mui-media-body">
-							胡远
-							<p class='mui-ellipsis'>2017-03-07 10:01 签到</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right">
-						<img class="mui-media-object mui-pull-left" src="http://image-family.huijiayou.cn/cfiles/staticfiles/upload/24b27/6adaa044b921437fa463c4bf8c986f5c.jpg">
-						<div class="mui-media-body">
-							张娜娜
-							<p class='mui-ellipsis'>2017-03-07 10:02 签到</p>
-						</div>
-					</a>
-				</li>
+				</li>-->
 			</ul>
 			
 		</div>
@@ -89,12 +71,13 @@
 				var arr = obj.list;
 				var html = '';
 				for( var i = 0 ; i < arr.length ; i ++){
-					
+					html += '<li class="mui-table-view-cell mui-media"><a class="mui-navigate-right">';
+					html += '<img class="mui-media-object mui-pull-left" src="' + arr[i].headPic + '">';  
+					html += '<div class="mui-media-body">' + arr[i].name + '<p class="mui-ellipsis">' + arr[i].createTime +'签到</p></div></a></li>'
 				}
+				$("#slist").append(html); 
 			}
-			
-		
-		})
+		});
 		
 	    function sendAjax(type_, url_ , data_){
 	        var msg_ = null;
