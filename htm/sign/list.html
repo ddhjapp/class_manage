@@ -52,6 +52,7 @@
 	</body>
 	<script src="../../assets/mui/js/mui.min.js"></script>
 	<script src="../../assets/jquery/1.12.2/jquery-1.12.2.js"></script>
+	<script src="../../assets/purl.js" type="text/javascript" charset="utf-8"></script> 
 	<script>
 		mui.init({
 			swipeBack:true //启用右滑关闭功能
@@ -63,8 +64,7 @@
 //			var version = self.version;
 
 			var lcode = localStorage.getItem("lcode"); 
-			var url_ = 'http://localhost:8080/matrix-admin/edu/sign_list.do';
-//			var url_ = 'http://192.168.31.140:8080/matrix-admin/edu/sign_list.do';
+			var url_ = purl.url0002; 
 			
 			var data = {lcode:lcode};
 			var res = sendAjax('post' , url_ , data);

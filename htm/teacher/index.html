@@ -183,6 +183,7 @@
 	</body>
 	<script src="../../assets/mui/js/mui.min.js"></script>
 	<script src="../../assets/jquery/1.12.2/jquery-1.12.2.js"></script>
+	<script src="../../assets/purl.js" type="text/javascript" charset="utf-8"></script> 
 	<script>
 		mui.init({
 			swipeBack:true //启用右滑关闭功能
@@ -194,8 +195,7 @@
 //			var version = self.version;
 
 			var data = localStorage.getItem("data").split("@");    
-			var url_ = 'http://localhost:8080/matrix-admin/edu/start_lesson.do';
-//			var url_ = 'http://192.168.31.140:8080/matrix-admin/edu/start_lesson.do'; 
+			var url_ = purl.url0001; 
 			var data_ = {tcode:data[0] , lcode:data[1]};  
 			var res = sendAjax('post' , url_ , data_);
 			var obj = JSON.parse(res);
