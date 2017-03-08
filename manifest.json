@@ -124,7 +124,7 @@
 				"keystore": "",/*Android应用打包使用的密钥库文件*/
 				"password": "",/*Android应用打包使用密钥库中证书的密码*/
 				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
-				"permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"]
+				"permissions": ["<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>"]
 			},
 			"orientation": ["portrait-primary", "portrait-secondary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
 			"icons": {
@@ -188,6 +188,188 @@
 					"xxhdpi": ""
 				}
 			}
+		}
+	},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"images/2.jpg",
+					"images/5.jpg",
+					"assets/mui/fonts/mui.ttf",
+					"images/1.jpg",
+					"htm/index.html",
+					"assets/ath/css/ath.css",
+					"assets/mui/js/mui.min.js",
+					"images/3.jpg",
+					"assets/mui/css/mui.min.css",
+					"images/4.jpg"
+				],
+				"refer": [
+					"htm/student/sign.html",
+					"htm/teacher/index.html",
+					"htm/sign/list.html"
+				],
+				"priority": 0
+			},
+			"htm/student/sign.html": {
+				"resources": [
+					"assets/jquery/1.12.2/jquery-1.12.2.js",
+					"assets/purl.js",
+					"assets/mui/fonts/mui.ttf",
+					"assets/mui/js/mui.min.js",
+					"assets/mui/css/mui.min.css"
+				],
+				"refer": [
+					"htm/index.html"
+				],
+				"priority": 0
+			},
+			"htm/teacher/index.html": {
+				"resources": [
+					"assets/jquery/1.12.2/jquery-1.12.2.js",
+					"assets/purl.js",
+					"assets/mui/fonts/mui.ttf",
+					"assets/mui/js/mui.min.js",
+					"assets/mui/css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"htm/sign/list.html": {
+				"resources": [
+					"assets/jquery/1.12.2/jquery-1.12.2.js",
+					"assets/purl.js",
+					"assets/mui/js/mui.min.js",
+					"assets/mui/css/mui.min.css",
+					"assets/mui/fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"htm/index.html": {
+				"resources": [
+					"images/2.jpg",
+					"images/5.jpg",
+					"images/1.jpg",
+					"images/3.jpg",
+					"images/4.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"assets/bootstrap/3.3.5/js/bootstrap.js",
+				"assets/ath/js/order/cart.js",
+				"assets/ath/images/activity/1.jpg",
+				"assets/ath/images/head/3.jpg",
+				"assets/ath/images/store/3.jpg",
+				"assets/ath/images/goods/4.jpg",
+				"assets/ath/css/user/info.css",
+				"assets/ath/images/goods/6.jpg",
+				"assets/ath/images/activity/9.jpg",
+				"assets/ath/icon/store/iconfont.css",
+				"assets/ath/images/activity/4.jpg",
+				"assets/mui/js/mui.pullToRefresh.material.js",
+				"assets/ath/images/head/1.jpg",
+				"assets/ath/images/carousel/5.jpg",
+				"assets/mui/js/feedback-page.js",
+				"assets/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.svg",
+				"assets/ath/images/goods/14.jpg",
+				"assets/mui/js/mui.js",
+				"assets/bootstrap/3.3.5/css/bootstrap-theme.min.css",
+				"assets/ath/images/store/8.jpg",
+				"assets/ath/images/goods/7.jpg",
+				"assets/bootstrap/3.3.5/css/bootstrap-theme.css.map",
+				"assets/ath/images/goods/13.jpg",
+				"assets/ath/images/store/13.jpg",
+				"assets/ath/images/user-photo.png",
+				"assets/mui/js/mui.imageViewer.js",
+				"assets/ath/images/store/11.jpg",
+				"assets/ath/icon/store/iconfont.js",
+				"assets/mui/js/mui.lazyload.img.js",
+				"assets/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff2",
+				"assets/ath/images/goods/8.jpg",
+				"assets/bootstrap/3.3.5/css/bootstrap-theme.css",
+				"assets/mui/css/mui.css",
+				"htm/student/index.html",
+				"assets/ath/images/head/2.jpg",
+				"assets/ath/images/store/4.jpg",
+				"assets/ath/images/activity/8.jpg",
+				"assets/ath/images/iconfont-tianjia.png",
+				"assets/ath/images/store/6.jpg",
+				"assets/mui/js/mui.picker.all.js",
+				"assets/ath/images/store/5.jpg",
+				"assets/bootstrap/3.3.5/js/bootstrap.min.js",
+				"assets/ath/images/carousel/4.jpg",
+				"assets/ath/images/head/5.jpg",
+				"assets/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff",
+				"assets/ath/images/goods/12.jpg",
+				"htm/lesson/list.html",
+				"assets/mui/js/mui.poppicker.js",
+				"assets/ath/icon/store/iconfont.ttf",
+				"assets/ath/images/store/1.jpg",
+				"assets/ath/images/activity/3.jpg",
+				"assets/ath/images/goods/3.jpg",
+				"assets/ath/js/user/user.js",
+				"assets/ath/images/store/2.jpg",
+				"assets/mui/js/mui.view.js",
+				"assets/ath/images/activity/7.jpg",
+				"assets/ath/js/user/follow.js",
+				"assets/mui/js/mui.listpicker.js",
+				"assets/ath/images/sinaweibo.png",
+				"assets/ath/images/goods/9.jpg",
+				"assets/mui/js/mui.lazyload.js",
+				"assets/mui/css/feedback.css",
+				"assets/jquery/1.12.2/jquery-1.12.2.min.js",
+				"assets/mui/fonts/store.ttf",
+				"assets/mui/js/mui.enterfocus.js",
+				"htm/lesson/detail.html",
+				"assets/ath/images/goods/1.jpg",
+				"assets/ath/icon/store/iconfont.eot",
+				"assets/ath/images/weixin.png",
+				"assets/mui/js/mui.picker.min.js",
+				"assets/mui/js/mui.previewimage.js",
+				"assets/ath/images/goods/11.jpg",
+				"assets/mui/js/mui.locker.js",
+				"assets/mui/js/mui.zoom.js",
+				"assets/mui/js/mui.indexedlist.js",
+				"assets/ath/js/index/index.js",
+				"assets/ath/icon/store/iconfont.svg",
+				"assets/ath/images/goods/10.jpg",
+				"assets/mui/js/mui.pullToRefresh.js",
+				"assets/bootstrap/3.3.5/css/bootstrap.css",
+				"assets/ath/images/store/9.jpg",
+				"assets/mui/js/feedback.js",
+				"assets/mui/js/mui.picker.js",
+				"assets/bootstrap/3.3.5/css/bootstrap-fileupload.min.css",
+				"assets/mui/js/mui.dtpicker.js",
+				"assets/ath/images/store/10.jpg",
+				"assets/ath/images/qihoo.png",
+				"assets/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.ttf",
+				"assets/ath/images/goods/5.jpg",
+				"assets/bootstrap/3.3.5/css/bootstrap-social.css",
+				"assets/ath/images/qq.png",
+				"assets/ath/js/commons/nav.js",
+				"assets/ath/images/carousel/3.jpg",
+				"assets/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.eot",
+				"assets/ath/images/activity/5.jpg",
+				"assets/ath/images/carousel/2.jpg",
+				"assets/ath/images/store/12.jpg",
+				"assets/ath/icon/store/iconfont.woff",
+				"assets/bootstrap/3.3.5/css/bootstrap.min.css",
+				"assets/ath/images/carousel/1.jpg",
+				"assets/bootstrap/3.3.5/css/bootstrap.css.map",
+				"assets/ath/images/carousel/6.jpg",
+				"assets/ath/images/activity/2.jpg",
+				"assets/ath/images/head/4.jpg",
+				"assets/ath/images/store/7.jpg",
+				"assets/ath/images/goods/2.jpg",
+				"assets/ath/images/activity/6.jpg",
+				"assets/ath/js/product/product.js"
+			]
 		}
 	}
 }
