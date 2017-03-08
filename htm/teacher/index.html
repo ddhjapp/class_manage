@@ -173,11 +173,11 @@
 		</header>
 		<div class="mui-content">
 			<div id="qrcode" class="mui-content-padded">
-				<p id="lesson">高等数学(下)</p>
-				<p id="teacher">周唯真</p>
-				<p style="text-align:center">
+				<!--<p class="content">高等数学(下)</p>
+				<p class="content">周唯真</p>
+				<p class="content"style="text-align:center">
 					<img src="../../images/ins.jpg" data-preview-src="" data-preview-group="1" />
-				</p>
+				</p>-->
 			</div>
 		</div>
 	</body>
@@ -200,7 +200,11 @@
 			var res = sendAjax('post' , url_ , data_);
 			var obj = JSON.parse(res);
 			if(obj.status){
-				
+				$(".content").remove();
+				var html = '<p class="content">' + obj.lesson.lessonName + '</p>';
+				html += '<p class="content">' + obj.teacher.name + '</p><p class="content"style="text-align:center">'; 
+				html +='<img data-preview-src="" data-preview-group="1" src="' + obj.data.qrcodeUrl + '" /></p>'; 
+				$("#qrcode").append(html);
 			}
 			
 			
