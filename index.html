@@ -97,12 +97,22 @@
 			<form id='login-form' class="mui-input-group">
 				<div class="mui-input-row">
 					<label>账号</label>
-					<input id='account' name="username" type="text" class="mui-input-clear mui-input" placeholder="手机号/学号">
+					<input id='account' name="username" type="text" class="mui-input-clear mui-input" placeholder="手机号/学号" value="1122334">
 				</div>
 				<div class="mui-input-row">
 					<label>密码</label>
-					<input id='password' name="password" type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
+					<input id='password' name="password" type="password" class="mui-input-clear mui-input" placeholder="请输入密码" value="1">
 				</div>
+				
+				<div class="mui-input-row mui-radio mui-left">
+					<label style="width: 40%;">教师登陆</label> 
+					<input style="padding-top: 2px; padding-bottom:11px;" name="type" type="radio" value="T0001" checked>
+					
+					<label style="width: 40%;">学生登陆</label> 
+					<input style="margin-left: 42%;padding-top: 2px; padding-bottom:11px;" name="type" type="radio" value="S0002" >
+					
+				</div> 
+					
 			</form>
 			
 			<form class="mui-input-group">
@@ -314,8 +324,40 @@
 		<script type="text/javascript">
 			function userLogin(){
 				var data_ = $("#login-form").serializeArray();
-				var url_ = 
+				var url_ = purl.url0004;
+				var res = sendAjax('post' , url_ , data_);
+				var obj = JSON.parse(res);
+				if(obj.status){
+					localStorage.setItem("user_info" , obj.data);  
+					mui.openWindow({
+						url: 'htm/index.html', 
+					    id:'u-login'
+				  	});
+				}else{ // 用户名或密码错误 
+					 mui.alert( obj.msg , '系统消息', function() {});
+				}
 			}
+			
+			
+			
+			
+			function sendAjax(type_, url_ , data_){
+		        var msg_ = null;
+		        $.ajax({
+		            dataType : "text",
+		            type :type_,
+		            url : url_,
+		            data : data_,
+		            async : false,
+		            success : function(msg) {
+		                msg_ = msg;
+		            },
+		            error: function(msg) {
+		                msg_ = msg;
+		            }
+		        });
+		        return msg_;
+		    }
 		</script>
 	</body>
 

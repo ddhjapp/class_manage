@@ -82,12 +82,12 @@
 						}
 					});
 				} catch(e) {
-					alert("出现错误啦:\n" + e);
+					mui.alert(' 出现错误啦 ', '系统消息', function() {});
 				}
 			};
 
 			function onerror(e) {
-				alert(e);
+				mui.alert(e, '系统消息', function() {});
 			};
 
 			/**
@@ -119,7 +119,7 @@
 				if(result != '' && result.length > 5){ 
 					var validate = result.substring(0 , 4);
 					if(validate != "学生签到"){
-						alert("错误的签到二维码，请重新扫描签到。");
+						mui.alert(' 错误的签到二维码 ', '系统消息', function() {});
 						return;
 					}
 					
@@ -130,12 +130,12 @@
 					var res = sendAjax('post' , url_ , data_);
 					var obj = JSON.parse(res);
 					if(obj.status){
-						alert("签到成功"); 
+						mui.alert(' 签到成功', '系统消息', function() {});
 					}else{
-						alert("签到失败");
+						mui.alert('签到失败 ', '系统消息', function() {});
 					}
 				}else{
-					alert("扫描错误");
+					mui.alert('扫描错误', '系统消息', function() {});
 				}
 			}
 
