@@ -127,7 +127,7 @@
 			</form>
 			<div class="mui-content-padded">
 				<button id='login' class="mui-btn mui-btn-block mui-btn-primary" onclick="userLogin()">登录</button>
-				<div class="link-area"><a id='reg'>注册账号</a> <span class="spliter">|</span> <a id='forgetPassword'>忘记密码</a>
+				<div class="link-area"><a id='reg' onclick="uregist()">注册账号</a> <span class="spliter">|</span> <a id='forgetPassword'>忘记密码</a>
 				</div>
 			</div>
 			<div class="mui-content-padded oauth-area">
@@ -136,7 +136,6 @@
 		</div>
 		<script src="assets/mui/js/mui.min.js"></script>
 		<script src="assets/mui/js/mui.enterfocus.js"></script>
-		<script src="assets/mui/js/app.js"></script>
 		<script>
 			(function($, doc) {
 				$.init({
@@ -338,6 +337,13 @@
 				}
 			}
 			
+			// 跳转到注册页 
+			function uregist(){
+				mui.openWindow({
+						url: 'htm/reg/regist.html', 
+					    id:'u-regist' 
+				  	});
+			}
 			
 			
 			
