@@ -126,7 +126,7 @@
 		document.getElementById("teacher-class").addEventListener('tap' , function() {
 			localStorage.setItem("data" , "t1@l1");   // tcode@lcode
 			mui.openWindow({  // 教师开课
-				url: 'htm/teacher/index.html', 
+				url: 'teacher/index.html', 
 			    id:'t-index'
 		  	});
 		})
@@ -135,7 +135,7 @@
 		document.getElementById("sign").addEventListener('tap' , function() {
 			localStorage.setItem("lcode" , "l1");  
 			mui.openWindow({
-				url: 'htm/sign/list.html', 
+				url: 'sign/list.html', 
 			    id:'t-index',
 			    extras:{
 			        name:'mui',
@@ -148,7 +148,7 @@
 		document.getElementById("student-sign").addEventListener('tap' , function() {
 //			localStorage.setItem("lcode" , "l1");  
 			mui.openWindow({
-				url: 'htm/student/sign.html', 
+				url: 'student/sign.html', 
 			    id:'t-index',
 			    extras:{
 			        name:'mui',
