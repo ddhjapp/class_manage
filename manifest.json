@@ -10,7 +10,7 @@
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"launch_path": "htm/index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",/*开发者名称*/
 		"email": "",/*开发者邮箱地址*/
@@ -253,9 +253,15 @@
 					"images/5.jpg",
 					"images/1.jpg",
 					"images/3.jpg",
-					"images/4.jpg"
+					"images/4.jpg",
+					"assets/mui/fonts/mui.ttf",
+					"assets/mui/js/mui.min.js",
+					"assets/mui/css/mui.min.css"
 				],
-				"refer": [],
+				"refer": [
+					"htm/teacher/index.html",
+					"htm/sign/list.html"
+				],
 				"priority": 0
 			}
 		},
