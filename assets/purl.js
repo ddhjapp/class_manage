@@ -20,7 +20,12 @@ var purl = {
 	/**
 	 * 用户注册接口
 	 */
-	url0005: path + 'edu/registe.do'   
+	url0005: path + 'edu/registe.do',
+	
+	/**
+	 * 教师自己的课程列表
+	 */
+	url0006: path + 'edu/lesson_list.do'
 	
 }
 

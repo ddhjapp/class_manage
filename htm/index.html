@@ -136,17 +136,22 @@
 		
 		// tap为mui封装的单击事件
 		document.getElementById("teacher-class").addEventListener('tap' , function() {
-			
-			var value = userInfo.data.code + '@' + '';
-			sessionStorage.setItem(session_.qr_code , "t1@l1");   // tcode@lcode 
-			
-			
-			mui.openWindow({  // 教师开课
-				url: 'htm/teacher/index.html', 
+			mui.openWindow({  // 教师课程列表
+				url: 'htm/teacher/class_list.html', 
 			    id:'t-index'
 		  	});
 		})
-	
+		
+//		document.getElementById("teacher-class").addEventListener('tap' , function() {
+//			var value = userInfo.data.code + '@' + '';
+//			sessionStorage.setItem(session_.qr_code , "T1489071763988@l1");   // tcode@lcode  
+//			mui.openWindow({  // 教师开课
+//				url: 'htm/teacher/index.html', 
+//			    id:'t-index'
+//		  	});
+//		})
+		
+		
 		// 签到查看 
 		document.getElementById("sign").addEventListener('tap' , function() {
 			localStorage.setItem("lcode" , "l1");  
