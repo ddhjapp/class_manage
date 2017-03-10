@@ -194,7 +194,7 @@
 //			var name = self.name;
 //			var version = self.version;
 
-			var data = localStorage.getItem("data").split("@");    
+			var data = sessionStorage.getItem(session_.qr_code).split("@");    
 			var url_ = purl.url0001; 
 			var data_ = {tcode:data[0] , lcode:data[1]};  
 			var res = sendAjax('post' , url_ , data_);
