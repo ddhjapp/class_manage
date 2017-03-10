@@ -8,6 +8,7 @@
 		<title></title>
 		<script src="assets/mui/js/mui.min.js"></script>
 		<link href="assets/mui/css/mui.min.css" rel="stylesheet" />
+		<script src="assets/purl.js" type="text/javascript" charset="utf-8"></script> 
 	</head>
 
 	<body>
@@ -124,7 +125,11 @@
 		
 		// tap为mui封装的单击事件
 		document.getElementById("teacher-class").addEventListener('tap' , function() {
-			localStorage.setItem("data" , "t1@l1");   // tcode@lcode
+			
+			var a = sessionStorage.getItem(session_.user_info); // 获取用户登录信息
+			sessionStorage.setItem("data" , "t1@l1");   // tcode@lcode 
+			
+			
 			mui.openWindow({  // 教师开课
 				url: 'htm/teacher/index.html', 
 			    id:'t-index'

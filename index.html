@@ -327,7 +327,7 @@
 				var res = sendAjax('post' , url_ , data_);
 				var obj = JSON.parse(res);
 				if(obj.status){
-					localStorage.setItem("user_info" , obj.data);  
+					sessionStorage.setItem(session_.user_info , res);
 					mui.openWindow({
 						url: 'htm/index.html', 
 					    id:'u-login'
