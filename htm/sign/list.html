@@ -32,8 +32,8 @@
 			<h1 class="mui-title">已签到学生列表</h1>
 		</header>
 		<div class="mui-content">
-			<div class="title">
-				高等数学(下) 
+			<div id="lesson-name" class="title">   
+				<!--高等数学(下)-->   
 			</div>
 			<ul id ="slist" class="mui-table-view mui-table-view-chevron">
 				<!--<li class="mui-table-view-cell mui-media">
@@ -62,8 +62,11 @@
 //			var self = plus.webview.currentWebview();
 //			var name = self.name;
 //			var version = self.version;
+			
+			var lessonName = sessionStorage.getItem(session_.lesson_list_lesson_name);
+			$("#lesson-name")[0].innerHTML = lessonName;
 
-			var lcode = localStorage.getItem("lcode"); 
+			var lcode = sessionStorage.getItem(session_.lesson_code); 
 			var url_ = purl.url0002; 
 			
 			var data = {lcode:lcode};

@@ -142,21 +142,11 @@
 		  	});
 		})
 		
-//		document.getElementById("teacher-class").addEventListener('tap' , function() {
-//			var value = userInfo.data.code + '@' + '';
-//			sessionStorage.setItem(session_.qr_code , "T1489071763988@l1");   // tcode@lcode  
-//			mui.openWindow({  // 教师开课
-//				url: 'htm/teacher/index.html', 
-//			    id:'t-index'
-//		  	});
-//		})
-		
-		
 		// 签到查看 
 		document.getElementById("sign").addEventListener('tap' , function() {
 			localStorage.setItem("lcode" , "l1");  
 			mui.openWindow({
-				url: 'htm/sign/list.html', 
+				url: 'htm/sign/lesson_list.html', 
 			    id:'t-index',
 			    extras:{
 			        name:'mui',
@@ -165,7 +155,7 @@
 		  	});
 		})
 	
-		// 签到查看 
+		// 学生签到 
 		document.getElementById("student-sign").addEventListener('tap' , function() {
 //			localStorage.setItem("lcode" , "l1");  
 			mui.openWindow({

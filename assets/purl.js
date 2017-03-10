@@ -23,9 +23,14 @@ var purl = {
 	url0005: path + 'edu/registe.do',
 	
 	/**
-	 * 教师自己的课程列表
+	 * 生成二维码时所需的课程列表
 	 */
-	url0006: path + 'edu/lesson_list.do'
+	url0006: path + 'edu/lesson_list.do',
+	
+	/**
+	 * 查看签到时所需的课程列表
+	 */
+	url0007: path + 'edu/sign_lesson_list.do', 
 	
 }
 
@@ -75,6 +80,14 @@ var session_ ={
 	 */
 	qr_code:'qrcode',
 	
+	/**
+	 * t_lesson code
+	 */
+	lesson_code:'lesson_code',
 	
+	/**
+	 * lesson_list 页面的 课程名称
+	 */
+	lesson_list_lesson_name : 'lesson_list_lesson_name'
 	
 }

@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Hello MUI</title>
+		<title>课程列表</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -55,7 +55,7 @@
 //			var version = self.version;
 
 			var userInfo = JSON.parse(sessionStorage.getItem(session_.user_info)); 
-			var url_ = purl.url0006; 
+			var url_ = purl.url0007; 
 			
 			var data = {code:userInfo.data.code};
 			var res = sendAjax('post' , url_ , data);
@@ -64,10 +64,22 @@
 				var arr = obj.list;
 				var html = '';
 				for( var i = 0 ; i < arr.length ; i ++){
+					var claList = arr[i].claList;
+					var msg = '';
+					if(claList.length != 0){
+						for(var u = 0 ; u < claList.length; u ++){
+							msg += claList[u].className + '|';
+						}
+						msg = msg.substring(0 , msg.length-1);
+						if(msg.length > 20){
+							msg = msg.substring(0 , 17) + '...';
+						}
+					}
+					
 					html += '<li class="mui-table-view-cell mui-media"><a class="mui-navigate-right teacher-class">';
-					html += '<input type="hidden" value="' + arr[i].code + '">'
+					html += '<input type="hidden" value="' + arr[i].entity.code + '">'
 					html += '<img class="mui-media-object mui-pull-left" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg">';  
-					html += '<div class="mui-media-body">' + arr[i].lessonName + '<p class="mui-ellipsis">' + arr[i].length +' 分钟</p></div></a></li>'
+					html += '<div class="mui-media-body">' + arr[i].entity.lessonName + '<p class="mui-ellipsis">班级：' + msg +'</p></div></a></li>'
 				}
 				$("#slist").append(html); 
 			}
@@ -76,13 +88,15 @@
 			if(arr.length != 0){
 				for( var i = 0 ; i < arr.length ; i ++){
 					arr[i].addEventListener('tap' , function(e) { 
-						var userInfo = JSON.parse(sessionStorage.getItem(session_.user_info));
 						var lcode = e.currentTarget.children[0].value;
-						var value = userInfo.data.code + '@' + lcode;
-						sessionStorage.setItem(session_.qr_code , value);   // tcode@lcode  
+						sessionStorage.setItem(session_.lesson_code , lcode);  
+						
+						var lessonName = e.currentTarget.children[2].firstChild.textContent;  // 课程名称
+						sessionStorage.setItem(session_.lesson_list_lesson_name , lessonName);
+						
 						mui.openWindow({  // 教师开课
-							url: '../../htm/teacher/index.html', 
-						    id:'t-index'
+							url: '../../htm/sign/list.html', 
+						    id:'sign-list'
 					  	});
 					})
 				}
