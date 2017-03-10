@@ -111,26 +111,7 @@
 				}else{ // 用户名或密码错误 
 					mui.alert( obj.msg , '系统消息', function() {});
 				}
-			}
-			
-			
-			function sendAjax(type_, url_ , data_){
-		        var msg_ = null;
-		        $.ajax({
-		            dataType : "text",
-		            type :type_,
-		            url : url_,
-		            data : data_,
-		            async : false,
-		            success : function(msg) {
-		                msg_ = msg;
-		            },
-		            error: function(msg) {
-		                msg_ = msg;
-		            }
-		        });
-		        return msg_;
-		    }	
+			} 
 		</script>
 	</body>
 

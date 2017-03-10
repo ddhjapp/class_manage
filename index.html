@@ -340,30 +340,10 @@
 			// 跳转到注册页 
 			function uregist(){
 				mui.openWindow({
-						url: 'htm/reg/regist.html', 
-					    id:'u-regist' 
-				  	});
+					url: 'htm/reg/regist.html', 
+				    id:'u-regist' 
+			  	});
 			}
-			
-			
-			
-			function sendAjax(type_, url_ , data_){
-		        var msg_ = null;
-		        $.ajax({
-		            dataType : "text",
-		            type :type_,
-		            url : url_,
-		            data : data_,
-		            async : false,
-		            success : function(msg) {
-		                msg_ = msg;
-		            },
-		            error: function(msg) {
-		                msg_ = msg;
-		            }
-		        });
-		        return msg_;
-		    }
 		</script>
 	</body>
 

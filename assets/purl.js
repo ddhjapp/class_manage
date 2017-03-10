@@ -9,3 +9,21 @@ var purl = {
 	url0005: path + 'edu/registe.do'  // 用户注册接口 
 	
 }
+
+function sendAjax(type_, url_ , data_){
+    var msg_ = null;
+    $.ajax({
+        dataType : "text",
+        type :type_,
+        url : url_,
+        data : data_,
+        async : false,
+        success : function(msg) {
+            msg_ = msg;
+        },
+        error: function(msg) {
+            msg_ = msg;
+        }
+    });
+    return msg_;
+}
