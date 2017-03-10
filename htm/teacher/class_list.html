@@ -77,8 +77,9 @@
 				for( var i = 0 ; i < arr.length ; i ++){
 					arr[i].addEventListener('tap' , function(e , a) { 
 						var userInfo = JSON.parse(sessionStorage.getItem(session_.user_info));
-						var value = userInfo.data.code + '@' + '';
-						sessionStorage.setItem(session_.qr_code , "T1489071763988@l1");   // tcode@lcode  
+						var lcode = e.currentTarget.children[0].value;
+						var value = userInfo.data.code + '@' + lcode;
+						sessionStorage.setItem(session_.qr_code , value);   // tcode@lcode  
 						mui.openWindow({  // 教师开课
 							url: '../../htm/teacher/index.html', 
 						    id:'t-index'
