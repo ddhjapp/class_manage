@@ -72,16 +72,18 @@
 			var data = {lcode:lcode};
 			var res = sendAjax('post' , url_ , data);
 			var obj = JSON.parse(res);
+			var html = '';
 			if(obj.status && obj.list.length > 0){
 				var arr = obj.list;
-				var html = '';
 				for( var i = 0 ; i < arr.length ; i ++){
 					html += '<li class="mui-table-view-cell mui-media"><a class="mui-navigate-right">';
 					html += '<img class="mui-media-object mui-pull-left" src="' + arr[i].headPic + '">';  
 					html += '<div class="mui-media-body">' + arr[i].name + '<p class="mui-ellipsis">' + arr[i].createTime +'签到</p></div></a></li>'
 				}
-				$("#slist").append(html); 
+			}else{
+				$("#lesson-name")[0].innerHTML = lessonName + " 还没有人签到哦！";
 			}
+			$("#slist").append(html); 
 		});
 		
 	</script>
