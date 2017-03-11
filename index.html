@@ -157,15 +157,18 @@
 		
 		// 签到查看 
 		document.getElementById("sign").addEventListener('tap' , function() {
-			localStorage.setItem("lcode" , "l1");  
-			mui.openWindow({
-				url: 'htm/sign/lesson_list.html', 
-			    id:'t-index',
-			    extras:{
-			        name:'mui',
-			        lcode:'l1' 
-			    }
-		  	});
+			var sessionUser = localStorage.getItem(session_.user_info);
+			if(sessionUser != null) {
+				mui.openWindow({
+					url: 'htm/sign/lesson_list.html', 
+				    id:'w_sign_lesson_list' 
+			  	});
+		  	} else {
+		  		mui.openWindow({  // 登录
+					url: 'htm/reg/login.html', 
+				    id:'w_login'
+			  	});
+		  	}
 		})
 	
 		// 学生签到 

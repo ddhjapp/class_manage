@@ -1,6 +1,5 @@
-//var path = 'http://localhost:8080/matrix-admin/';
+var path = 'http://localhost:8080/matrix-admin/';
 //var path = 'http://stockwyz.xicp.net/matrix-admin/';
-var path = 'http://192.168.1.105:8080/matrix-admin/';
 var purl = { 
 	/**
 	 * 教师开课接口
