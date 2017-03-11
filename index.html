@@ -203,6 +203,21 @@
 			alert('缓存清理成功!');
 		})
 		
+		// 出题
+		document.getElementById("examination").addEventListener('tap' , function() {
+			var sessionUser = localStorage.getItem(session_.user_info);
+			if(sessionUser != null) {
+				mui.openWindow({
+					url: 'htm/question/lesson_list.html', 
+				    id:'w_question_lesson_list' 
+			  	});
+		  	} else {
+		  		mui.openWindow({  // 登录
+					url: 'htm/reg/login.html', 
+				    id:'w_login'
+			  	});
+		  	}
+		})
 		
 	</script>
 
