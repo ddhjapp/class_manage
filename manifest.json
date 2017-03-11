@@ -212,7 +212,9 @@
 					"htm/teacher/index.html",
 					"htm/sign/list.html",
 					"htm/reg/login.html",
-					"htm/teacher/class_list.html"
+					"htm/teacher/class_list.html",
+					"htm/rollcall/class_list.html",
+					"htm/sign/lesson_list.html"
 				],
 				"priority": 0
 			},
@@ -330,6 +332,17 @@
 				"priority": 0
 			},
 			"htm/teacher/class_qrcode.html": {
+				"resources": [
+					"assets/jquery/1.12.2/jquery-1.12.2.js",
+					"assets/purl.js",
+					"assets/mui/fonts/mui.ttf",
+					"assets/mui/js/mui.min.js",
+					"assets/mui/css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"htm/rollcall/class_list.html": {
 				"resources": [
 					"assets/jquery/1.12.2/jquery-1.12.2.js",
 					"assets/purl.js",
