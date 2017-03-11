@@ -73,7 +73,7 @@ var session_ ={
 	/**
 	 * 保存用户登录信息  
 	 */
-	user_info:'user_info' ,  
+	user_info: 'user_info' ,  
 	
 	/**
 	 * 保存教师开课的相关生成二维码的必要信息

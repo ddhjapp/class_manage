@@ -256,12 +256,36 @@
 					"images/4.jpg",
 					"assets/mui/fonts/mui.ttf",
 					"assets/mui/js/mui.min.js",
-					"assets/mui/css/mui.min.css"
+					"assets/mui/css/mui.min.css",
+					"assets/jquery/1.12.2/jquery-1.12.2.js",
+					"assets/purl.js"
 				],
 				"refer": [
 					"htm/teacher/index.html",
-					"htm/sign/list.html"
+					"htm/sign/list.html",
+					"htm/teacher/class_list.html",
+					"htm/sign/lesson_list.html"
 				],
+				"priority": 0
+			},
+			"htm/sign/lesson_list.html": {
+				"resources": [
+					"assets/jquery/1.12.2/jquery-1.12.2.js",
+					"assets/purl.js",
+					"assets/mui/js/mui.min.js",
+					"assets/mui/css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"htm/teacher/class_list.html": {
+				"resources": [
+					"assets/jquery/1.12.2/jquery-1.12.2.js",
+					"assets/purl.js",
+					"assets/mui/js/mui.min.js",
+					"assets/mui/css/mui.min.css"
+				],
+				"refer": [],
 				"priority": 0
 			}
 		},
