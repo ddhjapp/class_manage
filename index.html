@@ -11,7 +11,7 @@
 		<script src="assets/purl.js" type="text/javascript" charset="utf-8"></script> 
 		<script type="text/javascript">
 			$(function() {
-				var sessionUser = sessionStorage.getItem(session_.user_info);
+				var sessionUser = localStorage.getItem(session_.user_info);
 				if(sessionUser != null) {
 					var userInfo = JSON.parse(sessionUser);
 					if(userInfo.data.type == 'T0001'){ 
@@ -27,6 +27,7 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<h1 class="mui-title">课程互动</h1>
+			<h1 id="logout" align="right">退出</h1>
 		</header>
 		<div class="mui-content">
 			<div id="slider" class="mui-slider">
@@ -138,17 +139,18 @@
 		
 		// tap为mui封装的单击事件
 		document.getElementById("teacher-class").addEventListener('tap' , function() {
-			var sessionUser = sessionStorage.getItem(session_.user_info);
+			//var sessionUser = sessionStorage.getItem(session_.user_info);
+			var sessionUser = localStorage.getItem(session_.user_info);
 			console.log('teacher open class:' + sessionUser);
 			if(sessionUser != null) {
 				mui.openWindow({  // 教师课程列表
 					url: 'htm/teacher/class_list.html', 
-				    id:'t-index'
+				    id:'w_class_list'
 			  	});
 		  	} else {
 		  		mui.openWindow({  // 登录
 					url: 'htm/reg/login.html', 
-				    id:'t-index'
+				    id:'w_login'
 			  	});
 		  	}
 		})
@@ -191,6 +193,13 @@
 			    }
 		  	});
 		})
+		
+		//退出
+		document.getElementById("logout").addEventListener('tap' , function() {
+			localStorage.clear();
+			alert('缓存清理成功!');
+		})
+		
 		
 	</script>
 

@@ -21,7 +21,7 @@ var purl = {
 	/**
 	 * 用户注册接口
 	 */
-	url0005: path + 'edu/registe.do',
+	url0005: path + 'edu/register.do',
 	
 	/**
 	 * 生成二维码时所需的课程列表

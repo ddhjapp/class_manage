@@ -24,6 +24,65 @@
 				padding: 0;
 			}
 		</style>
+		<script src="../../assets/mui/js/mui.min.js"></script>
+		<script src="../../assets/jquery/1.12.2/jquery-1.12.2.js"></script>
+		<script src="../../assets/purl.js" type="text/javascript" charset="utf-8"></script> 
+		<script>
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+			
+			$(function() {
+				var userInfo = JSON.parse(localStorage.getItem(session_.user_info)); 
+				var url_ = purl.url0006; 
+				
+				var data = {code:userInfo.data.code};
+				var res = sendAjax('post' , url_ , data);
+				var obj = JSON.parse(res);
+				if(obj.status){
+					if(obj.list != null && obj.list.length > 0) {
+						var arr = obj.list;
+						var html = '';
+						for( var i = 0 ; i < arr.length ; i ++){
+							html += '<li class="mui-table-view-cell mui-media"><a class="mui-navigate-right teacher-class">';
+							html += '<input type="hidden" value="' + arr[i].code + '">'
+							html += '<img class="mui-media-object mui-pull-left" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg">';  
+							html += '<div class="mui-media-body">' + arr[i].lessonName + '<p class="mui-ellipsis">' + arr[i].length +' 分钟</p></div></a></li>'
+						}
+						$("#slist").append(html); 
+					} else {
+						console.log('no class');
+						mui.toast( '您暂时没有排课!');
+						mui.alert('欢迎使用Hello MUI', 'Hello MUI', function() {
+//							
+						});
+						mui.openWindow({
+								url: '../../index.html',   // 返回登陆页
+							    id:'123'
+						});
+					}
+				}
+				
+				var arr = document.getElementsByClassName("teacher-class");
+				if(arr.length != 0){
+					for( var i = 0 ; i < arr.length ; i ++){
+						arr[i].addEventListener('tap' , function(e) { 
+							var userInfo = JSON.parse(localStorage.getItem(session_.user_info));
+							console.log('userinfo in class_list.html::' + userInfo);
+							var lcode = e.currentTarget.children[0].value;
+							var value = userInfo.data.code + '@' + lcode;
+							console.log(lcode + ':' + lcode);
+							localStorage.setItem(session_.qr_code , value);   // tcode@lcode  
+							console.log('open qrcode');
+							mui.openWindow({  // 教师开课
+								url: 'class_qrcode.html', 
+							    id:'w-class-qrcode'
+						  	});
+						})
+					}
+				}
+			});
+		</script>		
 	</head>
 
 	<body>
@@ -41,57 +100,4 @@
 		</div>
 
 	</body>
-	<script src="../../assets/mui/js/mui.min.js"></script>
-	<script src="../../assets/jquery/1.12.2/jquery-1.12.2.js"></script>
-	<script src="../../assets/purl.js" type="text/javascript" charset="utf-8"></script> 
-	<script>
-		mui.init({
-			swipeBack:true //启用右滑关闭功能
-		});
-		
-		$(function(){
-//			var self = plus.webview.currentWebview();
-//			var name = self.name;
-//			var version = self.version;
-
-			var userInfo = JSON.parse(sessionStorage.getItem(session_.user_info)); 
-			var url_ = purl.url0006; 
-			
-			var data = {code:userInfo.data.code};
-			var res = sendAjax('post' , url_ , data);
-			var obj = JSON.parse(res);
-			if(obj.status && obj.list.length > 0){
-				var arr = obj.list;
-				var html = '';
-				for( var i = 0 ; i < arr.length ; i ++){
-					html += '<li class="mui-table-view-cell mui-media"><a class="mui-navigate-right teacher-class">';
-					html += '<input type="hidden" value="' + arr[i].code + '">'
-					html += '<img class="mui-media-object mui-pull-left" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg">';  
-					html += '<div class="mui-media-body">' + arr[i].lessonName + '<p class="mui-ellipsis">' + arr[i].length +' 分钟</p></div></a></li>'
-				}
-				$("#slist").append(html); 
-			}
-			
-			var arr = document.getElementsByClassName("teacher-class");
-			if(arr.length != 0){
-				for( var i = 0 ; i < arr.length ; i ++){
-					arr[i].addEventListener('tap' , function(e) { 
-						var userInfo = JSON.parse(sessionStorage.getItem(session_.user_info));
-						var lcode = e.currentTarget.children[0].value;
-						var value = userInfo.data.code + '@' + lcode;
-						sessionStorage.setItem(session_.qr_code , value);   // tcode@lcode  
-						mui.openWindow({  // 教师开课
-							url: '../../htm/teacher/index.html', 
-						    id:'t-index'
-					  	});
-					})
-				}
-			}
-			
-			
-		});
-		
- 
-		
-	</script>
 </html>

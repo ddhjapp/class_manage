@@ -148,34 +148,20 @@
 				console.log(res);
 				var obj = JSON.parse(res);
 				if(obj.status){
-					console.log('userinfo is writed in session');
-					sessionStorage.setItem(session_.user_info , res);
-					var sessionUser = sessionStorage.getItem(session_.user_info);
-					console.log('userinfo in session after logining:' + sessionUser);
+					console.log('userinfo is writed in localStorage...');
+					localStorage.setItem(session_.user_info , res);
+					var sessionUser = localStorage.getItem(session_.user_info);
+					console.log('userinfo in localStorage after login:' + sessionUser);
+					mui.toast('登录成功');
 					mui.openWindow({
 						url: '../../index.html', 
-					    id:'u-login'
+					    id:'w-apphome'
 				  	});
 				}else{ // 用户名或密码错误 
 					 mui.alert( obj.msg , '系统消息', function() {});
 				}
 			})
 			
-			function userLogin(){
-				var data_ = $("#login-form").serializeArray();
-				var url_ = purl.url0004;
-				var res = sendAjax('post' , url_ , data_);
-				var obj = JSON.parse(res);
-				if(obj.status){
-					sessionStorage.setItem(session_.user_info , res);
-					mui.openWindow({
-						url: '../../index.html', 
-					    id:'u-login'
-				  	});
-				}else{ // 用户名或密码错误 
-					 mui.alert( obj.msg , '系统消息', function() {});
-				}
-			}
 			
 			// 跳转到注册页 
 			function uregist(){
