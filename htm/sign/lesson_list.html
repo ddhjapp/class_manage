@@ -54,7 +54,7 @@
 //			var name = self.name;
 //			var version = self.version;
 
-			var userInfo = JSON.parse(sessionStorage.getItem(session_.user_info)); 
+			var userInfo = JSON.parse(localStorage.getItem(session_.user_info)); 
 			var url_ = purl.url0007; 
 			
 			var data = {code:userInfo.data.code};
@@ -96,7 +96,7 @@
 						
 						mui.openWindow({  // 教师开课
 							url: '../../htm/sign/list.html', 
-						    id:'sign-list'
+						    id:'w_sign_list'
 					  	});
 					})
 				}
