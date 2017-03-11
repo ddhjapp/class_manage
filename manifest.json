@@ -10,7 +10,7 @@
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "htm/index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"launch_path": "index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",/*开发者名称*/
 		"email": "",/*开发者邮箱地址*/
@@ -203,12 +203,15 @@
 					"assets/mui/js/mui.min.js",
 					"images/3.jpg",
 					"assets/mui/css/mui.min.css",
-					"images/4.jpg"
+					"images/4.jpg",
+					"assets/jquery/1.12.2/jquery-1.12.2.js",
+					"assets/purl.js"
 				],
 				"refer": [
 					"htm/student/sign.html",
 					"htm/teacher/index.html",
-					"htm/sign/list.html"
+					"htm/sign/list.html",
+					"htm/reg/login.html"
 				],
 				"priority": 0
 			},
@@ -287,6 +290,32 @@
 				],
 				"refer": [],
 				"priority": 0
+			},
+			"htm/reg/login.html": {
+				"resources": [
+					"assets/mui/css/mui.css",
+					"assets/mui/js/mui.enterfocus.js",
+					"assets/mui/css/login/style.css",
+					"assets/jquery/1.12.2/jquery-1.12.2.js",
+					"assets/purl.js",
+					"assets/mui/fonts/mui.ttf",
+					"assets/mui/js/mui.min.js"
+				],
+				"refer": [
+					"htm/reg/regist.html",
+					"index.html"
+				],
+				"priority": 0
+			},
+			"htm/reg/regist.html": {
+				"resources": [
+					"assets/mui/css/mui.css",
+					"assets/mui/css/mui.picker.css",
+					"assets/mui/css/mui.poppicker.css",
+					"assets/mui/css/login/style.css"
+				],
+				"refer": [],
+				"priority": 0
 			}
 		},
 		"idle": {
@@ -323,7 +352,6 @@
 				"assets/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff2",
 				"assets/ath/images/goods/8.jpg",
 				"assets/bootstrap/3.3.5/css/bootstrap-theme.css",
-				"assets/mui/css/mui.css",
 				"htm/student/index.html",
 				"assets/ath/images/head/2.jpg",
 				"assets/ath/images/store/4.jpg",
@@ -355,7 +383,6 @@
 				"assets/mui/css/feedback.css",
 				"assets/jquery/1.12.2/jquery-1.12.2.min.js",
 				"assets/mui/fonts/store.ttf",
-				"assets/mui/js/mui.enterfocus.js",
 				"htm/lesson/detail.html",
 				"assets/ath/images/goods/1.jpg",
 				"assets/ath/icon/store/iconfont.eot",

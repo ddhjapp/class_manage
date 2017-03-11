@@ -1,5 +1,6 @@
-var path = 'http://localhost:8080/matrix-admin/';
+//var path = 'http://localhost:8080/matrix-admin/';
 //var path = 'http://stockwyz.xicp.net/matrix-admin/';
+var path = 'http://192.168.1.105:8080/matrix-admin/';
 var purl = { 
 	/**
 	 * 教师开课接口
@@ -50,11 +51,11 @@ var purl = {
 function sendAjax(type_, url_ , data_){
     var msg_ = null;
     $.ajax({
+    	async: false,
         dataType : "text",
         type :type_,
         url : url_,
         data : data_,
-        async : false,
         success : function(msg) {
             msg_ = msg;
         },
