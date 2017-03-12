@@ -128,14 +128,12 @@
 				var res = sendAjax('post' , url_ , data_);
 				var obj = JSON.parse(res); 
 				if(obj.status){
-					console.log('userinfo is writed in localStorage...');
 					localStorage.setItem(session_.user_info , res);
 					var sessionUser = localStorage.getItem(session_.user_info);
-					console.log('userinfo in localStorage after registration' + sessionUser);
 					mui.toast('注册成功');
 					mui.openWindow({
-							url: '../../index.html',   // 返回登陆页
-						    id:'w_apphome'
+							url: '../../index.html',   // 进入互动主页
+						    id:'w_app_home' 
 					});
 				}else{ // 用户名或密码错误 
 					mui.alert( obj.msg , '系统消息', function() {});
