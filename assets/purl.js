@@ -1,4 +1,4 @@
-var path = 'http://localhost:8080/matrix-admin/';
+var path = 'http://172.21.0.57:8080/matrix-admin/';
 //var path = 'http://stockwyz.xicp.net/matrix-admin/';
 var purl = { 
 	/**

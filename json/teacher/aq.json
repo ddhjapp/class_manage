@@ -1,0 +1,26 @@
+{
+	"code": "0",
+	"data": [
+		{
+			"name": "测试001",
+			"type": "多选",
+			"correct": "10",
+			"fault": "5"
+		}, {
+			"name": "测试002",
+			"type": "单选",
+			"correct": "10",
+			"fault": "5"
+		}, {
+			"name": "测试003",
+			"type": "阅读",
+			"correct": "10",
+			"fault": "5"
+		}, {
+			"name": "测试004",
+			"type": "辩论",
+			"correct": "10",
+			"fault": "5"
+		}
+	]
+}
