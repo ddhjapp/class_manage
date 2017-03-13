@@ -32,6 +32,10 @@ var purl = {
 	 */
 	url0007: path + 'edu/sign_lesson_list.do', 
 	
+	/**
+	 * 我的排课列表 
+	 */
+	url0008: path + 'edu/lesson_schedule_list.do', 
 }
 
 
@@ -88,6 +92,6 @@ var session_ ={
 	/**
 	 * lesson_list 页面的 课程名称
 	 */
-	lesson_list_lesson_name : 'lesson_list_lesson_name'
+	lesson_class_info : 'lesson_class_info'
 	
 }

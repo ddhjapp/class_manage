@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>课程列表</title>
+		<title>本门课程的排课列表</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -12,32 +12,48 @@
 		<link href="../../assets/mui/css/mui.min.css" rel="stylesheet" />
 		<!--App自定义的css-->
 		<style>
-			.title {
-				margin: 20px 15px 10px;
-				color: #6d6d72;
-				font-size: 15px;
+			.cart_float{
+				margin-left: 10px;
+				margin-right: 10px;
+				margin-top: 5px;
+				margin-bottom: 5px; 
 			}
-			.mui-plus.mui-android header.mui-bar{
-				display: none;
-			}
-			.mui-plus.mui-android .mui-bar-nav~.mui-content{
-				padding: 0;
-			}
-		</style>
+			.world_{
+				width: 100%;
+				display:block;
+				word-break: keep-all;
+				word-wrap: break-word;
+			} 
+		</style> 
+
 	</head>
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">我的课程列表</h1>
+			<h1 class="mui-title">我的排课列表</h1>
 		</header>
 		<div class="mui-content">
-			<div class="title">
-				<!--高等数学(下) -->
+			<div class="mui-card cart_float">
+				<div class="mui-card-header world_" >
+					高等数学(下)
+					<div >2017-03-12 10:43 开始上课</div>
+				</div>
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner"> 
+						<div class="mui-input-row  mui-left">
+							<label style="width: 100%;padding: 10px 0px 0px 5px;">土木工程专业1501</label>
+						</div>
+						<div class="mui-input-row mui-left">
+							<label style="width: 100%;padding: 10px 0px 0px 5px;">土木工程专业1502</label>
+						</div>
+					</div>
+				</div>
+				<div class="mui-card-footer"> 
+					<span>查看签到情况</span>
+					<input type="hidden" name=""  id="question-code"  value="" /> 
+				</div>
 			</div>
-			<ul id ="slist" class="mui-table-view mui-table-view-chevron"> 
-			</ul>
-			
 		</div>
 
 	</body>
@@ -55,26 +71,16 @@
 //			var version = self.version;
 
 			var userInfo = JSON.parse(localStorage.getItem(session_.user_info)); 
-			var url_ = purl.url0007; 
-			
-			var data = {code:userInfo.data.code};
+			var lessonClassInfo = JSON.parse(localStorage.getItem(session_.lesson_class_info)); 
+
+			var url_ = purl.url0008;
+			var data = {teacherCode:userInfo.data.code , lessonCode:lessonClassInfo.entity.code};
 			var res = sendAjax('post' , url_ , data);
 			var obj = JSON.parse(res);
 			if(obj.status && obj.list.length > 0){
 				var arr = obj.list;
 				var html = '';
 				for( var i = 0 ; i < arr.length ; i ++){
-					var claList = arr[i].claList;
-					var msg = '';
-					if(claList.length != 0){
-						for(var u = 0 ; u < claList.length; u ++){
-							msg += claList[u].className + '|';
-						}
-						msg = msg.substring(0 , msg.length-1);
-						if(msg.length > 20){
-							msg = msg.substring(0 , 17) + '...';
-						}
-					}
 					
 					html += '<li class="mui-table-view-cell mui-media"><a class="mui-navigate-right teacher-class">';
 					html += '<textarea style="display:none">' + JSON.stringify(arr[i]) + '</textarea>';
@@ -90,10 +96,10 @@
 					arr[i].addEventListener('tap' , function(e) {  
 						var json = e.currentTarget.children[0].value;
 						var lessonClassInfo = JSON.parse(json);  
-						localStorage.setItem(session_.lesson_class_info , json); 
-						mui.openWindow({  // 排课列表 
-							url: '../../htm/sign/schedule.html', 
-						    id:'w_sign_schedule'
+						sessionStorage.setItem(session_.lesson_class_info , json); 
+						mui.openWindow({  // 教师开课
+							url: '../../htm/sign/list.html', 
+						    id:'w_sign_list'
 					  	});
 					})
 				}
