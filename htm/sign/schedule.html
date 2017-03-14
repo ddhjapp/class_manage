@@ -34,7 +34,7 @@
 			<h1 class="mui-title">我的排课列表</h1>
 		</header>
 		<div id="slist" class="mui-content">
-			<div class="mui-card cart_float">
+			<!--<div class="mui-card cart_float">
 				<div class="mui-card-header world_" >
 					<img class="mui-media-object mui-pull-left" style="margin-right:10px;height:100%" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg" >
 					高等数学(下)
@@ -54,7 +54,7 @@
 					<span>查看签到情况</span>
 					<input type="hidden" name=""  id="question-code"  value="" /> 
 				</div>
-			</div>
+			</div>-->
 		</div>
 
 	</body>
@@ -101,6 +101,7 @@
 				}
 				$("#slist").append(html); 
 			}
+			var aa = localStorage.getItem(session_.lesson_class_info);
 			
 			var arr = document.getElementsByClassName("teacher-class");
 			if(arr.length != 0){
@@ -108,7 +109,7 @@
 					arr[i].addEventListener('tap' , function(e) {  
 						// 父级页面已经传入 session_.lesson_class_info 所以无需再次设置
 						var scheduleCode = e.currentTarget.querySelector("input").value; 
-						sessionStorage.setItem(session_.sign_schedule_code , scheduleCode);  
+						localStorage.setItem(session_.sign_schedule_code , scheduleCode);  
 						mui.openWindow({  // 已签到学生列表  
 							url: '../../htm/sign/list.html', 
 						    id:'w_sign_list'
