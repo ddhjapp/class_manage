@@ -157,17 +157,21 @@
 				}
 				var data_ = new Object();
 				data_.scheduleCode = localStorage.getItem(session_.sign_question_code);
+				var userInfo = JSON.parse(localStorage.getItem(session_.user_info));
+				data_.teacherCode = userInfo.data.code;
 				var qcodes = new Array();
 				for(var i = 0 ; i < arr.length ; i ++){
 					qcodes.push(arr[i].id);
 				}
 				data_.list = qcodes;			
 				
+				var data = {json:JSON.stringify(data_)};
+				
 				var url_ = purl.url0010;
-				var res = sendAjax('post' , url_ , data_);
+				var res = sendAjax('post' , url_ , data);
 				var obj = JSON.parse(res);
 				if(obj.status){
-
+					mui.alert( "课堂测试题已生成! " , '系统消息', function() {});
 				}else{ // 用户名或密码错误 
 					 mui.alert( obj.msg , '系统消息', function() {});
 				}
