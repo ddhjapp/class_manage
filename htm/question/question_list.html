@@ -27,7 +27,7 @@
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title" style="margin-right: 20px;">题库列表</h1>
-			<span class="mui-btn mui-btn-success" style="float: right; padding: 4px 12px 6px 12px;"> 
+			<span class="mui-btn mui-btn-success" style="float: right; padding: 4px 12px 6px 12px;" onclick="drawExamPaper()"> 
 				生成测试
 			</span>
 		</header>
@@ -103,7 +103,8 @@
 			
 			function drawQuestionPage(){
 				$("#slist div").remove();
-				var lcode = localStorage.getItem(session_.lesson_code);
+				var lessonClassInfo = JSON.parse(localStorage.getItem(session_.lesson_class_info)); 
+				var lcode = lessonClassInfo.entity.code;
 				var url_ = purl.url0009; 
 				var data = {lessonCode : lcode};
 				var res = sendAjax('post' , url_ , data);
@@ -150,16 +151,27 @@
 			 * 生成课堂练习 
 			 */
 			function drawExamPaper(){
-				var data_ = $("#login-form").serializeArray();
-				var url_ = purl.url0004;
-				var res = sendAjax('post' , url_ , data_);
+				var arr = $(".mui-content input[value='1']");
+				if(arr.length == 0){
+					return;
+				}
+				var data_ = new Object();
+				data_.scheduleCode = localStorage.getItem(session_.sign_question_code);
+				var userInfo = JSON.parse(localStorage.getItem(session_.user_info));
+				data_.teacherCode = userInfo.data.code;
+				var qcodes = new Array();
+				for(var i = 0 ; i < arr.length ; i ++){
+					qcodes.push(arr[i].id);
+				}
+				data_.list = qcodes;			
+				
+				var data = {json:JSON.stringify(data_)};
+				
+				var url_ = purl.url0010;
+				var res = sendAjax('post' , url_ , data);
 				var obj = JSON.parse(res);
 				if(obj.status){
-					sessionStorage.setItem(session_.user_info , res);
-					mui.openWindow({
-						url: 'htm/index.html', 
-					    id:'u-login'
-				  	});
+					mui.alert( "课堂测试题已生成! " , '系统消息', function() {});
 				}else{ // 用户名或密码错误 
 					 mui.alert( obj.msg , '系统消息', function() {});
 				}

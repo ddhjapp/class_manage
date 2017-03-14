@@ -41,6 +41,8 @@ var purl = {
 	 * 题库列表页面 
 	 */
 	url0009: path + 'edu/question_list.do',
+	
+	url0010: path + 'edu/exam_paper_insert.do', 
 }
 
 
@@ -104,4 +106,8 @@ var session_ ={
 	 */
 	sign_schedule_code:'sign_schedule_code',
 	
+	/**
+	 * 查看课程题库页面，用到的 schedule_code
+	 */
+	sign_question_code:'sign_question_code',
 }
