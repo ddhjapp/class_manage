@@ -36,6 +36,11 @@ var purl = {
 	 * 我的排课列表 
 	 */
 	url0008: path + 'edu/lesson_schedule_list.do', 
+	
+	/**
+	 * 题库列表页面 
+	 */
+	url0009: path + 'edu/question_list.do',
 }
 
 
