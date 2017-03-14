@@ -1,4 +1,7 @@
 var TeacherInfo = {
+	/**
+	 * 课程表
+	 */
 	syllabus: function() {
 		mui.getJSON('json/teacher/syllabus.json', {}, function(result) {
 			if(result.code) {
