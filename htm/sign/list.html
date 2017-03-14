@@ -63,13 +63,13 @@
 //			var name = self.name;
 //			var version = self.version;
 			
-			var lessonName = sessionStorage.getItem(session_.lesson_list_lesson_name);
-			$("#lesson-name")[0].innerHTML = lessonName;
+			var lesson = JSON.parse(localStorage.getItem(session_.lesson_class_info)) ;  
+			$("#lesson-name")[0].innerHTML = lesson.entity.lessonName; 
 
-			var lcode = sessionStorage.getItem(session_.lesson_code); 
+			var scheduleCode = localStorage.getItem(session_.sign_schedule_code); 
 			var url_ = purl.url0002; 
 			
-			var data = {lcode:lcode};
+			var data = {scheduleCode:scheduleCode};  
 			var res = sendAjax('post' , url_ , data);
 			var obj = JSON.parse(res);
 			var html = '';
@@ -81,7 +81,7 @@
 					html += '<div class="mui-media-body">' + arr[i].name + '<p class="mui-ellipsis">' + arr[i].createTime +'签到</p></div></a></li>'
 				}
 			}else{
-				$("#lesson-name")[0].innerHTML = lessonName + " 还没有人签到哦！";
+				$("#lesson-name")[0].innerHTML = lesson.entity.lessonName + " 还没有人签到哦！";
 			}
 			$("#slist").append(html); 
 		});

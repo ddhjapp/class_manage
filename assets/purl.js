@@ -1,4 +1,4 @@
-var path = 'http://172.21.0.57:8080/matrix-admin/';
+var path = 'http://127.0.0.1:8080/matrix-admin/';
 //var path = 'http://stockwyz.xicp.net/matrix-admin/';
 var purl = { 
 	/**
@@ -36,6 +36,11 @@ var purl = {
 	 * 我的排课列表 
 	 */
 	url0008: path + 'edu/lesson_schedule_list.do', 
+	
+	/**
+	 * 题库列表页面 
+	 */
+	url0009: path + 'edu/question_list.do',
 }
 
 
@@ -92,6 +97,11 @@ var session_ ={
 	/**
 	 * lesson_list 页面的 课程名称
 	 */
-	lesson_class_info : 'lesson_class_info'
+	lesson_class_info : 'lesson_class_info',
+	
+	/**
+	 * 查看学生签到页面，用到的 schedule_code
+	 */
+	sign_schedule_code:'sign_schedule_code',
 	
 }

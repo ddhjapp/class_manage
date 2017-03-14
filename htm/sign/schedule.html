@@ -33,9 +33,10 @@
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">我的排课列表</h1>
 		</header>
-		<div class="mui-content">
-			<div class="mui-card cart_float">
+		<div id="slist" class="mui-content">
+			<!--<div class="mui-card cart_float">
 				<div class="mui-card-header world_" >
+					<img class="mui-media-object mui-pull-left" style="margin-right:10px;height:100%" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg" >
 					高等数学(下)
 					<div >2017-03-12 10:43 开始上课</div>
 				</div>
@@ -53,7 +54,7 @@
 					<span>查看签到情况</span>
 					<input type="hidden" name=""  id="question-code"  value="" /> 
 				</div>
-			</div>
+			</div>-->
 		</div>
 
 	</body>
@@ -81,23 +82,35 @@
 				var arr = obj.list;
 				var html = '';
 				for( var i = 0 ; i < arr.length ; i ++){
+					html += '<div class="mui-card cart_float teacher-class"><div class="mui-card-header world_" >' ;
+					html += '<img class="mui-media-object mui-pull-left" style="margin-right:10px;height:100%" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg" >';
+					html += arr[i].entity.lessonName;
+					html += '<div >' + arr[i].entity.startTime + ' 开始上课</div></div>' ;
+					html += '<div class="mui-card-content"><div class="mui-card-content-inner">';
+					if(arr[i].claList.length != 0){
+						var classes = arr[i].claList;
+						for(var k = 0 ; k < classes.length ; k ++){
+							html += '<div class="mui-input-row  mui-left">';
+							html += '<label style="width: 100%;padding: 10px 0px 0px 5px;">' + classes[k].className + '</label></div>';
+						}
+					}
+					html += '</div></div>'; 
+					html += '<div class="mui-card-footer"><span>查看签到情况</span>';
+					html += '<input type="hidden" value="' + arr[i].entity.scheduleCode + '" /></div></div> ';
 					
-					html += '<li class="mui-table-view-cell mui-media"><a class="mui-navigate-right teacher-class">';
-					html += '<textarea style="display:none">' + JSON.stringify(arr[i]) + '</textarea>';
-					html += '<img class="mui-media-object mui-pull-left" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg">';  
-					html += '<div class="mui-media-body">' + arr[i].entity.lessonName + '<p class="mui-ellipsis">班级：' + msg +'</p></div></a></li>'
 				}
 				$("#slist").append(html); 
 			}
+			var aa = localStorage.getItem(session_.lesson_class_info);
 			
 			var arr = document.getElementsByClassName("teacher-class");
 			if(arr.length != 0){
 				for( var i = 0 ; i < arr.length ; i ++){
 					arr[i].addEventListener('tap' , function(e) {  
-						var json = e.currentTarget.children[0].value;
-						var lessonClassInfo = JSON.parse(json);  
-						sessionStorage.setItem(session_.lesson_class_info , json); 
-						mui.openWindow({  // 教师开课
+						// 父级页面已经传入 session_.lesson_class_info 所以无需再次设置
+						var scheduleCode = e.currentTarget.querySelector("input").value; 
+						localStorage.setItem(session_.sign_schedule_code , scheduleCode);  
+						mui.openWindow({  // 已签到学生列表  
 							url: '../../htm/sign/list.html', 
 						    id:'w_sign_list'
 					  	});
