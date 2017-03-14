@@ -1,8 +1,8 @@
-var StudentStudy={
+var StudentStudy = {
 	/**
 	 * 课程表
 	 */
-	syllabus:function(){
+	syllabus: function() {
 		mui.getJSON('json/student/syllabus.json', {}, function(result) {
 			if(result.code) {
 				var html = "";
@@ -25,8 +25,39 @@ var StudentStudy={
 				$("#vertical-timeline").html(html);
 			}
 		});
+	},
+	aq: function() {
+		mui.getJSON('json/student/aq.json', {}, function(result) {
+			var html = "<ul class=\"mui-table-view\">";
+			if(result.code == 0) {
+				var html = '<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">';
+				if(result.data) {
+					for(var key in result.data) {
+						var obj = result.data[key];
+						html += '<li class="mui-table-view-cell">';
+						html += '<a href="#course-students" onclick="getCourseStudents();">'
+						html += '<div class="mui-table-cell mui-col-xs-10">';
+						html += '<h4 class="mui-ellipsis-2">' + obj.question + '</h4>';
+						html += '<p class="mui-h6 mui-ellipsis">课程名称：' + obj.lesson_name;
+						html +='<span style="float:right;">'+obj.create_time+'</span>'
+						html +='</p>';
+						html += '</div>';
+						html += '</div>';
+						html += '</a>';
+						html += '</li>';
+					}
+				} else {
+					html += "<li class=\"mui-table-view-cell\">";
+					html += "暂无数据";
+					html += "</li>";
+				}
+				html += '</ul>';
+			}
+			html += "</ul>";
+			$("#aq-content").html(html);
+		});
 	}
-	
+
 };
 
 /**
@@ -37,6 +68,15 @@ function getSyllabus() {
 	if(syllabus.querySelector('.mui-loading')) {
 		setTimeout(function() {
 			StudentStudy.syllabus();
+		}, 500);
+	}
+}
+
+function getAQ() {
+	var aqContent = document.getElementById("aq-content");
+	if(aqContent.querySelector('.mui-loading')) {
+		setTimeout(function() {
+			StudentStudy.aq();
 		}, 500);
 	}
 }

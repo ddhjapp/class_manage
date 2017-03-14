@@ -26,6 +26,9 @@ var TeacherInfo = {
 			}
 		});
 	},
+	/**
+	 * 课程点评
+	 */
 	courseReviews: function() {
 		mui.getJSON('json/teacher/course_reviews.json', {}, function(result) {
 			var html = "<ul class=\"mui-table-view\">";
@@ -51,12 +54,14 @@ var TeacherInfo = {
 					html += "</li>";
 				}
 				html += '</ul>';
-				$("#course-reviews-content").html(html);
 			}
 			html += "</ul>";
 			$("#course-reviews-content").html(html);
 		});
 	},
+	/**
+	 * 学生列表
+	 */
 	courseStudents: function() {
 		mui.getJSON('json/teacher/course_student.json', {}, function(result) {
 			var html = "<ul class=\"mui-table-view\">";
@@ -80,7 +85,6 @@ var TeacherInfo = {
 					html += "</li>";
 				}
 				html += '</ul>';
-				$("#course-reviews-content").html(html);
 			}
 			html += "</ul>";
 			$("#course-students-content").html(html);
