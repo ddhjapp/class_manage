@@ -106,9 +106,9 @@
 			if(arr.length != 0){
 				for( var i = 0 ; i < arr.length ; i ++){
 					arr[i].addEventListener('tap' , function(e) {  
-						var json = e.currentTarget.children[0].value;
-						var lessonClassInfo = JSON.parse(json);  
-						sessionStorage.setItem(session_.lesson_class_info , json); 
+						// 父级页面已经传入 session_.lesson_class_info 所以无需再次设置
+						var scheduleCode = e.currentTarget.querySelector("input").value; 
+						sessionStorage.setItem(session_.sign_schedule_code , scheduleCode);  
 						mui.openWindow({  // 已签到学生列表  
 							url: '../../htm/sign/list.html', 
 						    id:'w_sign_list'

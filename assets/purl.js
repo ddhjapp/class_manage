@@ -92,6 +92,11 @@ var session_ ={
 	/**
 	 * lesson_list 页面的 课程名称
 	 */
-	lesson_class_info : 'lesson_class_info'
+	lesson_class_info : 'lesson_class_info',
+	
+	/**
+	 * 查看学生签到页面，用到的 schedule_code
+	 */
+	sign_schedule_code:'sign_schedule_code',
 	
 }
