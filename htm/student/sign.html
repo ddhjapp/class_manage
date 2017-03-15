@@ -110,22 +110,23 @@
 				}
 				sign(result);
 				mui.openWindow({
-					url: '../../htm/index.html', 
+					url: '../../index.html', 
 				    id:'t-index-sign'
 			  	});
 			};
 			
 			function sign(result){
 				if(result != '' && result.length > 5){ 
-					var validate = result.substring(0 , 4);
-					if(validate != "学生签到"){
+					var validate = result.split("@")[0]; 
+					if(validate != "831e77780188365d3c0e10791ca23826"){  // 学生签到 md5
 						mui.alert(' 错误的签到二维码 ', '系统消息', function() {});
 						return;
 					}
+					var user = JSON.parse(localStorage.getItem(session_.user_info)); 
 					
-					var lcode = result.split("@")[2];  
+					var scheduleCode = result.split("@")[2];  
 					var scode = "s7";
-					var data_ = {scode:scode , lcode:lcode};
+					var data_ = {scode:user.data.code , scheduleCode:scheduleCode}; 
 					var url_ = purl.url0003;
 					var res = sendAjax('post' , url_ , data_);
 					var obj = JSON.parse(res);

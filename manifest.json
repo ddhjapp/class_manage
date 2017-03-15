@@ -214,7 +214,8 @@
 					"htm/reg/login.html",
 					"htm/teacher/class_list.html",
 					"htm/rollcall/class_list.html",
-					"htm/sign/lesson_list.html"
+					"htm/sign/lesson_list.html",
+					"htm/student/question_list.html"
 				],
 				"priority": 0
 			},
@@ -227,7 +228,8 @@
 					"assets/mui/css/mui.min.css"
 				],
 				"refer": [
-					"htm/index.html"
+					"htm/index.html",
+					"index.html"
 				],
 				"priority": 0
 			},

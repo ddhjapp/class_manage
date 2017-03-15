@@ -129,6 +129,12 @@
 						<div class="mui-media-body">学生签到</div>
 					</a>
 				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 student">
+					<a id="student-question-answer" href="javascript:void(0)">
+						<span class="mui-icon mui-icon-info"></span>
+						<div class="mui-media-body">学生答题</div>
+					</a>
+				</li>
 			</ul>
 		</div>
 	</body>
@@ -175,15 +181,18 @@
 	
 		// 学生签到 
 		document.getElementById("student-sign").addEventListener('tap' , function() {
-//			localStorage.setItem("lcode" , "l1");  
-			mui.openWindow({
-				url: 'htm/student/sign.html', 
-			    id:'t-index',
-			    extras:{
-			        name:'mui',
-			        lcode:'l1' 
-			    }
-		  	});
+			var sessionUser = localStorage.getItem(session_.user_info);
+			if(sessionUser != null) {
+				mui.openWindow({
+					url: 'htm/student/sign.html', 
+			    	id:'w_student_sign' 
+			  	});
+		  	} else {
+		  		mui.openWindow({  // 登录
+					url: 'htm/reg/login.html', 
+				    id:'w_login'
+			  	});
+		  	} 
 		})
 		
 		// 随机点人 
@@ -221,6 +230,21 @@
 		  	}
 		})
 		
+		// 学生答题 
+		document.getElementById("student-question-answer").addEventListener('tap' , function() {
+			var sessionUser = localStorage.getItem(session_.user_info);
+			if(sessionUser != null) {
+				mui.openWindow({
+					url: 'htm/student/question_list.html',  
+			    	id:'w_student_question_list' 
+			  	});
+		  	} else {
+		  		mui.openWindow({  // 登录
+					url: 'htm/reg/login.html', 
+				    id:'w_login'
+			  	});
+		  	} 
+		})
 	</script>
 
 </html>
