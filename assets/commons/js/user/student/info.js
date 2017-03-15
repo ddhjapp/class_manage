@@ -16,7 +16,7 @@ var StudentStudy = {
 						html += '<div class="vertical-timeline-content">';
 						html += '<h2>科目：' + obj.lesson_name + '</h2>';
 						html += '<p>教师：' + obj.teacher_name + '</p>';
-						html += '<span>介绍:' + obj.intro + '</span>';
+						html += '<p style="font-size:13px;">介绍:' + obj.intro + '</p>';
 						html += '<span class="vertical-date">开始时间<small>' + obj.start_time + '</small></span>';
 						html += '</div>';
 						html += '</div>';

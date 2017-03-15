@@ -16,7 +16,7 @@ var TeacherInfo = {
 						html += '<div class="vertical-timeline-content">';
 						html += '<h2>科目：' + obj.lesson_name + '</h2>';
 						html += '<p>班级：' + obj.class_name + '</p>';
-						html += '<span>备注:' + obj.remark + '</span>';
+						html += '<p style="font-size:13px;">备注:' + obj.remark + '</p>';
 						html += '<span class="vertical-date">开始时间<small>' + obj.start_time + '</small></span>';
 						html += '</div>';
 						html += '</div>';
