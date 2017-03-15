@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="assets/font/font-awesome-4.7.0/css/font-awesome.min.css" />
 		<link rel="stylesheet" href="assets/commons/css/user/info.css">t
 		<link rel="stylesheet" href="assets/commons/css/style.css">
+		<link rel="stylesheet" href="assets/starability/starability-minified/starability-all.min.css">t
 	</head>
 
 	<body class="mui-fullscreen">
@@ -331,7 +332,7 @@
         	时间：2017-03-15
         	描述：学生评价
         -->
-        <div id="student-evaluate" class="mui-page">
+		<div id="student-evaluate" class="mui-page">
 			<div class="mui-navbar-inner mui-bar mui-bar-nav">
 				<a type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
 					<span class="mui-icon mui-icon-left-nav"></span>
@@ -341,15 +342,28 @@
 			<div class="mui-page-content">
 				<div class="mui-content-padded">
 					<div class="row mui-input-row">
-						<input type="text" name="title" id="title" value="" class="mui-input-clear question" placeholder="标题">
+						<div class="starability-container" style="margin-left: 10px;">
+							<fieldset class="starability-basic">
+								<input type="radio" id="rate5-1" name="rating" value="5" />
+								<label for="rate5-1" title="Amazing">5 stars</label>
+								<input type="radio" id="rate4-1" name="rating" value="4" />
+								<label for="rate4-1" title="Very good">4 stars</label>
+								<input type="radio" id="rate3-1" name="rating" value="3" />
+								<label for="rate3-1" title="Average">3 stars</label>
+								<input type="radio" id="rate2-1" name="rating" value="2" />
+								<label for="rate2-1" title="Not good">2 stars</label>
+								<input type="radio" id="rate1-1" name="rating" value="1" />
+								<label for="rate1-1" title="Terrible">1 star</label>
+							</fieldset>
+						</div>
 					</div>
 					<div class="row mui-input-row">
 						<textarea id='content' rows="6" name="content" class="mui-input-clear question" placeholder="内容"></textarea>
 					</div>
-					<a id="student-evaluate-btn" style="padding:10px 0px;" class="mui-btn mui-btn-primary mui-btn-block">保存</a>
+					<a id="student-evaluate-btn" style="padding:10px 0px;" class="mui-btn mui-btn-primary mui-btn-block">提交</a>
 				</div>
 			</div>
-        </div>
+		</div>
 		<!--
         	作者：zero1814@126.com
         	时间：2017-03-13
@@ -523,6 +537,9 @@
 		})(mui);
 		$("#memorandum-btn").click(function() {
 			mui.toast('保存成功');
+		});
+		$("#student-evaluate-btn").click(function(){
+			mui.toast('提交成功');
 		});
 	</script>
 
