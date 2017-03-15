@@ -1,6 +1,6 @@
-//var path = 'http://127.0.0.1:8080/matrix-admin/';
+var path = 'http://127.0.0.1:8080/matrix-admin/';
 //var path = 'http://192.168.83.1:8080/matrix-admin/';
-var path = 'http://stockwyz.xicp.net/matrix-admin/';
+//var path = 'http://stockwyz.xicp.net/matrix-admin/';
 var purl = { 
 	/**
 	 * 教师开课接口
@@ -44,6 +44,12 @@ var purl = {
 	url0009: path + 'edu/question_list.do',
 	
 	url0010: path + 'edu/exam_paper_insert.do', 
+	
+	/**
+	 * 学生的排课列表  
+	 */
+	url0011: path + 'edu/student_schedule_list.do',
+	
 }
 
 

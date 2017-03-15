@@ -33,7 +33,7 @@
 		</header>
 		<div id="slist" class="mui-content"> 
 			
-   			<!--<div class="mui-card cart_float">
+   			<div class="mui-card cart_float">
 				
 				<div class="mui-card-header world_" >
 					"Tommy, run! Be quick! The house is on fire!" the mother shouted, with clearly______in her voice.
@@ -60,15 +60,15 @@
 					</div>
 				</div>
 				
-				<div class="mui-card-footer"> 
+				<!--<div class="mui-card-footer"> 
 					<span>选择这道题：</span>
 					<input type="hidden" name=""  id="question-code"  value="" />
 					<div class="mui-switch">
 						<div class="mui-switch-handle"></div>
 					</div>
-				</div>
+				</div>-->
 				
-			</div>-->
+			</div>
 			
 		</div>
 		
@@ -82,7 +82,7 @@
 			});
 			
 			mui('.mui-content').each(function() {
-				drawQuestionPage();  
+//				drawQuestionPage();  
 			});
 			   
 			mui('.mui-content .mui-switch').each(function() { //循环所有toggle
@@ -136,8 +136,8 @@
 							}
 							html += '</div></div>';
 							
-							html += '<div class="mui-card-footer"><span>选择这道题：</span><input type="hidden" name=""  id="' + q.code + '"  value="' + q.code + '" />'
-							html += '<div class="mui-switch"><div class="mui-switch-handle"></div></div></div>';
+//							html += '<div class="mui-card-footer"><span>选择这道题：</span><input type="hidden" name=""  id="' + q.code + '"  value="' + q.code + '" />'
+//							html += '<div class="mui-switch"><div class="mui-switch-handle"></div></div></div>'; 
 							html += '</div></div>';
 						}
 					} else {
