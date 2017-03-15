@@ -87,7 +87,7 @@ var session_ ={
 	user_info: 'user_info' ,  
 	
 	/**
-	 * 保存教师开课的相关生成二维码的必要信息
+	 * 保存教师开课的相关生成二维码的必要信息 
 	 */
 	qr_code:'qrcode',
 	

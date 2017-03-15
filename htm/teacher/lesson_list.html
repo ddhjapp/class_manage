@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>课程列表-二维码页面</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link href="../../assets/mui/css/mui.min.css" rel="stylesheet" />
+		<!--App自定义的css-->
+		<style>
+			.title {
+				margin: 20px 15px 10px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+			.mui-plus.mui-android header.mui-bar{
+				display: none;
+			}
+			.mui-plus.mui-android .mui-bar-nav~.mui-content{
+				padding: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的课程列表</h1>
+		</header>
+		<div class="mui-content">
+			<div class="title">
+				<!--高等数学(下) -->
+			</div>
+			<ul id ="slist" class="mui-table-view mui-table-view-chevron"> 
+			</ul>
+			
+		</div>
+
+	</body>
+	<script src="../../assets/mui/js/mui.min.js"></script>
+	<script src="../../assets/jquery/1.12.2/jquery-1.12.2.js"></script>
+	<script src="../../assets/purl.js" type="text/javascript" charset="utf-8"></script> 
+	<script>
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		
+		$(function(){
+//			var self = plus.webview.currentWebview();
+//			var name = self.name;
+//			var version = self.version;
+
+			var userInfo = JSON.parse(localStorage.getItem(session_.user_info)); 
+			var url_ = purl.url0007; 
+			
+			var data = {code:userInfo.data.code};
+			var res = sendAjax('post' , url_ , data);
+			var obj = JSON.parse(res);
+			if(obj.status && obj.list.length > 0){
+				var arr = obj.list;
+				var html = '';
+				for( var i = 0 ; i < arr.length ; i ++){
+					var claList = arr[i].claList;
+					var msg = '';
+					if(claList.length != 0){
+						for(var u = 0 ; u < claList.length; u ++){
+							msg += claList[u].className + '|';
+						}
+						msg = msg.substring(0 , msg.length-1);
+						if(msg.length > 20){
+							msg = msg.substring(0 , 17) + '...';
+						}
+					}
+					
+					html += '<li class="mui-table-view-cell mui-media"><a class="mui-navigate-right teacher-class">';
+					html += '<textarea style="display:none">' + JSON.stringify(arr[i]) + '</textarea>';
+					html += '<img class="mui-media-object mui-pull-left" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg">';  
+					html += '<div class="mui-media-body">' + arr[i].entity.lessonName + '<p class="mui-ellipsis">班级：' + msg +'</p></div></a></li>'
+				}
+				$("#slist").append(html); 
+			}
+			
+			var arr = document.getElementsByClassName("teacher-class");
+			if(arr.length != 0){
+				for( var i = 0 ; i < arr.length ; i ++){
+					arr[i].addEventListener('tap' , function(e) {  
+						var json = e.currentTarget.children[0].value;
+						var lessonClassInfo = JSON.parse(json);  
+						localStorage.setItem(session_.lesson_class_info , json); 
+						mui.openWindow({  // 排课列表 
+							url: '../../htm/teacher/schedule.html', 
+						    id:'w_qrcode_schedule'
+					  	});
+					})
+				}
+			}
+			
+			
+		});
+		
+ 
+		
+	</script>
+</html>
