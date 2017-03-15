@@ -76,7 +76,7 @@ var TeacherInfo = {
 						html += '<h5>签到时间：' + obj.sign_time + '</h5>';
 						html += '<p class="mui-h6 mui-ellipsis">提问次数：' + obj.aq_sum + '</p>';
 						html += '</div>';
-						html += '</div>';
+						html +='<a href="#student-evaluate" class="mui-btn mui-btn-primary">去评价</a>';
 						html += '</li>';
 					}
 				} else {
