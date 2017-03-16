@@ -27,7 +27,7 @@
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title" style="margin-right: 20px;">题库列表</h1>
-			<span class="mui-btn mui-btn-success" style="float: right; padding: 4px 12px 6px 12px;" onclick="drawExamPaper()"> 
+			<span id="paper-submit" class="mui-btn mui-btn-success" style="float: right; padding: 4px 12px 6px 12px; display: none;" onclick="submitExamPaper()"> 
 				提交
 			</span>
 		</header>
@@ -157,6 +157,9 @@
 							}
 							html += '</div></div></div></div>';
 						}
+						if(!obj.isAnswer){
+							$("#paper-submit").show(); 
+						}
 					} else {
 						mui.toast( '您暂时没有排课!');
 						html = '您暂时没有排课!';
@@ -171,31 +174,39 @@
 			/**
 			 * 生成课堂练习 
 			 */
-			function drawExamPaper(){
-				var arr = $(".mui-content input[value='1']");
-				if(arr.length == 0){
-					return;
+			function submitExamPaper(){
+				var ansArray = new Array(); // 答案数组
+				var rarr = $("input[type='radio']:checked");        // 处理单选题
+				if(rarr.length != 0){
+					for(var i = 0 ; i < rarr.length ; i ++){
+						var info = rarr[i].id;
+						var ans = new Object();
+						ans.code = info.split("-")[2];
+						ans.count = 1;
+						var map_ = new Object();
+						map_.a1 = info.split("-")[1]; 
+						ans.map = map_;
+						ansArray.push(ans);
+					}
 				}
-				var data_ = new Object();
-				data_.scheduleCode = localStorage.getItem(session_.sign_question_code);
-				var userInfo = JSON.parse(localStorage.getItem(session_.user_info));
-				data_.teacherCode = userInfo.data.code;
-				var qcodes = new Array();
-				for(var i = 0 ; i < arr.length ; i ++){
-					qcodes.push(arr[i].id);
+				
+				var carr = $("input[type='checkbox']:checked");	 // 处理多选题
+				if(carr.length != 0){
+					for(var k = 0 ; k < carr.length ; k++){
+						var info = carr[k].id; 
+					}
 				}
-				data_.list = qcodes;			
 				
-				var data = {json:JSON.stringify(data_)};
 				
+				/*var data = {json:JSON.stringify(data_)}; 
 				var url_ = purl.url0010;
 				var res = sendAjax('post' , url_ , data);
 				var obj = JSON.parse(res);
-				if(obj.status){
+				if(obj.status){ 
 					mui.alert( "课堂测试题已生成! " , '系统消息', function() {});
 				}else{ // 用户名或密码错误 
 					 mui.alert( obj.msg , '系统消息', function() {});
-				}
+				}*/
 			}
 			
 		</script>
