@@ -60,7 +60,11 @@ var purl = {
 	 */
 	url0013: path + 'edu/exam_paper_msg.do',
 	
-	
+	/**
+	 * htm/student/question_list.html 页面向数据库插入数据 
+	 * t_exam_answer 
+	 */
+	url0014: path + 'edu/student_insert_answer.do',
 }
 
 
