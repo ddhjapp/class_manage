@@ -33,22 +33,29 @@
 			});
 			
 			$(function() {
-				var userInfo = JSON.parse(localStorage.getItem(session_.user_info)); 
-				var url_ = purl.url0006; 
-				
-				var data = {code:userInfo.data.code};
+				var scheduleCode = localStorage.getItem(session_.student_paper_schedule_code);   
+				var url_ = purl.url0012; 
+				var data = {scheduleCode: scheduleCode}; 
 				var res = sendAjax('post' , url_ , data);
 				var obj = JSON.parse(res);
 				if(obj.status){
-					if(obj.list != null && obj.list.length > 0) {
-						var arr = obj.list;
-						var html = '';
-						for( var i = 0 ; i < arr.length ; i ++){
+					var html = '';
+					if(obj.map != null){  
+						var mobj = obj.map;
+						for(var o in mobj){
+							var paperCode = o;
+							var qarr = mobj[o]; // question code array 
+							var qcodes = '';
+							for(var k = 0 ; k < qarr.length ; k ++){
+								qcodes += qarr[k] + '@';
+							}
+							qcodes = qcodes.substring(0 , qcodes.length-1); 
 							html += '<li class="mui-table-view-cell mui-media"><a class="mui-navigate-right teacher-class">';
-							html += '<input type="hidden" value="' + arr[i].code + '">'
-							html += '<img class="mui-media-object mui-pull-left" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg">';  
-							html += '<div class="mui-media-body">' + arr[i].lessonName + '<p class="mui-ellipsis">' + arr[i].length +' 分钟</p></div></a></li>'
+							html += '<input type="hidden" value="' + paperCode + ',' + qcodes + '">'
+							html += '<img class="mui-media-object mui-pull-left" src="http://image-family.huijiayou.cn/cfiles/staticfiles/upload/274a0/83475e7c136840438983edf59088971b.jpg">';  
+							html += '<div class="mui-media-body">' + '测验编号：' + '<p class="mui-ellipsis">' + paperCode +' </p></div></a></li>'
 						}
+						
 						$("#slist").append(html); 
 					} else {
 						mui.alert('暂时没有试卷', '系统消息', function() {});  
@@ -60,12 +67,12 @@
 					for( var i = 0 ; i < arr.length ; i ++){
 						arr[i].addEventListener('tap' , function(e) { 
 							var userInfo = JSON.parse(localStorage.getItem(session_.user_info));
-							var lcode = e.currentTarget.children[0].value;
-							var value = userInfo.data.code + '@' + lcode;
-							localStorage.setItem(session_.qr_code , value);   // tcode@lcode  
+							var codes = e.currentTarget.children[0].value;
+							var value = userInfo.data.code + '#' + codes; 
+							localStorage.setItem(session_.exam_paper_msg , value);   //  
 							mui.openWindow({  // 教师开课
-								url: 'class_qrcode.html', 
-							    id:'w-class-qrcode'
+								url: 'question_list.html',  
+							    id:'w_student-paper_list-question_list'
 						  	});
 						})
 					}

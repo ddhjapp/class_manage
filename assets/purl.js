@@ -50,6 +50,17 @@ var purl = {
 	 */
 	url0011: path + 'edu/student_schedule_list.do',
 	
+	/**
+	 * 学生在某一节课的试卷列表，一节课可以包含多个课堂测验试卷 
+	 */
+	url0012: path + 'edu/student_paper_list.do',
+	
+	/**
+	 * htm/student/paper_list.html 传值
+	 */
+	url0013: path + 'edu/exam_paper_msg.do',
+	
+	
 }
 
 
@@ -117,4 +128,9 @@ var session_ ={
 	 * 查看课程题库页面，用到的 schedule_code
 	 */
 	sign_question_code:'sign_question_code',
+	
+	/**
+	 * htm/student/schedule_list.html 页面向下一个页面传递的schedule_code，作为查询课堂测试题目的依据
+	 */
+	student_paper_schedule_code: 'student_paper_schedule_code',
 }

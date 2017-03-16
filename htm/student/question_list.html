@@ -35,7 +35,7 @@
 			
    			<div class="mui-card cart_float">
 				
-				<div class="mui-card-header world_" >
+				<!--<div class="mui-card-header world_" >
 					"Tommy, run! Be quick! The house is on fire!" the mother shouted, with clearly______in her voice.
 				</div>
 				
@@ -58,7 +58,7 @@
 							<input style="left: 0px;margin-top: 3px" type="radio" name="radio1" value="" onclick="">
 						</div>
 					</div>
-				</div>
+				</div>-->
 				
 				<!--<div class="mui-card-footer"> 
 					<span>选择这道题：</span>
@@ -82,7 +82,7 @@
 			});
 			
 			mui('.mui-content').each(function() {
-//				drawQuestionPage();  
+				drawQuestionPage();  
 			});
 			   
 			mui('.mui-content .mui-switch').each(function() { //循环所有toggle
@@ -103,10 +103,14 @@
 			
 			function drawQuestionPage(){
 				$("#slist div").remove();
-				var lessonClassInfo = JSON.parse(localStorage.getItem(session_.lesson_class_info)); 
-				var lcode = lessonClassInfo.entity.code;
+				
+				var msg = localStorage.getItem(session_.exam_paper_msg);
+				var studentCode = msg.split("#")[0];
+				var paperCode = msg.split("#")[1].split(",")[0];
+				var qcodes = msg.split("#")[1].split(",")[1];
+				
 				var url_ = purl.url0009; 
-				var data = {lessonCode : lcode};
+				var data = {studentCode:studentCode,paperCode:paperCode,qcodes : qcodes}; 
 				var res = sendAjax('post' , url_ , data);
 				var obj = JSON.parse(res);
 				if(obj.status){
@@ -126,19 +130,32 @@
 								for(var u = 0 ; u < ops.length ; u ++){
 									html += '<div class="mui-input-row mui-' + _type_ + ' mui-left"><label style="padding-left: 25px;">';
 									html += ops[u].tip + '&nbsp&nbsp&nbsp&nbsp' + ops[u].option;
-									html += '</label><input style="left: 0px;margin-top: 3px" type="' + _type_ + '" name="' + q.code + '" value="' + ops[u].tip + '" onclick="">'; 
+									// html_ 默认无选中
+									var html_ = '</label><input style="left: 0px;margin-top: 3px" type="' + _type_ + '" name="' + q.code + '" value="' + ops[u].tip + '" id="option-' + ops[u].tip + '-' + q.code + '">';
+									// 如果已经回答过则为答案赋值
+									if(obj.isAnswer){
+										var answerArray = obj.answer;
+										for(var s = 0 ; s < answerArray.length ; s ++){
+											if(answerArray[s].code == q.code){  // question_code 进行匹配  
+												var ans = answerArray[s].map;
+												for(var ansIndex in ans){
+													if( ans[ansIndex] == ops[u].tip ){
+														html_ += '</label><input style="left: 0px;margin-top: 3px" type="' + _type_ + '" name="' + q.code + '" value="' + ops[u].tip + '" checked>';
+													}
+												}
+											}
+										}
+									}
+									html += html_;
 									html += '</div>';
+									
 								}
 							}else if( q.type == 'T0004' ){  // 判断题
 								
 							}else{  // 填空题  || 问答题
 								
 							}
-							html += '</div></div>';
-							
-//							html += '<div class="mui-card-footer"><span>选择这道题：</span><input type="hidden" name=""  id="' + q.code + '"  value="' + q.code + '" />'
-//							html += '<div class="mui-switch"><div class="mui-switch-handle"></div></div></div>'; 
-							html += '</div></div>';
+							html += '</div></div></div></div>';
 						}
 					} else {
 						mui.toast( '您暂时没有排课!');
