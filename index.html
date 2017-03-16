@@ -245,6 +245,22 @@
 			  	});
 		  	} 
 		})
+		
+		// 查看答题
+		document.getElementById("answer").addEventListener('tap' , function() {
+			var sessionUser = localStorage.getItem(session_.user_info);
+			if(sessionUser != null) {
+				mui.openWindow({
+					url: 'htm/inspection/lesson_list.html', 
+				    id:'w_inspection_lesson_list'  
+			  	});
+		  	} else {
+		  		mui.openWindow({  // 登录
+					url: 'htm/reg/login.html', 
+				    id:'w_login'
+			  	});
+		  	}
+		})
 	</script>
 
 </html>

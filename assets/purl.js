@@ -39,7 +39,7 @@ var purl = {
 	url0008: path + 'edu/lesson_schedule_list.do', 
 	
 	/**
-	 * 题库列表页面 
+	 * 题库列表页面 - 学生
 	 */
 	url0009: path + 'edu/question_list.do',
 	
@@ -65,6 +65,16 @@ var purl = {
 	 * t_exam_answer 
 	 */
 	url0014: path + 'edu/student_insert_answer.do',
+	
+	/**
+	 * 题库列表页面 - 教师 
+	 */
+	url0015: path + 'edu/question_list_teacher.do', 
+	
+	/**
+	 * htm/inspection/list.html 查看测验时的班级学生列表 
+	 */
+	url0016: path + 'edu/class_student_list.do',
 }
 
 
@@ -137,4 +147,9 @@ var session_ ={
 	 * htm/student/schedule_list.html 页面向下一个页面传递的schedule_code，作为查询课堂测试题目的依据
 	 */
 	student_paper_schedule_code: 'student_paper_schedule_code',
+	
+	/**
+	 * 查看答题 保存排课列表中的班级列表 
+	 */
+	inspection_class_codes : 'inspection_class_codes',
 }

@@ -27,7 +27,7 @@
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title" style="margin-right: 20px;">题库列表</h1>
-			<span class="mui-btn mui-btn-success" style="float: right; padding: 4px 12px 6px 12px;" onclick="drawExamPaper()"> 
+			<span id="paper-submit" class="mui-btn mui-btn-success" style="float: right; padding: 4px 12px 6px 12px;" onclick="drawExamPaper()"> 
 				生成测试
 			</span>
 		</header>
@@ -105,7 +105,7 @@
 				$("#slist div").remove();
 				var lessonClassInfo = JSON.parse(localStorage.getItem(session_.lesson_class_info)); 
 				var lcode = lessonClassInfo.entity.code;
-				var url_ = purl.url0009; 
+				var url_ = purl.url0015;  
 				var data = {lessonCode : lcode};
 				var res = sendAjax('post' , url_ , data);
 				var obj = JSON.parse(res);
@@ -175,7 +175,9 @@
 				var res = sendAjax('post' , url_ , data);
 				var obj = JSON.parse(res);
 				if(obj.status){
-					mui.alert( "课堂测试题已生成! " , '系统消息', function() {});
+					mui.alert( "课堂测试题已生成! " , '系统消息', function() {
+						$("#paper-submit").hide();  
+					});
 				}else{ // 用户名或密码错误 
 					 mui.alert( obj.msg , '系统消息', function() {});
 				}

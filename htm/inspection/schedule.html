@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>本门课程的排课列表</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link href="../../assets/mui/css/mui.min.css" rel="stylesheet" />
+		<!--App自定义的css-->
+		<style>
+			.cart_float{
+				margin-left: 10px;
+				margin-right: 10px;
+				margin-top: 5px;
+				margin-bottom: 5px; 
+			}
+			.world_{
+				width: 100%;
+				display:block;
+				word-break: keep-all;
+				word-wrap: break-word;
+			} 
+		</style> 
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的排课列表</h1>
+		</header>
+		<div id="slist" class="mui-content">
+			<!--<div class="mui-card cart_float">
+				<div class="mui-card-header world_" >
+					<img class="mui-media-object mui-pull-left" style="margin-right:10px;height:100%" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg" >
+					高等数学(下)
+					<div >2017-03-12 10:43 开始上课</div>
+				</div>
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner"> 
+						<div class="mui-input-row  mui-left">
+							<label style="width: 100%;padding: 10px 0px 0px 5px;">土木工程专业1501</label>
+						</div>
+						<div class="mui-input-row mui-left">
+							<label style="width: 100%;padding: 10px 0px 0px 5px;">土木工程专业1502</label>
+						</div>
+					</div>
+				</div>
+				<div class="mui-card-footer"> 
+					<span>查看签到情况</span>
+					<input type="hidden" name=""  id="question-code"  value="" /> 
+				</div>
+			</div>-->
+		</div>
+
+	</body>
+	<script src="../../assets/mui/js/mui.min.js"></script>
+	<script src="../../assets/jquery/1.12.2/jquery-1.12.2.js"></script>
+	<script src="../../assets/purl.js" type="text/javascript" charset="utf-8"></script> 
+	<script>
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		
+		$(function(){
+//			var self = plus.webview.currentWebview();
+//			var name = self.name;
+//			var version = self.version;
+
+			var userInfo = JSON.parse(localStorage.getItem(session_.user_info)); 
+			var lessonClassInfo = JSON.parse(localStorage.getItem(session_.lesson_class_info)); 
+
+			var url_ = purl.url0008;
+			var data = {teacherCode:userInfo.data.code , lessonCode:lessonClassInfo.entity.code};
+			var res = sendAjax('post' , url_ , data);
+			var obj = JSON.parse(res);
+			if(obj.status && obj.list.length > 0){
+				var arr = obj.list;
+				var html = '';
+				for( var i = 0 ; i < arr.length ; i ++){
+					html += '<div class="mui-card cart_float teacher-class"><div class="mui-card-header world_" >' ;
+					html += '<img class="mui-media-object mui-pull-left" style="margin-right:10px;height:100%" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg" >';
+					html += arr[i].entity.lessonName;
+					html += '<div >' + arr[i].entity.startTime + ' 开始上课</div></div>' ;
+					html += '<div class="mui-card-content"><div class="mui-card-content-inner">';
+					var classCodes = '';
+					if(arr[i].claList.length != 0){
+						var classes = arr[i].claList;
+						for(var k = 0 ; k < classes.length ; k ++){
+							html += '<div class="mui-input-row  mui-left">';
+							html += '<label style="width: 100%;padding: 10px 0px 0px 5px;">' + classes[k].className + '</label></div>';
+							classCodes += classes[k].code + ',' ;
+						}
+					}
+					classCodes = classCodes.substring(0 , classCodes.length -1); 
+					html += '</div></div>'; 
+					html += '<div class="mui-card-footer"><span>查看签到情况</span>';
+					html += '<input type="hidden" value="' + classCodes + '" /></div></div> ';
+					
+				}
+				$("#slist").append(html); 
+			}
+			
+			var arr = document.getElementsByClassName("teacher-class");
+			if(arr.length != 0){
+				for( var i = 0 ; i < arr.length ; i ++){
+					arr[i].addEventListener('tap' , function(e) {  
+						// 父级页面已经传入 session_.lesson_class_info 所以无需再次设置
+						var classCodes = e.currentTarget.querySelector("input").value; 
+						localStorage.setItem(session_.inspection_class_codes , classCodes);  
+						mui.openWindow({  // 已签到学生列表  
+							url: '../../htm/inspection/list.html', 
+						    id:'w_inspection_list'
+					  	});
+					})
+				}
+			}
+			
+			
+		});
+		
+ 
+		
+	</script>
+</html>
