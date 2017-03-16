@@ -27,15 +27,15 @@
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title" style="margin-right: 20px;">题库列表</h1>
-			<span id="paper-submit" class="mui-btn mui-btn-success" style="float: right; padding: 4px 12px 6px 12px;" onclick="drawExamPaper()"> 
-				生成测试
+			<span id="paper-submit" class="mui-btn mui-btn-success" style="float: right; padding: 4px 12px 6px 12px; display: none;" onclick="submitExamPaper()"> 
+				提交
 			</span>
 		</header>
 		<div id="slist" class="mui-content"> 
 			
-   			<!--<div class="mui-card cart_float">
+   			<div class="mui-card cart_float">
 				
-				<div class="mui-card-header world_" >
+				<!--<div class="mui-card-header world_" >
 					"Tommy, run! Be quick! The house is on fire!" the mother shouted, with clearly______in her voice.
 				</div>
 				
@@ -58,17 +58,17 @@
 							<input style="left: 0px;margin-top: 3px" type="radio" name="radio1" value="" onclick="">
 						</div>
 					</div>
-				</div>
+				</div>-->
 				
-				<div class="mui-card-footer"> 
+				<!--<div class="mui-card-footer"> 
 					<span>选择这道题：</span>
 					<input type="hidden" name=""  id="question-code"  value="" />
 					<div class="mui-switch">
 						<div class="mui-switch-handle"></div>
 					</div>
-				</div>
+				</div>-->
 				
-			</div>-->
+			</div>
 			
 		</div>
 		
@@ -103,10 +103,14 @@
 			
 			function drawQuestionPage(){
 				$("#slist div").remove();
-				var lessonClassInfo = JSON.parse(localStorage.getItem(session_.lesson_class_info)); 
-				var lcode = lessonClassInfo.entity.code;
-				var url_ = purl.url0015;  
-				var data = {lessonCode : lcode};
+				
+				var msg = localStorage.getItem(session_.exam_paper_msg);
+				var studentCode = msg.split("#")[0];
+				var paperCode = msg.split("#")[1].split(",")[0];
+				var qcodes = msg.split("#")[1].split(",")[1];
+				
+				var url_ = purl.url0009; 
+				var data = {studentCode:studentCode,paperCode:paperCode,qcodes : qcodes}; 
 				var res = sendAjax('post' , url_ , data);
 				var obj = JSON.parse(res);
 				if(obj.status){
@@ -126,19 +130,35 @@
 								for(var u = 0 ; u < ops.length ; u ++){
 									html += '<div class="mui-input-row mui-' + _type_ + ' mui-left"><label style="padding-left: 25px;">';
 									html += ops[u].tip + '&nbsp&nbsp&nbsp&nbsp' + ops[u].option;
-									html += '</label><input style="left: 0px;margin-top: 3px" type="' + _type_ + '" name="' + q.code + '" value="' + ops[u].tip + '" onclick="">'; 
+									// html_ 默认无选中
+									var html_ = '</label><input style="left: 0px;margin-top: 3px" type="' + _type_ + '" name="' + q.code + '" value="' + ops[u].tip + '" id="option-' + ops[u].tip + '-' + q.code + '">';
+									// 如果已经回答过则为答案赋值
+									if(obj.isAnswer){
+										var answerArray = obj.answer;
+										for(var s = 0 ; s < answerArray.length ; s ++){
+											if(answerArray[s].code == q.code){  // question_code 进行匹配  
+												var ans = answerArray[s].map;
+												for(var ansIndex in ans){
+													if( ans[ansIndex] == ops[u].tip ){
+														html_ += '</label><input style="left: 0px;margin-top: 3px" type="' + _type_ + '" name="' + q.code + '" value="' + ops[u].tip + '" checked>';
+													}
+												}
+											}
+										}
+									}
+									html += html_;
 									html += '</div>';
+									
 								}
 							}else if( q.type == 'T0004' ){  // 判断题
 								
 							}else{  // 填空题  || 问答题
 								
 							}
-							html += '</div></div>';
-							
-							html += '<div class="mui-card-footer"><span>选择这道题：</span><input type="hidden" name=""  id="' + q.code + '"  value="' + q.code + '" />'
-							html += '<div class="mui-switch"><div class="mui-switch-handle"></div></div></div>';
-							html += '</div></div>';
+							html += '</div></div></div></div>';
+						}
+						if(!obj.isAnswer){
+							$("#paper-submit").show(); 
 						}
 					} else {
 						mui.toast( '您暂时没有排课!');
@@ -150,32 +170,72 @@
 				}
 			}
 			
+			Array.prototype.hashSet_ = function(){  
+	            var n = {},r=[]; //n为hash表，r为临时数组
+				for(var i = 0; i < this.length; i++){ //遍历当前数组
+					if (!n[this[i]]){ //如果hash表中没有当前项
+						n[this[i]] = true; //存入hash表
+						r.push(this[i]); //把当前数组的当前项push到临时数组里面
+					}
+				}
+				return r;
+	        } 
 			
 			/**
 			 * 生成课堂练习 
 			 */
-			function drawExamPaper(){
-				var arr = $(".mui-content input[value='1']");
-				if(arr.length == 0){
-					return;
+			function submitExamPaper(){
+				var ansArray = new Array(); // 答案数组
+				var rarr = $("input[type='radio']:checked");        // 处理单选题
+				if(rarr.length != 0){
+					for(var i = 0 ; i < rarr.length ; i ++){
+						var info = rarr[i].id;
+						var ans = new Object();
+						ans.code = info.split("-")[2];
+						ans.count = 1;
+						var map_ = new Object();
+						map_.a1 = info.split("-")[1]; 
+						ans.map = map_;
+						ansArray.push(ans);
+					}
 				}
-				var data_ = new Object();
-				data_.scheduleCode = localStorage.getItem(session_.sign_question_code);
-				var userInfo = JSON.parse(localStorage.getItem(session_.user_info));
-				data_.teacherCode = userInfo.data.code;
-				var qcodes = new Array();
-				for(var i = 0 ; i < arr.length ; i ++){
-					qcodes.push(arr[i].id);
+				
+				var nameArr = new Array();
+				var carr = $("input[type='checkbox']:checked");	 // 处理多选题
+				if(carr.length != 0){
+					for(var k = 0 ; k < carr.length ; k++){
+						var info = carr[k].id; 
+						nameArr.push(info.split("-")[2]); 
+					}
 				}
-				data_.list = qcodes;			
+				var narr = nameArr.hashSet_();
+				for(var n = 0 ; n < narr.length ; n ++){
+					var checks = $("input[name='" + narr[n] + "']:checked");
+					var ans = new Object();
+					ans.code = narr[n];   
+					ans.count = checks.length; 
+					var map_ = new Object();
+					for(var k = 0 ; k < checks.length ; k ++){
+						var info = checks[k].id;
+						map_['a' + (k+1)] = info.split("-")[1];
+					}
+					ans.map = map_;
+					ansArray.push(ans); 
+				}
 				
-				var data = {json:JSON.stringify(data_)};
-				
-				var url_ = purl.url0010;
+				var msg = localStorage.getItem(session_.exam_paper_msg);
+				var studentCode = msg.split("#")[0];
+				var paperCode = msg.split("#")[1].split(",")[0];
+				var data = {
+					answers : JSON.stringify(ansArray) , 
+					paperCode: paperCode , 
+					studentCode: studentCode 
+				};
+				var url_ = purl.url0014;  
 				var res = sendAjax('post' , url_ , data);
 				var obj = JSON.parse(res);
-				if(obj.status){
-					mui.alert( "课堂测试题已生成! " , '系统消息', function() {
+				if(obj.status){ 
+					mui.alert( "课堂测试题已提交! " , '系统消息', function() {
 						$("#paper-submit").hide();  
 					});
 				}else{ // 用户名或密码错误 

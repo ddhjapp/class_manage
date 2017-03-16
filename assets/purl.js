@@ -1,4 +1,5 @@
 var path = 'http://127.0.0.1:8080/matrix-admin/';
+//var path = 'http://192.168.83.1:8080/matrix-admin/';
 //var path = 'http://stockwyz.xicp.net/matrix-admin/';
 var purl = { 
 	/**
@@ -38,11 +39,42 @@ var purl = {
 	url0008: path + 'edu/lesson_schedule_list.do', 
 	
 	/**
-	 * 题库列表页面 
+	 * 题库列表页面 - 学生
 	 */
 	url0009: path + 'edu/question_list.do',
 	
 	url0010: path + 'edu/exam_paper_insert.do', 
+	
+	/**
+	 * 学生的排课列表  
+	 */
+	url0011: path + 'edu/student_schedule_list.do',
+	
+	/**
+	 * 学生在某一节课的试卷列表，一节课可以包含多个课堂测验试卷 
+	 */
+	url0012: path + 'edu/student_paper_list.do',
+	
+	/**
+	 * htm/student/paper_list.html 传值
+	 */
+	url0013: path + 'edu/exam_paper_msg.do',
+	
+	/**
+	 * htm/student/question_list.html 页面向数据库插入数据 
+	 * t_exam_answer 
+	 */
+	url0014: path + 'edu/student_insert_answer.do',
+	
+	/**
+	 * 题库列表页面 - 教师 
+	 */
+	url0015: path + 'edu/question_list_teacher.do', 
+	
+	/**
+	 * htm/inspection/list.html 查看测验时的班级学生列表 
+	 */
+	url0016: path + 'edu/class_student_list.do',
 }
 
 
@@ -87,7 +119,7 @@ var session_ ={
 	user_info: 'user_info' ,  
 	
 	/**
-	 * 保存教师开课的相关生成二维码的必要信息
+	 * 保存教师开课的相关生成二维码的必要信息 
 	 */
 	qr_code:'qrcode',
 	
@@ -110,4 +142,14 @@ var session_ ={
 	 * 查看课程题库页面，用到的 schedule_code
 	 */
 	sign_question_code:'sign_question_code',
+	
+	/**
+	 * htm/student/schedule_list.html 页面向下一个页面传递的schedule_code，作为查询课堂测试题目的依据
+	 */
+	student_paper_schedule_code: 'student_paper_schedule_code',
+	
+	/**
+	 * 查看答题 保存排课列表中的班级列表 
+	 */
+	inspection_class_codes : 'inspection_class_codes',
 }

@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Hello MUI</title>
+		<title>学生排课列表</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -34,9 +34,8 @@
 			
 			$(function() {
 				var userInfo = JSON.parse(localStorage.getItem(session_.user_info)); 
-				var url_ = purl.url0006; 
-				
-				var data = {code:userInfo.data.code};
+				var url_ = purl.url0011; 
+				var data = {classesCode:userInfo.data.classesCode};
 				var res = sendAjax('post' , url_ , data);
 				var obj = JSON.parse(res);
 				if(obj.status){
@@ -45,38 +44,27 @@
 						var html = '';
 						for( var i = 0 ; i < arr.length ; i ++){
 							html += '<li class="mui-table-view-cell mui-media"><a class="mui-navigate-right teacher-class">';
-							html += '<input type="hidden" value="' + arr[i].code + '">'
+							html += '<input type="hidden" value="' + arr[i].scheduleCode + '">'
 							html += '<img class="mui-media-object mui-pull-left" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg">';  
-							html += '<div class="mui-media-body">' + arr[i].lessonName + '<p class="mui-ellipsis">' + arr[i].length +' 分钟</p></div></a></li>'
+							html += '<div class="mui-media-body">' + arr[i].lessonName + '<p class="mui-ellipsis">' + arr[i].beginTime +' 开始上课</p></div></a></li>'
 						}
 						$("#slist").append(html); 
 					} else {
-						console.log('no class');
-						mui.toast( '您暂时没有排课!');
-						mui.alert('欢迎使用Hello MUI', 'Hello MUI', function() {
-//							
-						});
-						mui.openWindow({
-								url: '../../index.html',   // 返回登陆页
-							    id:'123'
-						});
+						mui.alert(obj.msg ,'系统消息', function() {});  
 					}
+				}else{
+					mui.alert(obj.msg ,'系统消息', function() {});  
 				}
 				
 				var arr = document.getElementsByClassName("teacher-class");
 				if(arr.length != 0){
 					for( var i = 0 ; i < arr.length ; i ++){
 						arr[i].addEventListener('tap' , function(e) { 
-							var userInfo = JSON.parse(localStorage.getItem(session_.user_info));
-							console.log('userinfo in class_list.html::' + userInfo);
-							var lcode = e.currentTarget.children[0].value;
-							var value = userInfo.data.code + '@' + lcode;
-							console.log(lcode + ':' + lcode);
-							localStorage.setItem(session_.qr_code , value);   // tcode@lcode  
-							console.log('open qrcode');
-							mui.openWindow({  // 教师开课
-								url: 'class_qrcode.html', 
-							    id:'w-class-qrcode'
+							var scheduleCode = e.currentTarget.children[0].value;
+							localStorage.setItem(session_.student_paper_schedule_code , scheduleCode);   //  scheduleCode
+							mui.openWindow({  // 前往该堂课对应的课堂测验列表 
+								url: 'paper_list.html', 
+							    id:'w_student_paper_list'
 						  	});
 						})
 					}
@@ -88,7 +76,7 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">我的课程列表</h1>
+			<h1 class="mui-title">我的排课列表</h1>
 		</header>
 		<div class="mui-content">
 			<div class="title">

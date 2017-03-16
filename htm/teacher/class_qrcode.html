@@ -192,16 +192,19 @@
 		$(function(){
 //			var self = plus.webview.currentWebview();
 //			var name = self.name;
-//			var version = self.version;
-			console.log('teacher/index.html');
+//			var version = self.version; 
 			var data = localStorage.getItem(session_.qr_code).split("@");    
 			var url_ = purl.url0001; 
-			var data_ = {tcode:data[0] , lcode:data[1]};  
+			var data_ = {tcode:data[0] , scheduleCode:data[1]};  
 			var res = sendAjax('post' , url_ , data_);
 			var obj = JSON.parse(res);
 			if(obj.status){
 				$(".content").remove();
-				var html = '<p class="content">' + obj.lesson.lessonName + '</p>';
+				
+				var userInfo = JSON.parse(localStorage.getItem(session_.user_info)); 
+				var lessonClassInfo = JSON.parse(localStorage.getItem(session_.lesson_class_info));
+				
+				var html = '<p class="content">' + lessonClassInfo.entity.lessonName + '</p>';
 				html += '<p class="content">' + obj.teacher.name + '</p><p class="content"style="text-align:center">'; 
 				html +='<img data-preview-src="" data-preview-group="1" src="' + obj.data.qrcodeUrl + '" /></p>'; 
 				$("#qrcode").append(html);
