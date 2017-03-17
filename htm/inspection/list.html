@@ -31,11 +31,11 @@
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">相关班级学生列表</h1>
 		</header>
-		<div class="mui-content">
-			<div id="class-name" class="title">   
+		<div id="slist" class="mui-content"> 
+			<!--<div id="class-name" class="title">   -->
 				<!--土木工程专业1501-->   
-			</div>
-			<ul id ="slist" class="mui-table-view mui-table-view-chevron">
+			<!--</div>-->
+			<!--<ul class="mui-table-view mui-table-view-chevron">-->
 				<!--<li class="mui-table-view-cell mui-media">
 					<a class="mui-navigate-right">
 						<img class="mui-media-object mui-pull-left" src="http://image-family.huijiayou.cn/cfiles/staticfiles/upload/24a5e/7cd96bf1db854121bfa010b9c79017ed.jpg">
@@ -45,7 +45,7 @@
 						</div>
 					</a>
 				</li>-->
-			</ul>
+			<!--</ul>-->
 			
 			
 			
@@ -64,24 +64,59 @@
 //			var self = plus.webview.currentWebview();
 //			var name = self.name;
 //			var version = self.version;
-			
 			var classCodes = localStorage.getItem(session_.inspection_class_codes) ;  
 			var url_ = purl.url0016; 
 			var data = {classCodes:classCodes};   
 			var res = sendAjax('post' , url_ , data);
 			var obj = JSON.parse(res);
 			var html = '';
-			if(obj.status && obj.list.length > 0){
-				var arr = obj.list;
+			if(obj.status && obj.data.length > 0){
+				var arr = obj.data; 
 				for( var i = 0 ; i < arr.length ; i ++){
-					html += '<li class="mui-table-view-cell mui-media"><a class="mui-navigate-right">';
-					html += '<img class="mui-media-object mui-pull-left" src="' + arr[i].headPic + '">';  
-					html += '<div class="mui-media-body">' + arr[i].name + '<p class="mui-ellipsis">' + arr[i].createTime +'签到</p></div></a></li>'
+					var entity = arr[i];
+					html += '<div class=""><div id="class-name" class="title">' + entity.className + '</div>';
+					html += '<ul class="mui-table-view mui-table-view-chevron">'
+					var sarr = entity.list;  // student infomation array
+					for(var s = 0 ; s < sarr.length ; s ++){
+						html += '<li class="mui-table-view-cell mui-media student-class"><a class="mui-navigate-right">';
+						html += '<input type="hidden" value="' + sarr[s].code + '" />';
+						html += '<img class="mui-media-object mui-pull-left" src="' + sarr[s].headPic + '">';  
+						html += '<div class="mui-media-body">' + sarr[s].name + '<p class="mui-ellipsis">' + sarr[s].gradeName +' 签到</p></div></a></li>'
+					}
+					html += '</ul></div>';
 				}
 			}else{
-				$("#lesson-name")[0].innerHTML = lesson.entity.lessonName + " 还没有人签到哦！";
+				$("#slist")[0].innerHTML = " 还没有人签到哦！";
 			}
 			$("#slist").append(html); 
+			
+			
+			
+			
+			
+			var arr = document.getElementsByClassName("student-class");
+			if(arr.length != 0){
+				for( var i = 0 ; i < arr.length ; i ++){
+					arr[i].addEventListener('tap' , function(e) {  
+						// 父级页面已经传入 session_.lesson_class_info 所以无需再次设置
+						var studentCode = e.currentTarget.querySelector("input").value; 
+						localStorage.setItem(session_.inspection_student_code , studentCode);
+//						   scheduleCode 由上个页面传入
+						mui.openWindow({  // 已签到学生列表  
+							url: '../../htm/inspection/paper_list.html', 
+						    id:'w_inspection_paper_list'
+					  	});
+					})
+				}
+			}
+			
+			
+			
+			
+			
+			
+			
+			
 		});
 		
 	</script>

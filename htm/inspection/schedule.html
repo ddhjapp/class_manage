@@ -99,7 +99,8 @@
 					classCodes = classCodes.substring(0 , classCodes.length -1); 
 					html += '</div></div>'; 
 					html += '<div class="mui-card-footer"><span>查看签到情况</span>';
-					html += '<input type="hidden" value="' + classCodes + '" /></div></div> ';
+					html += '<input type="hidden" id="classCodes" value="' + classCodes + '" /> ';
+					html += '<input type="hidden" id="scheduleCode" value="' + arr[i].entity.scheduleCode + '" /></div></div> ';
 					
 				}
 				$("#slist").append(html); 
@@ -110,8 +111,10 @@
 				for( var i = 0 ; i < arr.length ; i ++){
 					arr[i].addEventListener('tap' , function(e) {  
 						// 父级页面已经传入 session_.lesson_class_info 所以无需再次设置
-						var classCodes = e.currentTarget.querySelector("input").value; 
-						localStorage.setItem(session_.inspection_class_codes , classCodes);  
+						var classCodes = e.currentTarget.querySelector("#classCodes").value; 
+						localStorage.setItem(session_.inspection_class_codes , classCodes);                     // classCodes
+						var scheduleCode = e.currentTarget.querySelector("#scheduleCode").value;   
+						localStorage.setItem(session_.inspection_schedule_codes , scheduleCode);                       // scheduleCode
 						mui.openWindow({  // 已签到学生列表  
 							url: '../../htm/inspection/list.html', 
 						    id:'w_inspection_list'

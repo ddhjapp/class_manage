@@ -75,6 +75,11 @@ var purl = {
 	 * htm/inspection/list.html 查看测验时的班级学生列表 
 	 */
 	url0016: path + 'edu/class_student_list.do',
+	
+	/**
+	 * 老是查看 学生在某一节课的试卷列表，一节课可以包含多个课堂测验试卷 
+	 */
+	url0017: path + 'edu/inspect_student_paper_list.do',
 }
 
 
@@ -152,4 +157,11 @@ var session_ ={
 	 * 查看答题 保存排课列表中的班级列表 
 	 */
 	inspection_class_codes : 'inspection_class_codes',
+	
+	
+	inspection_schedule_codes:'inspection_schedule_codes',
+	
+	inspection_student_code : 'inspection_student_code',
+	
+	inspection_exam_paper_msg : 'inspection_exam_paper_msg',
 }
