@@ -5,19 +5,20 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title></title>
-		<script src="assets/jquery/1.12.2/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script> 
+		<script src="assets/jquery/1.12.2/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
 		<script src="assets/mui/js/mui.min.js"></script>
 		<link href="assets/mui/css/mui.min.css" rel="stylesheet" />
-		<script src="assets/purl.js" type="text/javascript" charset="utf-8"></script> 
+		<link href="assets/mui/css/icons-extra.css" rel="stylesheet" />
+		<script src="assets/purl.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(function() {
 				var sessionUser = localStorage.getItem(session_.user_info);
 				if(sessionUser != null) {
 					var userInfo = JSON.parse(sessionUser);
-					if(userInfo.data.type == 'T0001'){ 
+					if(userInfo.data.type == 'T0001') {
 						$(".student").remove();
-					}else{
-						$(".teacher").remove(); 
+					} else {
+						$(".teacher").remove();
 					}
 				}
 			})
@@ -26,11 +27,29 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
-			<h1 class="mui-title">课程互动</h1> 
+			<h1 class="mui-title">课程互动</h1>
 			<span id="logout" class="mui-btn mui-btn-success" style="float: right; padding: 4px 12px 6px 12px;"> 
 				退出
 			</span>
 		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a id="index" class="mui-tab-item mui-active" href="#tabbar">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a id="course" class="mui-tab-item" href="#tabbar-with-chat">
+				<span style="font-size: 20px;" class="mui-icon mui-icon-extra mui-icon-extra-order"></span>
+				<span class="mui-tab-label">课程</span>
+			</a>
+			<a id="faq" class="mui-tab-item" href="#tabbar-with-contact">
+				<span class="mui-icon mui-icon-chatbubble"></span>
+				<span class="mui-tab-label">答疑</span>
+			</a>
+			<a id="userCenter" class="mui-tab-item" href="javascript:void(0)" onclick="openUserCenter();">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
 		<div class="mui-content">
 			<div id="slider" class="mui-slider">
 				<div class="mui-slider-group mui-slider-loop">
@@ -140,127 +159,191 @@
 	</body>
 	<script type="text/javascript" charset="utf-8">
 		mui.init();
-		var slider = mui("#slider");   // 加载轮播图
+		var slider = mui("#slider"); // 加载轮播图
 		slider.slider({
 			interval: 5000
 		});
-		
+
 		// tap为mui封装的单击事件
-		document.getElementById("teacher-class").addEventListener('tap' , function() {
+		document.getElementById("teacher-class").addEventListener('tap', function() {
 			//var sessionUser = sessionStorage.getItem(session_.user_info);
 			var sessionUser = localStorage.getItem(session_.user_info);
 			console.log('teacher open class:' + sessionUser);
 			if(sessionUser != null) {
-				mui.openWindow({  // 教师课程列表
-					url: 'htm/teacher/lesson_list.html',  
-				    id:'w_class_list'
-			  	});
-		  	} else {
-		  		mui.openWindow({  // 登录
-					url: 'htm/reg/login.html', 
-				    id:'w_login'
-			  	});
-		  	}
+				mui.openWindow({ // 教师课程列表
+					url: 'htm/teacher/lesson_list.html',
+					id: 'w_class_list'
+				});
+			} else {
+				mui.openWindow({ // 登录
+					url: 'htm/reg/login.html',
+					id: 'w_login'
+				});
+			}
 		})
-		
+
 		// 签到查看 
-		document.getElementById("sign").addEventListener('tap' , function() {
+		document.getElementById("sign").addEventListener('tap', function() {
 			var sessionUser = localStorage.getItem(session_.user_info);
 			if(sessionUser != null) {
 				mui.openWindow({
-					url: 'htm/sign/lesson_list.html', 
-				    id:'w_sign_lesson_list' 
-			  	});
-		  	} else {
-		  		mui.openWindow({  // 登录
-					url: 'htm/reg/login.html', 
-				    id:'w_login'
-			  	});
-		  	}
+					url: 'htm/sign/lesson_list.html',
+					id: 'w_sign_lesson_list'
+				});
+			} else {
+				mui.openWindow({ // 登录
+					url: 'htm/reg/login.html',
+					id: 'w_login'
+				});
+			}
 		})
-	
+
 		// 学生签到 
-		document.getElementById("student-sign").addEventListener('tap' , function() {
+		document.getElementById("student-sign").addEventListener('tap', function() {
 			var sessionUser = localStorage.getItem(session_.user_info);
 			if(sessionUser != null) {
 				mui.openWindow({
-					url: 'htm/student/sign.html', 
-			    	id:'w_student_sign' 
-			  	});
-		  	} else {
-		  		mui.openWindow({  // 登录
-					url: 'htm/reg/login.html', 
-				    id:'w_login'
-			  	});
-		  	} 
+					url: 'htm/student/sign.html',
+					id: 'w_student_sign'
+				});
+			} else {
+				mui.openWindow({ // 登录
+					url: 'htm/reg/login.html',
+					id: 'w_login'
+				});
+			}
 		})
-		
+
 		// 随机点人 
-		document.getElementById("attendance").addEventListener('tap' , function() {
-//			localStorage.setItem("lcode" , "l1");  
+		document.getElementById("attendance").addEventListener('tap', function() {
+			//			localStorage.setItem("lcode" , "l1");  
 			mui.openWindow({
-				url: 'htm/rollcall/class_list.html', 
-			    id:'w-rollcall-class',
-			    extras:{
-			        name:'mui',
-			        lcode:'l1' 
-			    }
-		  	});
+				url: 'htm/rollcall/class_list.html',
+				id: 'w-rollcall-class',
+				extras: {
+					name: 'mui',
+					lcode: 'l1'
+				}
+			});
 		})
-		
+
 		//退出
-		document.getElementById("logout").addEventListener('tap' , function() {
+		document.getElementById("logout").addEventListener('tap', function() {
 			localStorage.clear();
 			alert('缓存清理成功!');
 		})
-		
+
 		// 出题
-		document.getElementById("examination").addEventListener('tap' , function() {
+		document.getElementById("examination").addEventListener('tap', function() {
 			var sessionUser = localStorage.getItem(session_.user_info);
 			if(sessionUser != null) {
 				mui.openWindow({
-					url: 'htm/question/lesson_list.html', 
-				    id:'w_question_lesson_list' 
-			  	});
-		  	} else {
-		  		mui.openWindow({  // 登录
-					url: 'htm/reg/login.html', 
-				    id:'w_login'
-			  	});
-		  	}
+					url: 'htm/question/lesson_list.html',
+					id: 'w_question_lesson_list'
+				});
+			} else {
+				mui.openWindow({ // 登录
+					url: 'htm/reg/login.html',
+					id: 'w_login'
+				});
+			}
 		})
-		
+
 		// 学生答题 
-		document.getElementById("student-question-answer").addEventListener('tap' , function() {
+		document.getElementById("student-question-answer").addEventListener('tap', function() {
 			var sessionUser = localStorage.getItem(session_.user_info);
 			if(sessionUser != null) {
 				mui.openWindow({
-					url: 'htm/student/schedule_list.html',  
-			    	id:'w_student_schedule_list'  
-			  	});
-		  	} else {
-		  		mui.openWindow({  // 登录
-					url: 'htm/reg/login.html', 
-				    id:'w_login'
-			  	});
-		  	} 
+					url: 'htm/student/schedule_list.html',
+					id: 'w_student_schedule_list'
+				});
+			} else {
+				mui.openWindow({ // 登录
+					url: 'htm/reg/login.html',
+					id: 'w_login'
+				});
+			}
 		})
-		
+
 		// 查看答题
-		document.getElementById("answer").addEventListener('tap' , function() {
+		document.getElementById("answer").addEventListener('tap', function() {
 			var sessionUser = localStorage.getItem(session_.user_info);
 			if(sessionUser != null) {
 				mui.openWindow({
-					url: 'htm/inspection/lesson_list.html', 
-				    id:'w_inspection_lesson_list'  
-			  	});
-		  	} else {
-		  		mui.openWindow({  // 登录
-					url: 'htm/reg/login.html', 
-				    id:'w_login'
-			  	});
-		  	}
+					url: 'htm/inspection/lesson_list.html',
+					id: 'w_inspection_lesson_list'
+				});
+			} else {
+				mui.openWindow({ // 登录
+					url: 'htm/reg/login.html',
+					id: 'w_login'
+				});
+			}
 		})
+
+		/**
+		 * 底部菜单-首页
+		 */
+		document.getElementById("index").addEventListener("tap", function() {
+			var sessionUser = localStorage.getItem(session_.user_info);
+			if(sessionUser != null) {
+				mui.openWindow({
+					url: 'index.html',
+					id: 'index'
+				});
+			} else {
+				mui.openWindow({ // 登录
+					url: 'htm/reg/login.html',
+					id: 'w_login'
+				});
+			}
+		});
+
+		/**
+		 * 底部菜单-课程
+		 */
+		document.getElementById("course").addEventListener("tap", function() {
+			var sessionUser = localStorage.getItem(session_.user_info);
+			if(sessionUser != null) {
+				mui.alert("底部菜单-课程");
+			} else {
+				mui.openWindow({ // 登录
+					url: 'htm/reg/login.html',
+					id: 'w_login'
+				});
+			}
+		});
+		/**
+		 * 底部菜单-答疑
+		 */
+		document.getElementById("faq").addEventListener("tap", function() {
+			var sessionUser = localStorage.getItem(session_.user_info);
+			if(sessionUser != null) {
+				mui.alert("底部菜单-答疑");
+			} else {
+				mui.openWindow({ // 登录
+					url: 'htm/reg/login.html',
+					id: 'w_login'
+				});
+			}
+		});
+		/**
+		 * 底部菜单-个人中心
+		 */
+		document.getElementById("userCenter").addEventListener("tap", function() {
+			var sessionUser = localStorage.getItem(session_.user_info);
+			if(sessionUser != null) {
+				mui.openWindow({
+					url: 'htm/teacher/info.html',
+					id: 'teacher_center'
+				});
+			} else {
+				mui.openWindow({ // 登录
+					url: 'htm/reg/login.html',
+					id: 'w_login'
+				});
+			}
+		});
 	</script>
 
 </html>

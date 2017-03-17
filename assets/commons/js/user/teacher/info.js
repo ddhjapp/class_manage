@@ -3,7 +3,7 @@ var TeacherInfo = {
 	 * 课程表
 	 */
 	syllabus: function() {
-		var data = { code: localStorage.getItem("code") };
+		var data = { code: teacherCode };
 		var res = sendAjax('post', purl.url0017, data);
 		var result = JSON.parse(res);
 		if(result.status) {
@@ -44,7 +44,7 @@ var TeacherInfo = {
 	 */
 	courseReviews: function() {
 		//var data = { code: localStorage.getItem("code") };
-		var data = { code: $("#teacherCode").val() };
+		var data = { code: teacherCode };
 		var res = sendAjax('post', purl.url0018, data);
 		var result = JSON.parse(res);
 		if(result.status) {
