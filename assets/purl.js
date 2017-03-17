@@ -75,6 +75,11 @@ var purl = {
 	 * htm/inspection/list.html 查看测验时的班级学生列表 
 	 */
 	url0016: path + 'edu/class_student_list.do',
+	
+	/**
+	 * 个人中心-教师-课程表
+	 */
+	url0017: path + 'edu/teacher_syllabus.do'
 }
 
 

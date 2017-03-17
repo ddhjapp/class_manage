@@ -3,28 +3,36 @@ var TeacherInfo = {
 	 * 课程表
 	 */
 	syllabus: function() {
-		mui.getJSON('json/teacher/syllabus.json', {}, function(result) {
-			if(result.code) {
-				var html = "";
-				if(result.data) {
-					for(var key in result.data) {
-						var obj = result.data[key];
-						html += '<div class="vertical-timeline-block">';
-						html += '<div class="vertical-timeline-icon blue-bg">';
-						html += '<i class="fa fa-book"></i>';
-						html += '</div>';
-						html += '<div class="vertical-timeline-content">';
-						html += '<h2>科目：' + obj.lesson_name + '</h2>';
-						html += '<p>班级：' + obj.class_name + '</p>';
-						html += '<p style="font-size:13px;">备注:' + obj.remark + '</p>';
-						html += '<span class="vertical-date">开始时间<small>' + obj.start_time + '</small></span>';
-						html += '</div>';
-						html += '</div>';
-					}
+
+		var data = { code: 'T1489071763988' };
+		var res = sendAjax('post', purl.url0017, data);
+		var result = JSON.parse(res);
+		if(result.status) {
+			var html = "";
+			if(result.data) {
+				for(var key in result.data) {
+					var obj = result.data[key];
+					html += '<div class="vertical-timeline-block">';
+					html += '<div class="vertical-timeline-icon blue-bg">';
+					html += '<i class="fa fa-book"></i>';
+					html += '</div>';
+					html += '<div class="vertical-timeline-content">';
+					html += '<h2>科目：' + obj.lessonName + '</h2>';
+					html += '<p>班级：' + obj.classesName + '</p>';
+					html += '<p style="font-size:13px;">备注:' + obj.intro + '</p>';
+					html += '<span class="vertical-date">开始时间<small>' + obj.startTime + '</small></span>';
+					html += '</div>';
+					html += '</div>';
 				}
-				$("#vertical-timeline").html(html);
+			} else {
+				html += "<li class=\"mui-table-view-cell\">";
+				html += "暂无数据";
+				html += "</li>";
 			}
-		});
+			$("#vertical-timeline").html(html);
+		} else {
+			mui.alert(result.msg);
+		}
 	},
 	/**
 	 * 课程点评
@@ -76,7 +84,7 @@ var TeacherInfo = {
 						html += '<h5>签到时间：' + obj.sign_time + '</h5>';
 						html += '<p class="mui-h6 mui-ellipsis">提问次数：' + obj.aq_sum + '</p>';
 						html += '</div>';
-						html +='<a href="#student-evaluate" class="mui-btn mui-btn-primary">去评价</a>';
+						html += '<a href="#student-evaluate" class="mui-btn mui-btn-primary">去评价</a>';
 						html += '</li>';
 					}
 				} else {
