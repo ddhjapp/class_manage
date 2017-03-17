@@ -44,7 +44,7 @@ var TeacherInfo = {
 	 */
 	courseReviews: function() {
 		//var data = { code: localStorage.getItem("code") };
-		var data = { code: 'T1489071763988' };
+		var data = { code: $("#teacherCode").val() };
 		var res = sendAjax('post', purl.url0018, data);
 		var result = JSON.parse(res);
 		if(result.status) {
@@ -108,11 +108,26 @@ var TeacherInfo = {
 		} else {
 			mui.alert(result.msg);
 		}
-
+	},
+	studentEvaluate: function() {
+		var data = {
+			studentCode: "111",
+			scheduleCode: "2222",
+			score: "4",
+			createUser: "admin",
+			intro: "测试"
+		};
+		var res = sendAjax('post', purl.url0020, data);
+		var result = JSON.parse(res);
+		if(result.status) {
+			mui.toast('提交成功');
+		} else {
+			mui.alert(result.msg);
+		}
 	}
 };
 /**
- * 获取课程列表
+ * 获取课程表
  */
 function getSyllabus() {
 	var syllabus = document.getElementById("vertical-timeline");
@@ -122,8 +137,10 @@ function getSyllabus() {
 		}, 500);
 	}
 }
+
 /**
- * 获取课程点评中的
+ * 获取课程列表
+ * @param {Object} codeVal
  */
 function getCourseReviews() {
 	var courseReviewsContent = document.getElementById("course-reviews-content");
@@ -134,6 +151,10 @@ function getCourseReviews() {
 	}
 }
 
+/**
+ * 获取课程学生列表
+ * @param {Object} schedule_code
+ */
 function getCourseStudents(schedule_code) {
 	var courseStudentsContent = document.getElementById("course-students-content");
 	if(courseStudentsContent.querySelector('.mui-loading')) {

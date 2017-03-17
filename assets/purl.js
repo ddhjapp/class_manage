@@ -87,7 +87,11 @@ var purl = {
 	/**
 	 * 个人中心-教师-课程点评-学生列表
 	 */
-	url0019: path + 'edu/info/teacher_classstudents.do'
+	url0019: path + 'edu/info/teacher_classstudents.do',
+	/**
+	 * 个人中心-教师-课程点评-学习列表-评价
+	 */
+	url0020: path + 'edu/info/teacher_studentevaluate.do'
 }
 
 /**
