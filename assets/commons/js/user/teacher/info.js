@@ -59,7 +59,7 @@ var TeacherInfo = {
 					html += '<h5>班级';
 					for(var key in classes) {
 						var c = classes[key];
-						html += '<p style="margin:10px;"><a href="#course-students" onclick="getCourseStudents(\'' + obj.scheduleCode + '\');" class="mui-btn mui-btn-primary mui-btn-outlined">' + c.className + "</a></p>";
+						html += '<p style="margin:10px;"><a id="' + obj.scheduleCode + '" href="#course-students" onclick="getCourseStudents(\'' + obj.scheduleCode + '\');" class="mui-btn mui-btn-primary mui-btn-outlined">' + c.className + "</a></p>";
 					}
 					html += '</h5>';
 					html += '<p class="mui-h6 mui-ellipsis">开课时间：' + obj.startTime + '</p>';
@@ -95,7 +95,11 @@ var TeacherInfo = {
 					html += '<h4 class="mui-ellipsis-2">' + obj.name + '</h4>';
 					html += '<h5>签到时间：' + obj.signTime + '</h5>';
 					html += '</div>';
-					html += '<a href="#student-evaluate" class="mui-btn mui-btn-primary">去评价</a>';
+					if(obj.flagEvaluate == 1){
+						html += '<button disabled="disabled" href="javascript:void(0)" class="mui-btn mui-btn-default">已评价</button>';	
+					}else{
+						html += '<a href="#student-evaluate" class="mui-btn mui-btn-primary">去评价</a>';
+					}
 					html += '</li>';
 				}
 			} else {
