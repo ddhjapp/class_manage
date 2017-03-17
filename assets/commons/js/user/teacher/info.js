@@ -28,9 +28,11 @@ var TeacherInfo = {
 					html += '</div>';
 				}
 			} else {
-				html += "<li class=\"mui-table-view-cell\">";
-				html += "暂无数据";
-				html += "</li>";
+				html += '<div class="vertical-timeline-block">';
+				html += '<div class="vertical-timeline-content">';
+				html += '暂无数据';
+				html += "</div>";
+				html += "</div>";
 			}
 			$("#vertical-timeline").html(html);
 		} else {
@@ -57,10 +59,10 @@ var TeacherInfo = {
 					html += '<h5>班级';
 					for(var key in classes) {
 						var c = classes[key];
-						html += '<p style="margin:10px;"><a href="#course-students" onclick="getCourseStudents(\'' + obj.lessonCode + '\',\'' + c.code + '\');" class="mui-btn mui-btn-primary mui-btn-outlined">' + c.className + "</a></p>";
+						html += '<p style="margin:10px;"><a href="#course-students" onclick="getCourseStudents(\'' + obj.scheduleCode + '\');" class="mui-btn mui-btn-primary mui-btn-outlined">' + c.className + "</a></p>";
 					}
 					html += '</h5>';
-					html += '<p class="mui-h6 mui-ellipsis">' + obj.startTime + '</p>';
+					html += '<p class="mui-h6 mui-ellipsis">开课时间：' + obj.startTime + '</p>';
 					html += '</div>';
 					html += '</div>';
 					html += '</li>';
@@ -79,8 +81,8 @@ var TeacherInfo = {
 	/**
 	 * 学生列表
 	 */
-	courseStudents: function(lessonCodeVal, classCodeVal) {
-		var data = { lessonCode: lessonCodeVal, classCode: classCodeVal };
+	courseStudents: function(scheduleCodeVal) {
+		var data = { scheduleCode: scheduleCodeVal };
 		var res = sendAjax('post', purl.url0019, data);
 		var result = JSON.parse(res);
 		if(result.status) {
@@ -132,11 +134,11 @@ function getCourseReviews() {
 	}
 }
 
-function getCourseStudents(lessonCode, classCode) {
+function getCourseStudents(schedule_code) {
 	var courseStudentsContent = document.getElementById("course-students-content");
 	if(courseStudentsContent.querySelector('.mui-loading')) {
 		setTimeout(function() {
-			TeacherInfo.courseStudents(lessonCode, classCode);
+			TeacherInfo.courseStudents(schedule_code);
 		}, 500);
 	}
 }
