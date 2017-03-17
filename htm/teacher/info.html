@@ -333,6 +333,8 @@
         	描述：学生评价
         -->
 		<div id="student-evaluate" class="mui-page">
+			<input type="hidden" id="studentCode" name="studentCode" value="" />
+			<input type="hidden" id="scheduleCode" name="scheduleCode" value="" />
 			<div class="mui-navbar-inner mui-bar mui-bar-nav">
 				<a type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
 					<span class="mui-icon mui-icon-left-nav"></span>
@@ -358,7 +360,7 @@
 						</div>
 					</div>
 					<div class="row mui-input-row">
-						<textarea id='content' rows="6" name="content" class="mui-input-clear question" placeholder="内容"></textarea>
+						<textarea id='intro' rows="6" name="intro" class="mui-input-clear question" placeholder="内容"></textarea>
 					</div>
 					<a id="student-evaluate-btn" style="padding:10px 0px;" class="mui-btn mui-btn-primary mui-btn-block">提交</a>
 				</div>
@@ -473,6 +475,10 @@
 	<script src="assets/mui/js/mui.view.js"></script>
 	<script src="assets/jquery/1.12.2/jquery-1.12.2.min.js"></script>
 	<script src="assets/purl.js"></script>
+	<script type="text/javascript">
+		var userInfo = JSON.parse(localStorage.getItem(session_.user_info)); 
+		var teacherCode = userInfo.data.code;
+	</script>
 	<script src="assets/commons/js/user/teacher/info.js"></script>
 	<script>
 		mui.init();
@@ -506,7 +512,7 @@
 						}
 					}, data.title, ["立即更新", "取　　消"]);
 				} else {
-					mui.toast('Hello MUI 已是最新版本~')
+					mui.toast('系统已是最新版本~')
 				}
 			});
 		});
@@ -539,8 +545,9 @@
 		$("#memorandum-btn").click(function() {
 			mui.toast('保存成功');
 		});
-		$("#student-evaluate-btn").click(function(){
-			mui.toast('提交成功');
+		$("#student-evaluate-btn").click(function() {
+			TeacherInfo.studentEvaluate();
+			$("#")
 		});
 	</script>
 

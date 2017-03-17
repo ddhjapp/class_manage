@@ -3,7 +3,7 @@ var TeacherInfo = {
 	 * 课程表
 	 */
 	syllabus: function() {
-		var data = { code: localStorage.getItem("code") };
+		var data = { code: teacherCode };
 		var res = sendAjax('post', purl.url0017, data);
 		var result = JSON.parse(res);
 		if(result.status) {
@@ -44,7 +44,7 @@ var TeacherInfo = {
 	 */
 	courseReviews: function() {
 		//var data = { code: localStorage.getItem("code") };
-		var data = { code: 'T1489071763988' };
+		var data = { code: teacherCode };
 		var res = sendAjax('post', purl.url0018, data);
 		var result = JSON.parse(res);
 		if(result.status) {
@@ -59,7 +59,7 @@ var TeacherInfo = {
 					html += '<h5>班级';
 					for(var key in classes) {
 						var c = classes[key];
-						html += '<p style="margin:10px;"><a href="#course-students" onclick="getCourseStudents(\'' + obj.scheduleCode + '\');" class="mui-btn mui-btn-primary mui-btn-outlined">' + c.className + "</a></p>";
+						html += '<p style="margin:10px;"><a id="' + obj.scheduleCode + '" href="#course-students" onclick="getCourseStudents(\'' + obj.scheduleCode + '\');" class="mui-btn mui-btn-primary mui-btn-outlined">' + c.className + "</a></p>";
 					}
 					html += '</h5>';
 					html += '<p class="mui-h6 mui-ellipsis">开课时间：' + obj.startTime + '</p>';
@@ -95,7 +95,11 @@ var TeacherInfo = {
 					html += '<h4 class="mui-ellipsis-2">' + obj.name + '</h4>';
 					html += '<h5>签到时间：' + obj.signTime + '</h5>';
 					html += '</div>';
-					html += '<a href="#student-evaluate" class="mui-btn mui-btn-primary">去评价</a>';
+					if(obj.flagEvaluate == 1){
+						html += '<button disabled="disabled" href="javascript:void(0)" class="mui-btn mui-btn-default">已评价</button>';	
+					}else{
+						html += '<a href="#student-evaluate" class="mui-btn mui-btn-primary">去评价</a>';
+					}
 					html += '</li>';
 				}
 			} else {
@@ -108,11 +112,26 @@ var TeacherInfo = {
 		} else {
 			mui.alert(result.msg);
 		}
-
+	},
+	studentEvaluate: function() {
+		var data = {
+			studentCode: "111",
+			scheduleCode: "2222",
+			score: "4",
+			createUser: "admin",
+			intro: "测试"
+		};
+		var res = sendAjax('post', purl.url0020, data);
+		var result = JSON.parse(res);
+		if(result.status) {
+			mui.toast('提交成功');
+		} else {
+			mui.alert(result.msg);
+		}
 	}
 };
 /**
- * 获取课程列表
+ * 获取课程表
  */
 function getSyllabus() {
 	var syllabus = document.getElementById("vertical-timeline");
@@ -122,8 +141,10 @@ function getSyllabus() {
 		}, 500);
 	}
 }
+
 /**
- * 获取课程点评中的
+ * 获取课程列表
+ * @param {Object} codeVal
  */
 function getCourseReviews() {
 	var courseReviewsContent = document.getElementById("course-reviews-content");
@@ -134,6 +155,10 @@ function getCourseReviews() {
 	}
 }
 
+/**
+ * 获取课程学生列表
+ * @param {Object} schedule_code
+ */
 function getCourseStudents(schedule_code) {
 	var courseStudentsContent = document.getElementById("course-students-content");
 	if(courseStudentsContent.querySelector('.mui-loading')) {

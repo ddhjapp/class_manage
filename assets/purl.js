@@ -90,9 +90,14 @@ var purl = {
 	url0019: path + 'edu/info/teacher_classstudents.do'
 	
 	/**
+	 * 个人中心-教师-课程点评-学习列表-评价
+	 */
+	url0020: path + 'edu/info/teacher_studentevaluate.do'
+	
+	/**
 	 * 老是查看 学生在某一节课的试卷列表，一节课可以包含多个课堂测验试卷      url0017
 	 */
-	url0020: path + 'edu/inspect_student_paper_list.do',
+	url0021: path + 'edu/inspect_student_paper_list.do',    //url0020
 }
 
 /**
