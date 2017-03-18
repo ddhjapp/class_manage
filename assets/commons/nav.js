@@ -75,10 +75,18 @@ document.getElementById("nav-faq").addEventListener("tap", function() {
 document.getElementById("nav-userCenter").addEventListener("tap", function() {
 	var sessionUser = localStorage.getItem(session_.user_info);
 	if(sessionUser != null) {
-		mui.openWindow({
-			url: 'htm/teacher/info.html',
-			id: 'teacher_center'
-		});
+		var userInfo = JSON.parse(sessionUser);
+		if(userInfo.data.type == 'T0001') {
+			mui.openWindow({
+				url: 'htm/teacher/info.html',
+				id: 'teacher_center'
+			});
+		} else {
+			mui.openWindow({
+				url: 'htm/student/info.html',
+				id: 'student_center'
+			});
+		}
 	} else {
 		mui.openWindow({ // 登录
 			url: 'htm/reg/login.html',
