@@ -37,7 +37,7 @@
 				var studentCode = localStorage.getItem(session_.inspection_student_code);
 				var scheduleCode = localStorage.getItem(session_.inspection_schedule_codes);   
 				
-				var url_ = purl.url0017; 
+				var url_ = purl.url0021; 
 				var data = {studentCode:studentCode , scheduleCode: scheduleCode}; 
 				var res = sendAjax('post' , url_ , data);
 				var obj = JSON.parse(res);
