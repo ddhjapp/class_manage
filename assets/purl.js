@@ -79,25 +79,43 @@ var purl = {
 	/**
 	 * 个人中心-教师-课程表
 	 */
-	url0017: path + 'edu/info/teacher_syllabus.do',
+	url0017: path + 'edu/teacher/syllabus.do',
 	/**
 	 * 个人中心-教师-课程点评
 	 */
-	url0018: path + 'edu/info/teacher_lessons.do',
+	url0018: path + 'edu/teacher/info/teacher_lessons.do',
 	/**
 	 * 个人中心-教师-课程点评-学生列表
 	 */
-	url0019: path + 'edu/info/teacher_classstudents.do',
-	
+	url0019: path + 'edu/teacher/info/teacher_classstudents.do',
+
 	/**
 	 * 个人中心-教师-课程点评-学习列表-评价
 	 */
 	url0020: path + 'edu/info/teacher_studentevaluate.do',
-	
+
 	/**
 	 * 老是查看 学生在某一节课的试卷列表，一节课可以包含多个课堂测验试卷      url0017
 	 */
-	url0021: path + 'edu/inspect_student_paper_list.do',    //url0020
+	url0021: path + 'edu/inspect_student_paper_list.do', //url0020
+	/**
+	 * 学生-课程答疑
+	 */
+	url0022: path + 'edu/student/faq.do',
+
+	/**
+	 * 学生-课程表
+	 */
+	url0023: path + 'edu/student/syllabus.do',
+
+	/**
+	 * 教师-课程答疑列表
+	 */
+	url0024: path + 'edu/teacher/faq.do',
+	/**
+	 * 学生-答疑回答列表
+	 */
+	url0025: path + 'edu/student/faq_answer.do'
 }
 
 /**
@@ -173,12 +191,11 @@ var session_ = {
 	/**
 	 * 查看答题 保存排课列表中的班级列表 
 	 */
-	inspection_class_codes : 'inspection_class_codes',
-	
-	
-	inspection_schedule_codes:'inspection_schedule_codes',
-	
-	inspection_student_code : 'inspection_student_code',
-	
-	inspection_exam_paper_msg : 'inspection_exam_paper_msg',
+	inspection_class_codes: 'inspection_class_codes',
+
+	inspection_schedule_codes: 'inspection_schedule_codes',
+
+	inspection_student_code: 'inspection_student_code',
+
+	inspection_exam_paper_msg: 'inspection_exam_paper_msg',
 }
