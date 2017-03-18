@@ -69,7 +69,6 @@ var StudentStudy = {
 					for(var key in result.data) {
 						var obj = result.data[key];
 						html += '<li class="mui-table-view-cell">';
-						html += '<a href="#faq-answer" onclick="getCourseStudents();">'
 						html += '<div class="mui-table-cell mui-col-xs-10">';
 						html += '<h4 class="mui-ellipsis-2">' + obj.answer + '</h4>';
 						html += '<p class="mui-h6 mui-ellipsis">' + obj.answer_name;
@@ -77,7 +76,6 @@ var StudentStudy = {
 						html += '</p>';
 						html += '</div>';
 						html += '</div>';
-						html += '</a>';
 						html += '</li>';
 					}
 				} else {

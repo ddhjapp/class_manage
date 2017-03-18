@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<base href="../../" />
+		<meta charset="utf-8">
+		<title>个人中心</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="assets/mui/css/mui.css" />
+		<link rel="stylesheet" href="assets/mui/css/icons-extra.css" />
+		<link rel="stylesheet" href="assets/bootstrap/3.3.5/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="assets/font/font-awesome-4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="assets/commons/css/user/info.css">t
+		<link rel="stylesheet" href="assets/commons/css/style.css">
+	</head>
+
+	<body class="mui-fullscreen">
+		<nav class="mui-bar mui-bar-tab">
+			<a id="nav-index" class="mui-tab-item" href="javascript:void(0)">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a id="nav-course" class="mui-tab-item mui-active" href="javascript:void(0)">
+				<span style="font-size: 20px;" class="mui-icon mui-icon-extra mui-icon-extra-order"></span>
+				<span class="mui-tab-label">课程表</span>
+			</a>
+			<a id="nav-faq" class="mui-tab-item" href="javascript:void(0)">
+				<span class="mui-icon mui-icon-chatbubble"></span>
+				<span class="mui-tab-label">答疑</span>
+			</a>
+			<a id="nav-userCenter" class="mui-tab-item" href="javascript:void(0)">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		<div id="app" class="mui-views">
+			<div class="mui-view">
+				<div class="mui-navbar">
+				</div>
+				<div class="mui-pages">
+				</div>
+			</div>
+		</div>
+		<!--
+        	作者：zero1814@126.com
+        	时间：2017-03-14
+        	描述：课程表
+        -->
+		<div id="syllabus" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<a type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</a>
+				<h1 class="mui-center mui-title">课程表</h1>
+			</div>
+			<div class="ibox mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="ibox-content">
+							<div id="vertical-timeline" class="vertical-container light-timeline">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="assets/mui/js/mui.min.js"></script>
+	<script src="assets/mui/js/mui.view.js"></script>
+	<script src="assets/jquery/1.12.2/jquery-1.12.2.min.js"></script>
+	<script src="assets/purl.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+			var sessionUser = localStorage.getItem(session_.user_info);
+			if(sessionUser != null) {
+				var userInfo = JSON.parse(sessionUser);
+				if(userInfo.data.type == 'T0001') {
+					$(".student").remove();
+				} else {
+					$(".teacher").remove();
+				}
+			}
+		})
+	</script>
+	<script src="assets/commons/nav.js"></script>
+	<script src="assets/commons/js/user/student/info.js"></script>
+	<script>
+		mui.init();
+		//初始化单页view
+		var viewApi = mui('#app').view({
+			defaultPage: '#syllabus'
+		});
+		//初始化单页的区域滚动
+		mui('.mui-scroll-wrapper').scroll();
+		var view = viewApi.view;
+		(function($) {
+			//处理view的后退与webview后退
+			var oldBack = $.back;
+			$.back = function() {
+				if(viewApi.canBack()) { //如果view可以后退，则执行view的后退
+					viewApi.back();
+				} else { //执行webview后退
+					oldBack();
+				}
+			};
+			//监听页面切换事件方案1,通过view元素监听所有页面切换事件，目前提供pageBeforeShow|pageShow|pageBeforeBack|pageBack四种事件(before事件为动画开始前触发)
+			//第一个参数为事件名称，第二个参数为事件回调，其中e.detail.page为当前页面的html对象
+			view.addEventListener('pageBeforeShow', function(e) {
+				//				console.log(e.detail.page.id + ' beforeShow');
+			});
+			view.addEventListener('pageShow', function(e) {
+				//				console.log(e.detail.page.id + ' show');
+			});
+			view.addEventListener('pageBeforeBack', function(e) {
+				//				console.log(e.detail.page.id + ' beforeBack');
+			});
+			view.addEventListener('pageBack', function(e) {
+				//				console.log(e.detail.page.id + ' back');
+			});
+		})(mui);
+		mui.ready(function() {
+			StudentStudy.syllabus();
+		});
+	</script>
+
+</html>
