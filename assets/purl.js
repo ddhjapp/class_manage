@@ -198,4 +198,8 @@ var session_ = {
 	inspection_student_code: 'inspection_student_code',
 
 	inspection_exam_paper_msg: 'inspection_exam_paper_msg',
+	
+	inspection_schedule_start_time: 'inspection_schedule_start_time',
+	
+	
 }

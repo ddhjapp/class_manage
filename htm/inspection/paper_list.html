@@ -34,8 +34,12 @@
 			
 			$(function() {
 				
+				var lessonClassInfo = JSON.parse(localStorage.getItem(session_.lesson_class_info));
+				
 				var studentCode = localStorage.getItem(session_.inspection_student_code);
 				var scheduleCode = localStorage.getItem(session_.inspection_schedule_codes);   
+				
+				var startTime = localStorage.getItem(session_.inspection_schedule_start_time);
 				
 				var url_ = purl.url0021; 
 				var data = {studentCode:studentCode , scheduleCode: scheduleCode}; 
@@ -45,6 +49,7 @@
 					var html = '';
 					if(obj.map != null){  
 						var mobj = obj.map;
+						var cs = 1;
 						for(var o in mobj){
 							var paperCode = o;
 							var qarr = mobj[o]; // question code array 
@@ -54,9 +59,10 @@
 							}
 							qcodes = qcodes.substring(0 , qcodes.length-1); 
 							html += '<li class="mui-table-view-cell mui-media"><a class="mui-navigate-right teacher-class">';
-							html += '<input type="hidden" value="' + paperCode + ',' + qcodes + '">'
+							html += '<input type="hidden" value="' + paperCode + ',' + qcodes + '">';
 							html += '<img class="mui-media-object mui-pull-left" src="http://image-family.huijiayou.cn/cfiles/staticfiles/upload/274a0/83475e7c136840438983edf59088971b.jpg">';  
-							html += '<div class="mui-media-body">' + '测验编号：' + '<p class="mui-ellipsis">' + paperCode +' </p></div></a></li>'
+							html += '<div class="mui-media-body">' + lessonClassInfo.entity.lessonName + '-测试-' + cs + '<p class="mui-ellipsis">' + startTime +' </p></div></a></li>';
+							cs ++;
 						}
 						
 						$("#slist").append(html); 

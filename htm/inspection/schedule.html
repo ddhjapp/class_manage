@@ -85,7 +85,7 @@
 					html += '<div class="mui-card cart_float teacher-class"><div class="mui-card-header world_" >' ;
 					html += '<img class="mui-media-object mui-pull-left" style="margin-right:10px;height:100%" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg" >';
 					html += arr[i].entity.lessonName;
-					html += '<div >' + arr[i].entity.startTime + ' 开始上课</div></div>' ;
+					html += '<div class="start-time">' + arr[i].entity.startTime + ' 开始上课</div></div>' ;
 					html += '<div class="mui-card-content"><div class="mui-card-content-inner">';
 					var classCodes = '';
 					if(arr[i].claList.length != 0){
@@ -115,6 +115,9 @@
 						localStorage.setItem(session_.inspection_class_codes , classCodes);                     // classCodes
 						var scheduleCode = e.currentTarget.querySelector("#scheduleCode").value;   
 						localStorage.setItem(session_.inspection_schedule_codes , scheduleCode);                       // scheduleCode
+						var startTime = e.currentTarget.querySelector(".start-time").innerText;   // 上课的时间
+						localStorage.setItem(session_.inspection_schedule_start_time , startTime);
+						
 						mui.openWindow({  // 已签到学生列表  
 							url: '../../htm/inspection/list.html', 
 						    id:'w_inspection_list'
