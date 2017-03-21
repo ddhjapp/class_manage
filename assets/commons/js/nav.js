@@ -8,12 +8,12 @@ document.getElementById("nav-index").addEventListener("tap", function() {
 	var sessionUser = localStorage.getItem(session_.user_info);
 	if(sessionUser != null) {
 		mui.openWindow({
-			url: 'index.html',
+			url: '/index.html',
 			id: 'index'
 		});
 	} else {
 		mui.openWindow({ // 登录
-			url: 'htm/reg/login.html',
+			url: '/htm/reg/login.html',
 			id: 'w_login'
 		});
 	}
@@ -28,18 +28,18 @@ document.getElementById("nav-course").addEventListener("tap", function() {
 		var userInfo = JSON.parse(sessionUser);
 		if(userInfo.data.type == 'T0001') {
 			mui.openWindow({
-				url: 'htm/teacher/syllabus.html',
+				url: '/htm/teacher/syllabus.html',
 				id: 'teacher_syllabus'
 			});
 		} else {
 			mui.openWindow({
-				url: 'htm/student/syllabus.html',
+				url: '/htm/student/syllabus.html',
 				id: 'student_syllabus'
 			});
 		}
 	} else {
 		mui.openWindow({ // 登录
-			url: 'htm/reg/login.html',
+			url: '/htm/reg/login.html',
 			id: 'w_login'
 		});
 	}
@@ -53,18 +53,18 @@ document.getElementById("nav-faq").addEventListener("tap", function() {
 		var userInfo = JSON.parse(sessionUser);
 		if(userInfo.data.type == 'T0001') {
 			mui.openWindow({
-				url: 'htm/teacher/faq.html',
+				url: '/htm/teacher/faq.html',
 				id: 'teacher_faq'
 			});
 		} else {
 			mui.openWindow({
-				url: 'htm/student/faq.html',
+				url: '/htm/student/faq.html',
 				id: 'student_faq'
 			});
 		}
 	} else {
 		mui.openWindow({ // 登录
-			url: 'htm/reg/login.html',
+			url: '/htm/reg/login.html',
 			id: 'w_login'
 		});
 	}
@@ -78,18 +78,18 @@ document.getElementById("nav-userCenter").addEventListener("tap", function() {
 		var userInfo = JSON.parse(sessionUser);
 		if(userInfo.data.type == 'T0001') {
 			mui.openWindow({
-				url: 'htm/teacher/info.html',
+				url: '/htm/teacher/info.html',
 				id: 'teacher_center'
 			});
 		} else {
 			mui.openWindow({
-				url: 'htm/student/info.html',
+				url: '/htm/student/info.html',
 				id: 'student_center'
 			});
 		}
 	} else {
 		mui.openWindow({ // 登录
-			url: 'htm/reg/login.html',
+			url: '/htm/reg/login.html',
 			id: 'w_login'
 		});
 	}
