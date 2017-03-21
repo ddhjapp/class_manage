@@ -143,6 +143,53 @@ var Rollcall = {
 		} else {
 			mui.alert("请选择点名学生");
 		}
+	},
+	/**
+	 * 学生端-查看点名课程列表
+	 */
+	studentRollcallCourses: function(studentCodeVal) {
+		var data = { code: studentCodeVal };
+		var res = sendAjax('post', purl.url0030, data);
+		var result = JSON.parse(res);
+		if(result.status) {
+			var html = "<ul class=\"mui-table-view\">";
+			if(result.data) {
+				for(var key in result.data) {
+					var obj = result.data[key];
+					html += '<li class="mui-table-view-cell">';
+					html += '<div class="mui-table-cell mui-col-xs-10">';
+					html += '<h4 class="mui-ellipsis-2">' + obj.lessonName + '</h4>';
+					html += '<h5>教师名称：' + obj.teacherName + '</h5>';
+					html += '<h5>开课时间：' + obj.lessonStartTime + '</h5>';
+					html += '</div>';
+					html += '<a href="javascript:void(0)" onclick="Rollcall.studentRollcall(\'' + obj.code + '\',\'' + studentCodeVal + '\')" class="mui-btn mui-btn-primary">确认</a>';
+					html += '</li>';
+				}
+			} else {
+				html += "<li class=\"mui-table-view-cell\">";
+				html += "暂无数据";
+				html += "</li>";
+			}
+			html += "</ul>";
+			$("#rollcall-course-content").html(html);
+		} else {
+			mui.alert(result.msg);
+		}
+	},
+	/**
+	 * 学生端-点名确认
+	 * @param {Object} codeVal
+	 */
+	studentRollcall: function(codeVal,studentCodeVal) {
+		var data = { code: codeVal, studentCode: studentCodeVal };
+		var res = sendAjax('post', purl.url0031, data);
+		var result = JSON.parse(res);
+		if(result.status) {
+			mui.toast("确认点名成功");
+			mui.openWindow('/htm/student/index.html', 'w_app_home');
+		} else {
+			mui.alert(result.msg);
+		}
 	}
 };
 /**

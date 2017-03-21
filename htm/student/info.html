@@ -40,8 +40,8 @@
 								<a class="mui-navigate-right" href="#account">
 									<img class="mui-media-object mui-pull-left head-img" id="head-img" src="assets/commons/images/default-head.jpg">
 									<div class="mui-media-body">
-										<span id="realname">张三</span>
-										<p style="font-size: 13px;" class='mui-ellipsis'>账号:<span id="username">zhangsan</span></p>
+										<span id="realname"></span>
+										<p style="font-size: 13px;" class='mui-ellipsis'>账号:<span id="username"></span></p>
 									</div>
 								</a>
 							</li>
@@ -86,15 +86,15 @@
 							<li class="mui-table-view-cell">
 								<a id="head" class="mui-navigate-right">头像
 									<span class="mui-pull-right head">
-									<img class="head-img mui-action-preview" id="account-head-img" src=""/>
+									<img class="head-img mui-action-preview" id="account-head-img" src="assets/commons/images/default-head.jpg"/>
 								</span>
 								</a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a>姓名<span class="mui-pull-right" id="account-realname">Hbuilder</span></a>
+								<a>姓名<span class="mui-pull-right" id="account-realname"></span></a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a>账号<span class="mui-pull-right" id="account-username">hbuilder@dcloud.io</span></a>
+								<a>账号<span class="mui-pull-right" id="account-username"></span></a>
 							</li>
 						</ul>
 					</div>
@@ -415,6 +415,9 @@
 	<script src="assets/commons/js/user/student/info.js"></script>
 	<script>
 		mui.init();
+		mui.plusReady(function(){
+			StudentStudy.detail(studentCode);
+		});
 		//初始化单页view
 		var viewApi = mui('#app').view({
 			defaultPage: '#center'

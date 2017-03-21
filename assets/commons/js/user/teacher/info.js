@@ -1,4 +1,22 @@
 var TeacherInfo = {
+	detail: function(codeVal) {
+		var data = { code: codeVal };
+		var res = sendAjax('post', purl.url0029, data);
+		var result = JSON.parse(res);
+		if(result.status) {
+			var obj = result.data;
+			$("#realname").html(obj.name);
+			$("#username").html(obj.userName);
+			$("#account-realname").html(obj.name);
+			$("#account-username").html(obj.userName);
+			if(obj.headPic) {
+				$("#head-img").attr("src", obj.headPic);
+				$("#account-head-img").attr("src", obj.headPic);
+			}
+		} else {
+			mui.alert(result.msg);
+		}
+	},
 	/**
 	 * 课程表
 	 */

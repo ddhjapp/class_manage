@@ -124,7 +124,23 @@ var purl = {
 	/**
 	 * 随机点名
 	 */
-	url0027: path + 'edu/teacher/rollcall.do'
+	url0027: path + 'edu/teacher/rollcall.do',
+	/**
+	 * 学生详情
+	 */
+	url0028: path + 'edu/student/detail.do',
+	/**
+	 * 教师详情
+	 */
+	url0029: path + 'edu/teacher/detail.do',
+	/**
+	 * 学生需要确认点名的课程列表
+	 */
+	url0030: path + 'edu/student/rollcall_course.do',
+	/**
+	 * 学生确认点名
+	 */
+	url0031: path + 'edu/student/rollcall.do'
 }
 
 /**

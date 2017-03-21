@@ -1,4 +1,22 @@
 var StudentStudy = {
+	detail: function(codeVal) {
+		var data = { code: codeVal };
+		var res = sendAjax('post', purl.url0028, data);
+		var result = JSON.parse(res);
+		if(result.status) {
+			var obj = result.data;
+			$("#realname").html(obj.name);
+			$("#username").html(obj.userName);
+			$("#account-realname").html(obj.name);
+			$("#account-username").html(obj.userName);
+			if(obj.headPic){
+				$("#head-img").attr("src", obj.headPic);
+				$("#account-head-img").attr("src", obj.headPic);
+			}
+		} else {
+			mui.alert(result.msg);
+		}
+	},
 	/**
 	 * 课程表
 	 */
@@ -61,7 +79,7 @@ var StudentStudy = {
 				for(var key in result.data) {
 					var obj = result.data[key];
 					html += '<li class="mui-table-view-cell">';
-					html += '<a href="#faq-answer" onclick="getFAQAnswer(\''+obj.code+'\');">'
+					html += '<a href="#faq-answer" onclick="getFAQAnswer(\'' + obj.code + '\');">'
 					html += '<div class="mui-table-cell mui-col-xs-10">';
 					html += '<h4 class="mui-ellipsis-2">' + obj.content + '</h4>';
 					html += '<p class="mui-h6 mui-ellipsis">课程名称：' + obj.lessonName;

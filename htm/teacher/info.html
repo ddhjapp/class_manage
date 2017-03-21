@@ -228,33 +228,6 @@
 		<!--
         	作者：zero1814@126.com
         	时间：2017-03-14
-        	描述：课程表
-        -->
-		<div id="syllabus" class="mui-page">
-			<div class="mui-navbar-inner mui-bar mui-bar-nav">
-				<a type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
-					<span class="mui-icon mui-icon-left-nav"></span>
-				</a>
-				<h1 class="mui-center mui-title">课程表</h1>
-			</div>
-			<div class="ibox mui-page-content">
-				<div class="mui-scroll-wrapper">
-					<div class="mui-scroll">
-						<div class="ibox-content">
-							<div id="vertical-timeline" class="vertical-container light-timeline">
-								<div class="mui-loading">
-									<div class="mui-spinner">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--
-        	作者：zero1814@126.com
-        	时间：2017-03-14
         	描述：备忘录
         -->
 		<div id="memorandum" class="mui-page">
@@ -273,31 +246,6 @@
 						<textarea id='content' rows="6" name="content" class="mui-input-clear question" placeholder="内容"></textarea>
 					</div>
 					<a id="memorandum-btn" style="padding:10px 0px;" class="mui-btn mui-btn-primary mui-btn-block">保存</a>
-				</div>
-			</div>
-		</div>
-		<!--
-        	作者：zero1814@126.com
-        	时间：2017-03-14
-        	描述：课程班级学生列表
-        -->
-		<div id="course-students" class="mui-page">
-			<div class="mui-navbar-inner mui-bar mui-bar-nav">
-				<a type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
-					<span class="mui-icon mui-icon-left-nav"></span>
-				</a>
-				<h1 class="mui-center mui-title">学生列表</h1>
-			</div>
-			<div class="mui-page-content">
-				<div class="mui-scroll-wrapper">
-					<div class="mui-scroll">
-						<div id="course-students-content">
-							<div class="mui-loading">
-								<div class="mui-spinner">
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -412,12 +360,15 @@
 	<script src="assets/jquery/1.12.2/jquery-1.12.2.min.js"></script>
 	<script src="assets/purl.js"></script>
 	<script type="text/javascript">
-		var userInfo = JSON.parse(localStorage.getItem(session_.user_info)); 
+		var userInfo = JSON.parse(localStorage.getItem(session_.user_info));
 		var teacherCode = userInfo.data.code;
 	</script>
 	<script src="assets/commons/js/user/teacher/info.js"></script>
 	<script>
 		mui.init();
+		mui.plusReady(function() {
+			TeacherInfo.detail(teacherCode);
+		});
 		//初始化单页view
 		var viewApi = mui('#app').view({
 			defaultPage: '#center'
@@ -481,8 +432,8 @@
 		$("#memorandum-btn").click(function() {
 			mui.toast('保存成功');
 		});
-		document.getElementById("course-reviews").addEventListener("tap",function(){
-			mui.openWindow('course_reviews.html','course-reviews',{});
+		document.getElementById("course-reviews").addEventListener("tap", function() {
+			mui.openWindow('course_reviews.html', 'course-reviews', {});
 		});
 	</script>
 

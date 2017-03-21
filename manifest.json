@@ -226,7 +226,8 @@
 					"htm/student/syllabus.html",
 					"htm/student/faq.html",
 					"htm/student/info.html",
-					"htm/teacher/lesson_list.html"
+					"htm/teacher/lesson_list.html",
+					"htm/student/index.html"
 				],
 				"priority": 0
 			},
@@ -250,9 +251,20 @@
 					"assets/purl.js",
 					"assets/mui/fonts/mui.ttf",
 					"assets/mui/js/mui.min.js",
-					"assets/mui/css/mui.min.css"
+					"assets/mui/css/mui.min.css",
+					"assets/mui/css/mui.css",
+					"assets/mui/css/icons-extra.css",
+					"assets/commons/js/nav.js",
+					"images/2.jpg",
+					"images/5.jpg",
+					"images/1.jpg",
+					"images/3.jpg",
+					"assets/mui/fonts/mui-icons-extra.ttf",
+					"images/4.jpg"
 				],
-				"refer": [],
+				"refer": [
+					"htm/teacher/syllabus.html"
+				],
 				"priority": 0
 			},
 			"htm/sign/list.html": {
@@ -324,7 +336,9 @@
 				],
 				"refer": [
 					"htm/reg/regist.html",
-					"index.html"
+					"index.html",
+					"htm/student/index.html",
+					"htm/teacher/index.html"
 				],
 				"priority": 0
 			},
@@ -520,9 +534,13 @@
 					"assets/mui/js/mui.view.js",
 					"assets/commons/css/user/info.css",
 					"assets/mui/js/mui.min.js",
-					"assets/jquery/1.12.2/jquery-1.12.2.min.js"
+					"assets/jquery/1.12.2/jquery-1.12.2.min.js",
+					"assets/commons/js/nav.js"
 				],
-				"refer": [],
+				"refer": [
+					"htm/student/faq.html",
+					"index.html"
+				],
 				"priority": 0
 			},
 			"htm/student/faq.html": {
@@ -551,7 +569,13 @@
 					"assets/commons/images/default-head.jpg",
 					"assets/commons/css/style.css",
 					"assets/commons/css/user/info.css",
-					"assets/mui/css/mui.min.css"
+					"assets/mui/css/mui.min.css",
+					"assets/mui/js/mui.view.js",
+					"assets/commons/js/user/student/info.js",
+					"assets/jquery/1.12.2/jquery-1.12.2.min.js",
+					"assets/purl.js",
+					"assets/mui/fonts/mui.ttf",
+					"assets/mui/js/mui.min.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -613,6 +637,46 @@
 					"assets/mui/js/mui.min.js",
 					"assets/jquery/1.12.2/jquery-1.12.2.min.js"
 				],
+				"refer": [
+					"htm/rollcall/class_list.html"
+				],
+				"priority": 0
+			},
+			"htm/student/index.html": {
+				"resources": [
+					"assets/mui/css/mui.css",
+					"assets/commons/js/nav.js",
+					"images/2.jpg",
+					"images/5.jpg",
+					"assets/mui/css/icons-extra.css",
+					"images/1.jpg",
+					"images/3.jpg",
+					"assets/mui/fonts/mui-icons-extra.ttf",
+					"images/4.jpg",
+					"assets/jquery/1.12.2/jquery-1.12.2.js"
+				],
+				"refer": [
+					"index.html",
+					"htm/rollcall/rollcall_course_student.html",
+					"htm/student/info.html",
+					"htm/rollcall/student_course_rollcall.html"
+				],
+				"priority": 0
+			},
+			"htm/rollcall/student_course_rollcall.html": {
+				"resources": [
+					"assets/purl.js",
+					"assets/bootstrap/3.3.5/css/bootstrap.min.css",
+					"assets/commons/js/rollcall.js",
+					"assets/mui/js/mui.view.js",
+					"assets/mui/fonts/mui.ttf",
+					"assets/font/font-awesome-4.7.0/css/font-awesome.min.css",
+					"assets/commons/css/style.css",
+					"assets/commons/css/user/info.css",
+					"assets/mui/js/mui.min.js",
+					"assets/jquery/1.12.2/jquery-1.12.2.min.js",
+					"assets/mui/css/mui.min.css"
+				],
 				"refer": [],
 				"priority": 0
 			}
@@ -651,7 +715,6 @@
 				"assets/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff2",
 				"assets/ath/images/goods/8.jpg",
 				"assets/bootstrap/3.3.5/css/bootstrap-theme.css",
-				"htm/student/index.html",
 				"assets/ath/images/head/2.jpg",
 				"assets/ath/images/store/4.jpg",
 				"assets/ath/images/activity/8.jpg",

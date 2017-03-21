@@ -7,7 +7,7 @@
 		<title></title>
 		<link href="../../assets/mui/css/mui.css" rel="stylesheet" />
 		<link href="../../assets/mui/css/login/style.css" rel="stylesheet" />
-		<style> 
+		<style>
 			.area {
 				margin: 20px auto 0px auto;
 			}
@@ -93,7 +93,7 @@
 			<h1 class="mui-title">登录</h1>
 		</header>
 		<div class="mui-content">
-			
+
 			<form id='login-form' class="mui-input-group">
 				<div class="mui-input-row">
 					<label>账号</label>
@@ -103,18 +103,18 @@
 					<label>密码</label>
 					<input id='password' name="password" type="password" class="mui-input-clear mui-input" placeholder="请输入密码" value="1">
 				</div>
-				
+
 				<div class="mui-input-row mui-radio mui-left">
-					<label style="width: 40%;">教师</label> 
+					<label style="width: 40%;">教师</label>
 					<input style="padding-top: 2px; padding-bottom:11px;" name="type" type="radio" value="T0001" checked>
-					
-					<label style="width: 40%;">学生</label> 
-					<input style="margin-left: 42%;padding-top: 2px; padding-bottom:11px;" name="type" type="radio" value="S0002" >
-					
-				</div> 
-					
+
+					<label style="width: 40%;">学生</label>
+					<input style="margin-left: 42%;padding-top: 2px; padding-bottom:11px;" name="type" type="radio" value="S0002">
+
+				</div>
+
 			</form>
-			
+
 			<form class="mui-input-group">
 				<ul class="mui-table-view mui-table-view-chevron">
 					<li class="mui-table-view-cell">
@@ -127,7 +127,9 @@
 			</form>
 			<div class="mui-content-padded">
 				<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登录</button>
-				<div class="link-area"><a id='reg' onclick="uregist()">注册账号</a> <span class="spliter">|</span> <a id='forgetPassword'>忘记密码</a>
+				<div class="link-area">
+					<a id='reg' onclick="uregist()">注册账号</a> <span class="spliter">|</span>
+					<a id='forgetPassword'>忘记密码</a>
 				</div>
 			</div>
 			<div class="mui-content-padded oauth-area">
@@ -136,35 +138,39 @@
 		</div>
 		<script src="../../assets/mui/js/mui.min.js"></script>
 		<script src="../../assets/mui/js/mui.enterfocus.js"></script>
-		<script src="../../assets/jquery/1.12.2/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>	
-		<script src="../../assets/purl.js" type="text/javascript" charset="utf-8"></script>  
+		<script src="../../assets/jquery/1.12.2/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../assets/purl.js" type="text/javascript" charset="utf-8"></script>
 		<!-- 登陆操作等内容 - Yangcl -->
 		<script type="text/javascript">
-			document.getElementById("login").addEventListener('tap' , function() {
+			document.getElementById("login").addEventListener('tap', function() {
 				var data_ = $("#login-form").serializeArray();
 				var url_ = purl.url0004;
-				var res = sendAjax('post' , url_ , data_);
+				var res = sendAjax('post', url_, data_);
 				var obj = JSON.parse(res);
-				if(obj.status){
-					localStorage.setItem(session_.user_info , res);
+				if(obj.status) {
+					localStorage.setItem(session_.user_info, res);
 					var sessionUser = localStorage.getItem(session_.user_info);
 					mui.toast('登录成功');
+					var userInfo = JSON.parse(sessionUser);
+					var skipUrl = "/htm/teacher/index.html";
+					if(userInfo.data.type == 'S0002') {
+						skipUrl = "/htm/student/index.html";
+					}
 					mui.openWindow({
-						url: '../../index.html', 
-					    id:'w_app_home'
-				  	});
-				}else{ // 用户名或密码错误 
-					 mui.alert( obj.msg , '系统消息', function() {});
+						url: skipUrl,
+						id: 'w_app_home'
+					});
+				} else { // 用户名或密码错误 
+					mui.alert(obj.msg, '系统消息', function() {});
 				}
 			})
-			
-			
+
 			// 跳转到注册页 
-			function uregist(){
+			function uregist() {
 				mui.openWindow({
-					url: './regist.html', 
-				    id:'u-regist' 
-			  	});
+					url: './regist.html',
+					id: 'u-regist'
+				});
 			}
 		</script>
 	</body>
