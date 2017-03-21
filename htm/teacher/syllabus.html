@@ -77,17 +77,8 @@
 	<script src="assets/jquery/1.12.2/jquery-1.12.2.min.js"></script>
 	<script src="assets/purl.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		$(function() {
-			var sessionUser = localStorage.getItem(session_.user_info);
-			if(sessionUser != null) {
-				var userInfo = JSON.parse(sessionUser);
-				if(userInfo.data.type == 'T0001') {
-					$(".student").remove();
-				} else {
-					$(".teacher").remove();
-				}
-			}
-		})
+		var userInfo = JSON.parse(localStorage.getItem(session_.user_info));
+		var teacherCode = userInfo.data.code;
 	</script>
 	<script src="assets/commons/nav.js"></script>
 	<script src="assets/commons/js/user/teacher/info.js"></script>
