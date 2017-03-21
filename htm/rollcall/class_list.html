@@ -46,7 +46,7 @@
 						for( var i = 0 ; i < arr.length ; i ++){
 							html += '<li class="mui-table-view-cell mui-media"><a class="mui-navigate-right teacher-class">';
 							html += '<input type="hidden" value="' + arr[i].code + '">'
-							html += '<img class="mui-media-object mui-pull-left" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg">';  
+							html += '<img class="mui-media-object mui-pull-left" src="' + imgpath + arr[i].imgUrl + '">';  
 							html += '<div class="mui-media-body">' + arr[i].lessonName + '<p class="mui-ellipsis">' + arr[i].length +' 分钟</p></div></a></li>'
 						}
 						$("#slist").append(html); 
