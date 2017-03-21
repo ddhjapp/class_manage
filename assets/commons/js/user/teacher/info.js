@@ -188,6 +188,9 @@ var TeacherInfo = {
 			mui.alert(result.msg);
 		}
 	},
+	/**
+	 * 学生点评
+	 */
 	studentEvaluate: function() {
 		var data = {
 			studentCode: $("#studentCode").val(),

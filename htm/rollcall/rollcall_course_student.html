@@ -37,8 +37,15 @@
 				<h1 class="mui-center mui-title">学生列表</h1>
 			</div>
 			<div class="mui-page-content">
+				<input type="hidden" id="scheduleCode" name="scheduleCode" value="">n
 				<div class="mui-scroll-wrapper">
 					<div class="mui-scroll">
+						<div class="mui-card">
+							<div class="mui-card-content" style="text-align: center;margin-top: 15px;">
+								<input id="rollcall_verify_code" name="rollcall_verify_code" style="width: 200px;" type="text" class="mui-input-clear" placeholder="请收入验证码">
+								<button onclick="Rollcall.rollCall();" style="margin: 2px;" type="button" class="mui-btn mui-btn-primary">发送</button>
+							</div>
+						</div>
 						<div id="course-students-content">
 							<div class="mui-loading">
 								<div class="mui-spinner">
@@ -54,16 +61,20 @@
 	<script src="assets/mui/js/mui.view.js"></script>
 	<script src="assets/jquery/1.12.2/jquery-1.12.2.min.js"></script>
 	<script src="assets/purl.js"></script>
-	<script src="assets/commons/js/user/teacher/info.js"></script>
+	<script src="assets/commons/js/rollcall.js"></script>
 	<script>
 		mui.init();
 		mui.plusReady(function() {
 			var v = plus.webview.currentWebview();
 			var courseStudentContent = document.getElementById("course-students-content");
 			if(courseStudentContent.querySelector('.mui-loading')) {
-				TeacherInfo.courseStudents(v.scheduleCode);
+				$("#scheduleCode").val(v.scheduleCode);
+				Rollcall.courseStudent(v.scheduleCode);
 			}
 		});
+//		mui.ready(function() {
+//			Rollcall.courseStudent();
+//		})
 		//初始化单页view
 		var viewApi = mui('#app').view({
 			defaultPage: '#course-students'

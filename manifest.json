@@ -361,10 +361,20 @@
 					"assets/purl.js",
 					"assets/mui/fonts/mui.ttf",
 					"assets/mui/js/mui.min.js",
-					"assets/mui/css/mui.min.css"
+					"assets/mui/css/mui.min.css",
+					"assets/bootstrap/3.3.5/css/bootstrap.min.css",
+					"assets/mui/js/mui.view.js",
+					"assets/font/font-awesome-4.7.0/css/font-awesome.min.css",
+					"assets/commons/js/user/teacher/info.js",
+					"assets/commons/css/style.css",
+					"assets/commons/css/user/info.css",
+					"assets/jquery/1.12.2/jquery-1.12.2.min.js",
+					"assets/commons/js/rollcall.js"
 				],
 				"refer": [
-					"htm/rollcall/class_qrcode.html"
+					"htm/rollcall/class_qrcode.html",
+					"htm/rollcall/course_student.html",
+					"htm/rollcall/rollcall_course_student.html"
 				],
 				"priority": 0
 			},
@@ -570,6 +580,40 @@
 				"refer": [
 					"htm/teacher/schedule.html"
 				],
+				"priority": 0
+			},
+			"htm/rollcall/course_student.html": {
+				"resources": [
+					"assets/bootstrap/3.3.5/css/bootstrap.min.css",
+					"assets/font/font-awesome-4.7.0/css/font-awesome.min.css",
+					"assets/commons/css/style.css",
+					"assets/commons/css/user/info.css",
+					"assets/mui/css/mui.min.css",
+					"assets/purl.js",
+					"assets/mui/js/mui.view.js",
+					"assets/mui/fonts/mui.ttf",
+					"assets/commons/js/user/teacher/info.js",
+					"assets/mui/js/mui.min.js",
+					"assets/jquery/1.12.2/jquery-1.12.2.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"htm/rollcall/rollcall_course_student.html": {
+				"resources": [
+					"assets/bootstrap/3.3.5/css/bootstrap.min.css",
+					"assets/font/font-awesome-4.7.0/css/font-awesome.min.css",
+					"assets/commons/css/style.css",
+					"assets/commons/css/user/info.css",
+					"assets/mui/css/mui.min.css",
+					"assets/purl.js",
+					"assets/commons/js/rollcall.js",
+					"assets/mui/js/mui.view.js",
+					"assets/mui/fonts/mui.ttf",
+					"assets/mui/js/mui.min.js",
+					"assets/jquery/1.12.2/jquery-1.12.2.min.js"
+				],
+				"refer": [],
 				"priority": 0
 			}
 		},
