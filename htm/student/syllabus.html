@@ -80,19 +80,6 @@
 		var userInfo = JSON.parse(localStorage.getItem(session_.user_info));
 		var studentCode = userInfo.data.code;
 	</script>
-	<script type="text/javascript">
-		$(function() {
-			var sessionUser = localStorage.getItem(session_.user_info);
-			if(sessionUser != null) {
-				var userInfo = JSON.parse(sessionUser);
-				if(userInfo.data.type == 'T0001') {
-					$(".student").remove();
-				} else {
-					$(".teacher").remove();
-				}
-			}
-		})
-	</script>
 	<script src="assets/commons/nav.js"></script>
 	<script src="assets/commons/js/user/student/info.js"></script>
 	<script>
