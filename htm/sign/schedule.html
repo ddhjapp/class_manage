@@ -24,6 +24,11 @@
 				word-break: keep-all;
 				word-wrap: break-word;
 			} 
+			.head-font{
+				font-size: 20px;
+				font-weight:bold;
+				font-family:"楷体";  /*微软雅黑*/  
+			}
 		</style> 
 
 	</head>
@@ -82,10 +87,10 @@
 				var arr = obj.list;
 				var html = '';
 				for( var i = 0 ; i < arr.length ; i ++){
-					html += '<div class="mui-card cart_float teacher-class"><div class="mui-card-header world_" >' ;
-					html += '<img class="mui-media-object mui-pull-left" style="margin-right:10px;height:100%" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg" >';
+					html += '<div class="mui-card cart_float teacher-class"><div class="mui-card-header world_ head-font" >' ;
+//					html += '<img class="mui-media-object mui-pull-left" style="margin-right:10px;height:100%" src="http://image.sycdn.ichsy.com/cfiles/staticfiles/upload/275c7/6dbdfb5df5c44601a348cd54cff2c14f.jpg" >';
 					html += arr[i].entity.lessonName;
-					html += '<div >' + arr[i].entity.startTime + ' 开始上课</div></div>' ;
+					html += '</div>' ;
 					html += '<div class="mui-card-content"><div class="mui-card-content-inner">';
 					if(arr[i].claList.length != 0){
 						var classes = arr[i].claList;
@@ -95,6 +100,7 @@
 						}
 					}
 					html += '</div></div>'; 
+					html += '<div class="mui-card-header world_" ><div class="start-time">' + arr[i].entity.startTime + ' 开始上课</div></div>' ;
 					html += '<div class="mui-card-footer"><span>查看签到情况</span>';
 					html += '<input type="hidden" value="' + arr[i].entity.scheduleCode + '" /></div></div> ';
 					
