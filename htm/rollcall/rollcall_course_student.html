@@ -61,6 +61,10 @@
 	<script src="assets/mui/js/mui.view.js"></script>
 	<script src="assets/jquery/1.12.2/jquery-1.12.2.min.js"></script>
 	<script src="assets/purl.js"></script>
+	<script>
+		var userInfo = JSON.parse(localStorage.getItem(session_.user_info));
+		var code = userInfo.data.code;
+	</script>
 	<script src="assets/commons/js/rollcall.js"></script>
 	<script>
 		mui.init();
@@ -72,9 +76,9 @@
 				Rollcall.courseStudent(v.scheduleCode);
 			}
 		});
-//		mui.ready(function() {
-//			Rollcall.courseStudent();
-//		})
+		//		mui.ready(function() {
+		//			Rollcall.courseStudent();
+		//		})
 		//初始化单页view
 		var viewApi = mui('#app').view({
 			defaultPage: '#course-students'

@@ -1,7 +1,7 @@
 var path = 'http://172.21.0.57:8080/matrix-admin/';
 //var path = 'http://192.168.83.1:8080/matrix-admin/';
 //var path = 'http://stockwyz.xicp.net/matrix-admin/';
-var imgpath = path + "images/center-edu/";  // 页面基础图片|非头像类型
+var imgpath = path + "images/center-edu/"; // 页面基础图片|非头像类型
 var purl = {
 	/**
 	 * 教师开课接口
@@ -116,7 +116,15 @@ var purl = {
 	/**
 	 * 学生-答疑回答列表
 	 */
-	url0025: path + 'edu/student/faq_answer.do'
+	url0025: path + 'edu/student/faq_answer.do',
+	/**
+	 * 随机点名-学生列表
+	 */
+	url0026: path + 'edu/teacher/rollcall_course_students.do',
+	/**
+	 * 随机点名
+	 */
+	url0027: path + 'edu/teacher/rollcall.do'
 }
 
 /**
@@ -199,8 +207,7 @@ var session_ = {
 	inspection_student_code: 'inspection_student_code',
 
 	inspection_exam_paper_msg: 'inspection_exam_paper_msg',
-	
+
 	inspection_schedule_start_time: 'inspection_schedule_start_time',
-	
-	
+
 }

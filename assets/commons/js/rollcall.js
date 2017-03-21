@@ -66,7 +66,7 @@ var Rollcall = {
 		//			$("#course-students-content").html(html);
 		//		});
 		var data = { scheduleCode: scheduleCodeVal };
-		var res = sendAjax('post', purl.url0019, data);
+		var res = sendAjax('post', purl.url0026, data);
 		var result = JSON.parse(res);
 		if(result.status) {
 			var html = "<ul class=\"mui-table-view\">";
@@ -75,10 +75,23 @@ var Rollcall = {
 					var obj = result.data[key];
 					html += '<li class="mui-table-view-cell">';
 					html += '<div class="mui-input-row mui-checkbox mui-left">';
-					html += '<input style="margin-top:15px;" name="studentCodes" value="' + obj.code + '" type="checkbox">';
+					html += '<input style="margin-top:15px;" name="studentCodes" value="' + obj.code + '" ';
+					if(obj.rollcallSuccess >= 0) {
+						html += ' disabled ';
+					}
+					html += ' type="checkbox"> ';
 					html += '<label>';
 					html += '<h4 class="mui-ellipsis-2">' + obj.name + '</h4>';
 					html += '<h5>签到时间：' + obj.signTime + '</h5>';
+					if(obj.rollcallSuccess >= 0) {
+						var val = "已发送";
+						if(obj.rollcallSuccess == 1) {
+							val = "点名成功";
+						}
+						html += '<div class="mui-table-cell mui-col-xs-2 mui-text-right">';
+						html += '<span class="mui-h5">' + val + '</span>';
+						html += '</div>';
+					}
 					html += '</label>';
 					html += '</div>';
 					html += '</li>';
@@ -95,22 +108,35 @@ var Rollcall = {
 		}
 	},
 	rollCall: function() {
-		var studentCodes = new Array();
+		var studentCodesArray = new Array();
 		$('input[name=studentCodes]:checked').each(function() {
-			studentCodes.push($(this).val());
+			studentCodesArray.push($(this).val());
 		});
-		if(studentCodes.length > 0) {
+		if(studentCodesArray.length > 0) {
 			var rollcall_verify_code = $("#rollcall_verify_code").val();
 			if(rollcall_verify_code) {
-				mui.alert("发送成功", "提示", "确定", function() {
-					mui.openWindow({
-						url: 'class_list.html',
-						id: "rollcall-course",
-						extras: {
-							scheduleCode: $("#scheduleCode").val()
-						}
-					});
-				})
+				var data = {
+					studentCodes: studentCodesArray.join(","),
+					teacherCode: code,
+					verifyCode: $("#rollcall_verify_code").val(),
+					scheduleCode: $("#scheduleCode").val()
+				}
+				var res = sendAjax('post', purl.url0027, data);
+				mui.alert(JSON.stringify(res));
+				var result = JSON.parse(res);
+				if(result.status) {
+					mui.alert("发送成功", "提示", "确定", function() {
+						mui.openWindow({
+							url: 'class_list.html',
+							id: "rollcall-course",
+							extras: {
+								scheduleCode: $("#scheduleCode").val()
+							}
+						});
+					})
+				} else {
+					mui.alert(result.msg);
+				}
 			} else {
 				mui.alert("请填写点名验证码");
 			}
