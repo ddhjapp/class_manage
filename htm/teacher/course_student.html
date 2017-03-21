@@ -54,13 +54,15 @@
 	<script src="assets/mui/js/mui.view.js"></script>
 	<script src="assets/jquery/1.12.2/jquery-1.12.2.min.js"></script>
 	<script src="assets/purl.js"></script>
+	<script src="assets/commons/js/usepublic.js"></script>
 	<script src="assets/commons/js/user/teacher/info.js"></script>
 	<script>
 		mui.init();
-		mui.ready(function() {
+		mui.plusReady(function() {
+			var v = plus.webview.currentWebview();
 			var courseStudentContent = document.getElementById("course-students-content");
 			if(courseStudentContent.querySelector('.mui-loading')) {
-				TeacherInfo.courseStudents();
+				TeacherInfo.courseStudents(v.scheduleCode);
 			}
 		});
 		//初始化单页view

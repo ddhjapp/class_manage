@@ -205,7 +205,11 @@
 					"assets/mui/css/mui.min.css",
 					"images/4.jpg",
 					"assets/jquery/1.12.2/jquery-1.12.2.js",
-					"assets/purl.js"
+					"assets/purl.js",
+					"assets/mui/css/mui.css",
+					"assets/mui/css/icons-extra.css",
+					"assets/mui/fonts/mui-icons-extra.ttf",
+					"assets/commons/js/nav.js"
 				],
 				"refer": [
 					"htm/student/sign.html",
@@ -215,7 +219,9 @@
 					"htm/teacher/class_list.html",
 					"htm/rollcall/class_list.html",
 					"htm/sign/lesson_list.html",
-					"htm/student/question_list.html"
+					"htm/student/question_list.html",
+					"htm/teacher/info.html",
+					"htm/teacher/syllabus.html"
 				],
 				"priority": 0
 			},
@@ -354,6 +360,113 @@
 				],
 				"refer": [],
 				"priority": 0
+			},
+			"htm/teacher/info.html": {
+				"resources": [
+					"assets/bootstrap/3.3.5/css/bootstrap.min.css",
+					"assets/mui/js/mui.view.js",
+					"assets/font/font-awesome-4.7.0/css/font-awesome.min.css",
+					"assets/commons/images/default-head.jpg",
+					"assets/commons/js/user/teacher/info.js",
+					"assets/commons/css/style.css",
+					"assets/commons/css/user/info.css",
+					"assets/jquery/1.12.2/jquery-1.12.2.min.js",
+					"assets/mui/css/mui.min.css",
+					"assets/purl.js",
+					"assets/mui/fonts/mui.ttf",
+					"assets/mui/js/mui.min.js"
+				],
+				"refer": [
+					"htm/teacher/course_reviews.html"
+				],
+				"priority": 0
+			},
+			"htm/teacher/course_reviews.html": {
+				"resources": [
+					"assets/bootstrap/3.3.5/css/bootstrap.min.css",
+					"assets/font/font-awesome-4.7.0/css/font-awesome.min.css",
+					"assets/commons/css/style.css",
+					"assets/commons/css/user/info.css",
+					"assets/mui/css/mui.min.css",
+					"assets/purl.js",
+					"assets/mui/js/mui.view.js",
+					"assets/mui/fonts/mui.ttf",
+					"assets/commons/js/user/teacher/info.js",
+					"assets/mui/js/mui.min.js",
+					"assets/jquery/1.12.2/jquery-1.12.2.min.js"
+				],
+				"refer": [
+					"htm/teacher/course_student.html"
+				],
+				"priority": 0
+			},
+			"htm/teacher/course_student.html": {
+				"resources": [
+					"assets/bootstrap/3.3.5/css/bootstrap.min.css",
+					"assets/commons/js/usepublic.js",
+					"assets/font/font-awesome-4.7.0/css/font-awesome.min.css",
+					"assets/commons/css/style.css",
+					"assets/commons/css/user/info.css",
+					"assets/mui/css/mui.min.css",
+					"assets/purl.js",
+					"assets/mui/js/mui.view.js",
+					"assets/mui/fonts/mui.ttf",
+					"assets/commons/js/user/teacher/info.js",
+					"assets/mui/js/mui.min.js",
+					"assets/jquery/1.12.2/jquery-1.12.2.min.js"
+				],
+				"refer": [
+					"htm/teacher/course_student_valuate.html"
+				],
+				"priority": 0
+			},
+			"htm/teacher/course_student_valuate.html": {
+				"resources": [
+					"assets/starability/starability-images/icons@2x.png",
+					"assets/bootstrap/3.3.5/css/bootstrap.min.css",
+					"assets/commons/css/style.css",
+					"assets/starability/starability-minified/starability-all.min.css",
+					"assets/mui/css/mui.min.css",
+					"assets/raty/jquery.raty.css",
+					"assets/raty/jquery.raty.js",
+					"assets/mui/fonts/mui.ttf",
+					"assets/font/font-awesome-4.7.0/css/font-awesome.min.css",
+					"assets/purl.js",
+					"assets/mui/js/mui.view.js",
+					"assets/commons/css/user/info.css",
+					"assets/commons/js/user/teacher/info.js",
+					"assets/mui/js/mui.min.js",
+					"assets/jquery/1.12.2/jquery-1.12.2.min.js",
+					"assets/raty/images/star-on.png",
+					"assets/raty/images/star-off.png",
+					"assets/raty/images/icons.png",
+					"assets/jquery/plugins/barrating/css/barrating.css",
+					"assets/jquery/plugins/barrating/js/jquery.barrating.js",
+					"assets/jquery/plugins/barrating/img/icons@2x.png"
+				],
+				"refer": [
+					"htm/teacher/course_student.html"
+				],
+				"priority": 0
+			},
+			"htm/teacher/syllabus.html": {
+				"resources": [
+					"assets/mui/css/mui.css",
+					"assets/purl.js",
+					"assets/bootstrap/3.3.5/css/bootstrap.min.css",
+					"assets/mui/js/mui.view.js",
+					"assets/mui/css/icons-extra.css",
+					"assets/mui/fonts/mui.ttf",
+					"assets/font/font-awesome-4.7.0/css/font-awesome.min.css",
+					"assets/commons/js/user/teacher/info.js",
+					"assets/commons/css/style.css",
+					"assets/commons/css/user/info.css",
+					"assets/mui/js/mui.min.js",
+					"assets/jquery/1.12.2/jquery-1.12.2.min.js",
+					"assets/mui/fonts/mui-icons-extra.ttf"
+				],
+				"refer": [],
+				"priority": 0
 			}
 		},
 		"idle": {
@@ -411,7 +524,6 @@
 				"assets/ath/images/goods/3.jpg",
 				"assets/ath/js/user/user.js",
 				"assets/ath/images/store/2.jpg",
-				"assets/mui/js/mui.view.js",
 				"assets/ath/images/activity/7.jpg",
 				"assets/ath/js/user/follow.js",
 				"assets/mui/js/mui.listpicker.js",
@@ -419,7 +531,6 @@
 				"assets/ath/images/goods/9.jpg",
 				"assets/mui/js/mui.lazyload.js",
 				"assets/mui/css/feedback.css",
-				"assets/jquery/1.12.2/jquery-1.12.2.min.js",
 				"assets/mui/fonts/store.ttf",
 				"htm/lesson/detail.html",
 				"assets/ath/images/goods/1.jpg",
@@ -454,7 +565,6 @@
 				"assets/ath/images/carousel/2.jpg",
 				"assets/ath/images/store/12.jpg",
 				"assets/ath/icon/store/iconfont.woff",
-				"assets/bootstrap/3.3.5/css/bootstrap.min.css",
 				"assets/ath/images/carousel/1.jpg",
 				"assets/bootstrap/3.3.5/css/bootstrap.css.map",
 				"assets/ath/images/carousel/6.jpg",

@@ -1,4 +1,4 @@
-var path = 'http://127.0.0.1:8080/matrix-admin/';
+var path = 'http://172.21.0.57:8080/matrix-admin/';
 //var path = 'http://192.168.83.1:8080/matrix-admin/';
 //var path = 'http://stockwyz.xicp.net/matrix-admin/';
 var purl = {
@@ -92,7 +92,7 @@ var purl = {
 	/**
 	 * 个人中心-教师-课程点评-学习列表-评价
 	 */
-	url0020: path + 'edu/info/teacher_studentevaluate.do',
+	url0020: path + 'edu/teacher/info/teacher_studentevaluate.do',
 
 	/**
 	 * 老是查看 学生在某一节课的试卷列表，一节课可以包含多个课堂测验试卷      url0017

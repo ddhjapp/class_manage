@@ -108,7 +108,7 @@ var TeacherInfo = {
 					html += '<h5>班级';
 					for(var key in classes) {
 						var c = classes[key];
-						html += '<p style="margin:10px;"><a id="' + obj.scheduleCode + '" href="#course-students" onclick="getCourseStudents(\'' + obj.scheduleCode + '\');" class="mui-btn mui-btn-primary mui-btn-outlined">' + c.className + "</a></p>";
+						html += '<p style="margin:10px;"><a id="' + obj.scheduleCode + '" href="javascript:void(0)" onclick="getCourseStudents(\'' + obj.scheduleCode + '\');" class="mui-btn mui-btn-primary mui-btn-outlined">' + c.className + "</a></p>";
 					}
 					html += '</h5>';
 					html += '<p class="mui-h6 mui-ellipsis">开课时间：' + obj.startTime + '</p>';
@@ -173,7 +173,7 @@ var TeacherInfo = {
 					if(obj.flagEvaluate == 1) {
 						html += '<button disabled="disabled" href="javascript:void(0)" class="mui-btn mui-btn-default">已评价</button>';
 					} else {
-						html += '<a href="#student-evaluate" class="mui-btn mui-btn-primary">去评价</a>';
+						html += '<a href="javascript:void(0)" onclick="openCourseStudentValuate(\'' + scheduleCodeVal + '\',\'' + obj.code + '\')" class="mui-btn mui-btn-primary">去评价</a>';
 					}
 					html += '</li>';
 				}
@@ -190,17 +190,23 @@ var TeacherInfo = {
 	},
 	studentEvaluate: function() {
 		var data = {
-			studentCode: "111",
-			scheduleCode: "2222",
-			score: "4",
-			createUser: "admin",
-			intro: "测试"
+			studentCode: $("#studentCode").val(),
+			scheduleCode: $("#scheduleCode").val(),
+			score: $("#score").val(),
+			intro: $("#intro").val(),
+			createUser: teacherCode
 		};
 		var res = sendAjax('post', purl.url0020, data);
 		var result = JSON.parse(res);
 		if(result.status) {
 			mui.alert("评价成功", "学生评价", "确定", function() {
-				mui.openWindow('htm/teacher/course_student.html', 'course-reviews', {});
+				mui.openWindow({
+					url: 'course_student.html',
+					id: "course-student",
+					extras: {
+						scheduleCode: $("#scheduleCode").val()
+					}
+				});
 			});
 		} else {
 			mui.alert(result.msg);
@@ -301,9 +307,22 @@ function getCourseReviews() {
  * @param {Object} schedule_code
  */
 function getCourseStudents(schedule_code) {
-	mui.openWindow('htm/teacher/course_student.html', 'course-reviews', {});
+	mui.openWindow({
+		url: 'course_student.html',
+		id: "course-students",
+		extras: {
+			scheduleCode: schedule_code
+		}
+	});
 }
 
-function openCourseStudentValuate() {
-	mui.openWindow('htm/teacher/course_student_valuate.html', 'course-reviews', {});
+function openCourseStudentValuate(scheduleCodeVal, studentCodeVal) {
+	mui.openWindow({
+		url: 'course_student_valuate.html',
+		id: "course-students-valuate",
+		extras: {
+			scheduleCode: scheduleCodeVal,
+			studentCode: studentCodeVal
+		}
+	});
 }

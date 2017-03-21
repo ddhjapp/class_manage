@@ -157,7 +157,7 @@
 			</ul>
 		</div>
 	</body>
-	<script src="assets/commons/nav.js"></script>
+	<script src="assets/commons/js/nav.js"></script>
 	<script type="text/javascript" charset="utf-8">
 		mui.init();
 		var slider = mui("#slider"); // 加载轮播图
@@ -217,15 +217,19 @@
 
 		// 随机点人 
 		document.getElementById("attendance").addEventListener('tap', function() {
-			//			localStorage.setItem("lcode" , "l1");  
-			mui.openWindow({
-				url: 'htm/rollcall/class_list.html',
-				id: 'w-rollcall-class',
-				extras: {
-					name: 'mui',
-					lcode: 'l1'
-				}
-			});
+			//			localStorage.setItem("lcode" , "l1");
+			var sessionUser = localStorage.getItem(session_.user_info);
+			if(sessionUser != null) {
+				mui.openWindow({
+					url: 'htm/rollcall/class_list.html',
+					id: 'w_question_lesson_list'
+				});
+			} else {
+				mui.openWindow({ // 登录
+					url: 'htm/reg/login.html',
+					id: 'w_login'
+				});
+			}
 		})
 
 		//退出

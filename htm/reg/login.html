@@ -144,8 +144,6 @@
 				var data_ = $("#login-form").serializeArray();
 				var url_ = purl.url0004;
 				var res = sendAjax('post' , url_ , data_);
-				console.log(url_);
-				console.log(res);
 				var obj = JSON.parse(res);
 				if(obj.status){
 					localStorage.setItem(session_.user_info , res);

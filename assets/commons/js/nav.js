@@ -20,7 +20,7 @@ document.getElementById("nav-index").addEventListener("tap", function() {
 });
 
 /**
- * 底部菜单-课程
+ * 底部菜单-课程表
  */
 document.getElementById("nav-course").addEventListener("tap", function() {
 	var sessionUser = localStorage.getItem(session_.user_info);
