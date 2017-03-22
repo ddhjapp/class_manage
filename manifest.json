@@ -208,7 +208,8 @@
 					"assets/commons/js/nav.js",
 					"htm/reg/login.html",
 					"assets/mui/js/mui.view.js",
-					"assets/jquery/1.12.2/jquery-1.12.2.min.js"
+					"assets/jquery/1.12.2/jquery-1.12.2.min.js",
+					"/htm/reg/login.html"
 				],
 				"refer": [
 					"htm/student/sign.html",
