@@ -267,7 +267,8 @@
 					"htm/teacher/info.html",
 					"htm/reg/login.html",
 					"htm/rollcall/class_list.html",
-					"htm/teacher/lesson_list.html"
+					"htm/teacher/lesson_list.html",
+					"htm/question/lesson_list.html"
 				],
 				"priority": 0
 			},
@@ -691,6 +692,19 @@
 					"assets/mui/css/mui.min.css"
 				],
 				"refer": [],
+				"priority": 0
+			},
+			"htm/question/lesson_list.html": {
+				"resources": [
+					"assets/jquery/1.12.2/jquery-1.12.2.js",
+					"assets/purl.js",
+					"assets/mui/fonts/mui.ttf",
+					"assets/mui/js/mui.min.js",
+					"assets/mui/css/mui.min.css"
+				],
+				"refer": [
+					"htm/question/schedule.html"
+				],
 				"priority": 0
 			}
 		},

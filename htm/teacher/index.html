@@ -203,12 +203,12 @@
 			var sessionUser = localStorage.getItem(session_.user_info);
 			if(sessionUser != null) {
 				mui.openWindow({
-					url: 'htm/question/lesson_list.html',
+					url: '/htm/question/lesson_list.html',
 					id: 'w_question_lesson_list'
 				});
 			} else {
 				mui.openWindow({ // 登录
-					url: 'htm/reg/login.html',
+					url: '/htm/reg/login.html',
 					id: 'w_login'
 				});
 			}
@@ -219,12 +219,27 @@
 			var sessionUser = localStorage.getItem(session_.user_info);
 			if(sessionUser != null) {
 				mui.openWindow({
-					url: 'htm/inspection/lesson_list.html',
+					url: '/htm/inspection/lesson_list.html',
 					id: 'w_inspection_lesson_list'
 				});
 			} else {
 				mui.openWindow({ // 登录
 					url: 'htm/reg/login.html',
+					id: 'w_login'
+				});
+			}
+		})
+		//查看提问
+		document.getElementById("question").addEventListener('tap', function() {
+			var sessionUser = localStorage.getItem(session_.user_info);
+			if(sessionUser != null) {
+				mui.openWindow({
+					url: '/htm/teacher/faq.html',
+					id: 'w_inspection_lesson_list'
+				});
+			} else {
+				mui.openWindow({ // 登录
+					url: '/htm/reg/login.html',
 					id: 'w_login'
 				});
 			}
