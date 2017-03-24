@@ -437,16 +437,18 @@
 		});
 
 		function loginOut() {
-			mui.confirm("您确定要退出系统吗？", "提示", function() {
-				localStorage.clear();
-				mui.toast("退出成功");
-				mui.plusReady(function() {
-					var views = plus.webview.all();
-					for(var key in views) {
-						var v = views[key];
-						plus.webview.close(v);
-					}
-				});
+			mui.confirm("您确定要退出系统吗？", "提示", function(e) {
+				if(e.index == 1) {
+					localStorage.clear();
+					mui.toast("退出成功");
+					mui.plusReady(function() {
+						var views = plus.webview.all();
+						for(var key in views) {
+							var v = views[key];
+							plus.webview.close(v);
+						}
+					});
+				}
 			})
 		}
 	</script>
