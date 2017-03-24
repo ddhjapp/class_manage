@@ -7,15 +7,8 @@
 document.getElementById("nav-index").addEventListener("tap", function() {
 	var sessionUser = localStorage.getItem(session_.user_info);
 	if(sessionUser != null) {
-		var userInfo = JSON.parse(sessionUser);
-
-		var userInfo = JSON.parse(sessionUser);
-		var skipUrl = "/htm/teacher/index.html";
-		if(userInfo.data.type == 'S0002') {
-			skipUrl = "/htm/student/index.html";
-		}
 		mui.openWindow({
-			url: skipUrl,
+			url: '/index.html',
 			id: 'w_app_home'
 		});
 	} else {

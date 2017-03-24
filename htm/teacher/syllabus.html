@@ -76,10 +76,6 @@
 	<script src="assets/mui/js/mui.view.js"></script>
 	<script src="assets/jquery/1.12.2/jquery-1.12.2.min.js"></script>
 	<script src="assets/purl.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript">
-		var userInfo = JSON.parse(localStorage.getItem(session_.user_info));
-		var teacherCode = userInfo.data.code;
-	</script>
 	<script src="assets/commons/js/nav.js"></script>
 	<script src="assets/commons/js/user/teacher/info.js"></script>
 	<script>
@@ -116,7 +112,7 @@
 				//				console.log(e.detail.page.id + ' back');
 			});
 		})(mui);
-		mui.ready(function() {
+		mui.plusReady(function() {
 			TeacherInfo.syllabus();
 		});
 	</script>
