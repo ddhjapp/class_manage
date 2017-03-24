@@ -122,7 +122,6 @@ var Rollcall = {
 					scheduleCode: $("#scheduleCode").val()
 				}
 				var res = sendAjax('post', purl.url0027, data);
-				mui.alert(JSON.stringify(res));
 				var result = JSON.parse(res);
 				if(result.status) {
 					mui.alert("发送成功", "提示", "确定", function() {
