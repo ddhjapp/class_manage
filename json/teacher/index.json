@@ -1,0 +1,27 @@
+[
+	{
+		"id": "teacher-class",
+		"icon": "mui-icon-home",
+		"name": "教师开课"
+	}, {
+		"id": "sign",
+		"icon": "mui-icon-email",
+		"name": "签到查看"
+	}, {
+		"id": "attendance",
+		"icon": "mui-icon-chatbubble",
+		"name": "随机点人"
+	}, {
+		"id": "examination",
+		"icon": "mui-icon-location",
+		"name": "出题"
+	}, {
+		"id": "answer",
+		"icon": "mui-icon-search",
+		"name": "查看答题"
+	}, {
+		"id": "question",
+		"icon": "mui-icon-phone",
+		"name": "查看提问"
+	}
+]

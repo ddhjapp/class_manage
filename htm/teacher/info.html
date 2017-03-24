@@ -51,9 +51,9 @@
 								<a href="#notifications" class="mui-navigate-right">新消息通知</a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a href="#syllabus" onclick="getSyllabus();" class="mui-navigate-right">课程表</a>
+								<a id="syllabus" href="javascript:void(0)" onclick="getSyllabus();" class="mui-navigate-right">课程表</a>
 							</li>
-							<li class="mui-table-view-cell">
+							<li style="display: none;" class="mui-table-view-cell">
 								<a href="#memorandum" class="mui-navigate-right">备忘录</a>
 							</li>
 							<li class="mui-table-view-cell">
@@ -433,7 +433,7 @@
 			mui.toast('保存成功');
 		});
 		document.getElementById("course-reviews").addEventListener("tap", function() {
-			mui.openWindow('course_reviews.html', 'course-reviews', {});
+			mui.openWindow('/htm/teacher/course_reviews.html', 'course-reviews', {});
 		});
 	</script>
 

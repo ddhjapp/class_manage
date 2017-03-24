@@ -1,0 +1,11 @@
+[
+	{
+		"id": "student-sign",
+		"icon": "mui-icon-info",
+		"name": "学生签到"
+	}, {
+		"id": "student-question-answer",
+		"icon": "mui-icon-info",
+		"name": "学生答题"
+	}
+]
