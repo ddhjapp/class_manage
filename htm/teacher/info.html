@@ -67,7 +67,7 @@
 						</ul>
 						<ul class="mui-table-view">
 							<li class="mui-table-view-cell" style="text-align: center;">
-								<a>退出登录</a>
+								<a href="javascript:void(0)" onclick="loginOut()">退出登录</a>
 							</li>
 						</ul>
 					</div>
@@ -435,6 +435,20 @@
 		document.getElementById("course-reviews").addEventListener("tap", function() {
 			mui.openWindow('/htm/teacher/course_reviews.html', 'course-reviews', {});
 		});
+
+		function loginOut() {
+			mui.confirm("您确定要退出系统吗？", "提示", function() {
+				localStorage.clear();
+				mui.toast("退出成功");
+				mui.plusReady(function() {
+					var views = plus.webview.all();
+					for(var key in views) {
+						var v = views[key];
+						plus.webview.close(v);
+					}
+				});
+			})
+		}
 	</script>
 
 </html>

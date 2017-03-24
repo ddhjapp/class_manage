@@ -421,7 +421,9 @@
 				],
 				"refer": [
 					"htm/teacher/course_reviews.html",
-					"htm/teacher/syllabus.html"
+					"htm/teacher/syllabus.html",
+					"index.html",
+					"htm/reg/login.html"
 				],
 				"priority": 0
 			},
@@ -604,7 +606,8 @@
 				],
 				"refer": [
 					"htm/student/faq.html",
-					"htm/student/syllabus.html"
+					"htm/student/syllabus.html",
+					"index.html"
 				],
 				"priority": 0
 			},

@@ -64,7 +64,7 @@
 						</ul>
 						<ul class="mui-table-view">
 							<li class="mui-table-view-cell" style="text-align: center;">
-								<a>退出登录</a>
+								<a href="javascript:void(0)" onclick="loginOut();">退出登录</a>
 							</li>
 						</ul>
 					</div>
@@ -279,7 +279,7 @@
         	时间：2017-03-15
         	描述：答疑回答列表
         -->
-        <div id="faq-answer"  class="mui-page">
+		<div id="faq-answer" class="mui-page">
 			<div class="mui-navbar-inner mui-bar mui-bar-nav">
 				<a type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
 					<span class="mui-icon mui-icon-left-nav"></span>
@@ -298,7 +298,7 @@
 					</div>
 				</div>
 			</div>
-        </div>
+		</div>
 		<!--
         	作者：zero1814@126.com
         	时间：2017-03-13
@@ -409,13 +409,13 @@
 	<script src="assets/jquery/1.12.2/jquery-1.12.2.min.js"></script>
 	<script src="assets/purl.js"></script>
 	<script>
-		var userInfo = JSON.parse(localStorage.getItem(session_.user_info)); 
-		var studentCode =userInfo.data.code;		
+		var userInfo = JSON.parse(localStorage.getItem(session_.user_info));
+		var studentCode = userInfo.data.code;
 	</script>
 	<script src="assets/commons/js/user/student/info.js"></script>
 	<script>
 		mui.init();
-		mui.plusReady(function(){
+		mui.plusReady(function() {
 			StudentStudy.detail(studentCode);
 		});
 		//初始化单页view
@@ -478,6 +478,20 @@
 				//				console.log(e.detail.page.id + ' back');
 			});
 		})(mui);
+
+		function loginOut() {
+			mui.confirm("您确定要退出系统吗？", "提示", function() {
+				localStorage.clear();
+				mui.toast("退出成功");
+				mui.plusReady(function() {
+					var views = plus.webview.all();
+					for(var key in views) {
+						var v = views[key];
+						plus.webview.close(v);
+					}
+				});
+			})
+		}
 	</script>
 
 </html>

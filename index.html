@@ -12,19 +12,8 @@
 		<script src="assets/purl.js" type="text/javascript" charset="utf-8"></script>
 		<script src="assets/commons/js/index.js"></script>
 		<script type="text/javascript">
-			$(function() {
-				//				var sessionUser = localStorage.getItem(session_.user_info);
-				//				if(sessionUser != null) {
-				//					var userInfo = JSON.parse(sessionUser);
-				//					if(userInfo.data.type == 'T0001') {
-				//						$(".student").remove();
-				//					} else {
-				//						$(".teacher").remove();
-				//					}
-				//				}
-			})
-			var sessionUser = localStorage.getItem(session_.user_info);
-			mui.ready(function() {
+			mui.plusReady(function() {
+				var sessionUser = localStorage.getItem(session_.user_info);
 				if(sessionUser != null) {
 					var userInfo = JSON.parse(sessionUser);
 					var type = userInfo.data.type;
@@ -35,16 +24,13 @@
 						id: 'w_login'
 					});
 				}
-			})
+			});
 		</script>
 	</head>
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<h1 class="mui-title">课程互动</h1>
-			<span id="logout" class="mui-btn mui-btn-success" style="float: right; padding: 4px 12px 6px 12px;"> 
-				退出
-			</span>
 		</header>
 		<nav class="mui-bar mui-bar-tab">
 			<a id="nav-index" class="mui-tab-item mui-active" href="javascript:void(0)">
@@ -244,12 +230,6 @@
 					id: 'w_login'
 				});
 			}
-		})
-
-		//退出
-		document.getElementById("logout").addEventListener('tap', function() {
-			localStorage.clear();
-			alert('缓存清理成功!');
 		})
 
 		// 出题
