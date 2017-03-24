@@ -79,7 +79,8 @@
 					html += '<li class="mui-table-view-cell mui-media"><a class="mui-navigate-right teacher-class">';
 					html += '<textarea style="display:none">' + JSON.stringify(arr[i]) + '</textarea>';
 					html += '<img class="mui-media-object mui-pull-left" src="' + imgpath + arr[i].entity.imgUrl + '">';  
-					html += '<div class="mui-media-body">' + arr[i].entity.lessonName + '<p class="mui-ellipsis">班级：' + msg +'</p></div></a></li>'
+//					html += '<div class="mui-media-body">' + arr[i].entity.lessonName + '<p class="mui-ellipsis">班级：' + msg +'</p></div></a></li>'
+					html += '<div class="mui-media-body">' + arr[i].entity.lessonName + '<p class="mui-ellipsis"> </p></div></a></li>'
 				}
 				$("#slist").append(html); 
 			}
