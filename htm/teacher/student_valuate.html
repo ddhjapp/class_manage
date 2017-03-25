@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<base href="../../" />
+		<meta charset="utf-8">
+		<title>个人中心</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="assets/mui/css/mui.min.css">
+		<link rel="stylesheet" href="assets/bootstrap/3.3.5/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="assets/font/font-awesome-4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="assets/commons/css/user/info.css">
+		<link rel="stylesheet" href="assets/commons/css/style.css">
+		<link rel="stylesheet" href="assets/jquery/plugins/barrating/css/barrating.css">
+	</head>
+
+	<body>
+		<div id="app" class="mui-views">
+			<div class="mui-view">
+				<div class="mui-navbar">
+				</div>
+				<div class="mui-pages">
+				</div>
+			</div>
+		</div>
+		<!--
+        	作者：zero1814@126.com
+        	时间：2017-03-15
+        	描述：学生评价
+        -->
+		<div id="student-evaluate" class="mui-page">
+			<form id="evaluateFrm">
+				<input type="hidden" id="studentCode" name="studentCode" value="" />
+				<input type="hidden" id="scheduleCode" name="scheduleCode" value="" />
+				<input type="hidden" id="score" name="score" value="1" />
+				<div class="mui-navbar-inner mui-bar mui-bar-nav">
+					<a type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+						<span class="mui-icon mui-icon-left-nav"></span>
+					</a>
+					<h1 class="mui-center mui-title">学生评价</h1>
+				</div>
+				<div class="mui-page-content">
+					<div class="mui-content-padded">
+						<div class="row mui-input-row">
+							<select id="evaluateRating" name="rating" class="mui-input-clear">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+						</div>
+						<div class="row mui-input-row">
+							<textarea  id='intro' rows="6" name="intro" class="mui-input-clear question" placeholder="内容"></textarea>
+						</div>
+						<a href="javascript:void(0)" onclick="TeacherInfo.studentEvaluate();" style="padding:10px 0px;" class="mui-btn mui-btn-primary mui-btn-block">提交</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+	<script src="assets/mui/js/mui.min.js"></script>
+	<script src="assets/mui/js/mui.view.js"></script>
+	<script src="assets/jquery/1.12.2/jquery-1.12.2.min.js"></script>
+	<script src="assets/jquery/plugins/barrating/js/jquery.barrating.js"></script>
+	<script src="assets/purl.js"></script>
+	<script type="text/javascript">
+		var userInfo = JSON.parse(localStorage.getItem(session_.user_info));
+		var teacherCode = userInfo.data.code;
+	</script>
+	<script src="assets/commons/js/user/teacher/info.js"></script>
+	<script>
+		mui.init();
+		mui.plusReady(function() {
+			var v = plus.webview.currentWebview();
+			var id = v.id;
+			TeacherInfo.studentEvaluateDetail(id);
+		});
+		//初始化单页view
+		var viewApi = mui('#app').view({
+			defaultPage: '#student-evaluate'
+		});
+		var view = viewApi.view;
+		(function($) {
+			//处理view的后退与webview后退
+			var oldBack = $.back;
+			$.back = function() {
+				if(viewApi.canBack()) { //如果view可以后退，则执行view的后退
+					viewApi.back();
+				} else { //执行webview后退
+					oldBack();
+				}
+			};
+			//监听页面切换事件方案1,通过view元素监听所有页面切换事件，目前提供pageBeforeShow|pageShow|pageBeforeBack|pageBack四种事件(before事件为动画开始前触发)
+			//第一个参数为事件名称，第二个参数为事件回调，其中e.detail.page为当前页面的html对象
+			view.addEventListener('pageBeforeShow', function(e) {
+				//				console.log(e.detail.page.id + ' beforeShow');
+			});
+			view.addEventListener('pageShow', function(e) {
+				//				console.log(e.detail.page.id + ' show');
+			});
+			view.addEventListener('pageBeforeBack', function(e) {
+				//				console.log(e.detail.page.id + ' beforeBack');
+			});
+			view.addEventListener('pageBack', function(e) {
+				//				console.log(e.detail.page.id + ' back');
+			});
+		})(mui);
+		//初始化单页的区域滚动
+		mui('.mui-scroll-wrapper').scroll();
+	</script>
+
+</html>

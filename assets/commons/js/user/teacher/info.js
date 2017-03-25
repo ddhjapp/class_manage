@@ -115,7 +115,7 @@ var TeacherInfo = {
 					html += '<h5>签到时间：' + obj.signTime + '</h5>';
 					html += '</div>';
 					if(obj.flagEvaluate == 1) {
-						html += '<button disabled="disabled" href="javascript:void(0)" class="mui-btn mui-btn-default">已评价</button>';
+						html += '<button href="javascript:void(0)" onclick="openStudentEvaluateDetail(\''+obj.evaluateId+'\');" class="mui-btn mui-btn-default">查看</button>';
 					} else {
 						html += '<a href="javascript:void(0)" onclick="openCourseStudentValuate(\'' + scheduleCodeVal + '\',\'' + obj.code + '\')" class="mui-btn mui-btn-primary">去评价</a>';
 					}
@@ -159,6 +159,39 @@ var TeacherInfo = {
 			mui.alert(result.msg);
 		}
 	},
+	/**
+	 * 查看评价
+	 * @param {Object} idVal
+	 */
+	openStudentEvaluateDetail: function(idVal) {
+		mui.openWindow({
+			url: '/htm/teacher/student_valuate.html',
+			id: "student-evaluate-detail",
+			extras: {
+				id: idVal
+			}
+		});
+	},
+	studentEvaluateDetail: function(idVal) {
+		var data = {
+			id: idVal
+		};
+		var res = sendAjax('post', purl.url0032, data);
+		var result = JSON.parse(res);
+		if(result.status) {
+			var obj = result.data;
+			$('#evaluateRating').barrating({
+				initialRating: obj.score,
+				wrapperClass: 'br-wrapper-f',
+				showSelectedRating: false,
+				readonly: true
+			});
+			$("#intro").val(obj.intro);
+			$("#intro").attr("readonly","readonly");
+		} else {
+			mui.alert(result.msg);
+		}
+	}
 	/**
 	 * 教师答疑列表
 	 */

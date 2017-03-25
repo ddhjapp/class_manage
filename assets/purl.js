@@ -141,7 +141,11 @@ var purl = {
 	/**
 	 * 学生确认点名
 	 */
-	url0031: path + 'edu/student/rollcall.do'
+	url0031: path + 'edu/student/rollcall.do',
+	/**
+	 * 查看学生评价
+	 */
+	url0032: path + 'edu/teacher/student_evaluate.do'
 }
 
 /**
