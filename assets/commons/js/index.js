@@ -147,7 +147,7 @@ var Index = {
 					}
 				})
 				//查看点名
-				document.getElementById("student-question-answer").addEventListener('tap', function() {
+				document.getElementById("course-rollcall").addEventListener('tap', function() {
 					var sessionUser = localStorage.getItem(session_.user_info);
 					if(sessionUser != null) {
 						mui.openWindow({
