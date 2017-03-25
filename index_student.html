@@ -13,17 +13,7 @@
 		<script src="assets/commons/js/index.js"></script>
 		<script type="text/javascript">
 			mui.plusReady(function() {
-				var sessionUser = localStorage.getItem(session_.user_info);
-				if(sessionUser != null) {
-					var userInfo = JSON.parse(sessionUser);
-					var type = userInfo.data.type;
-					Index.grid(type);
-				} else {
-					mui.openWindow({ // 登录
-						url: '/htm/reg/login.html',
-						id: 'w_login'
-					});
-				}
+				Index.grid('S0002');  
 			});
 		</script>
 	</head>
@@ -99,25 +89,9 @@
 					<div class="mui-indicator"></div>
 					<div class="mui-indicator"></div>
 				</div>
-			</div>
-			<!--
-            	作者：zero1814@126.com
-            	时间：2017-03-03
-            	描述：九宫格
-            -->
+			</div> 
 			<ul id="gridMenus" class="mui-table-view mui-grid-view mui-grid-9" style="background-color: white;">
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 student">
-					<a id="student-sign" href="javascript:void(0)">
-						<span class="mui-icon mui-icon-info"></span>
-						<div class="mui-media-body">学生签到</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 student">
-					<a id="student-question-answer" href="javascript:void(0)">
-						<span class="mui-icon mui-icon-info"></span>
-						<div class="mui-media-body">学生答题</div>
-					</a>
-				</li>
+				
 			</ul>
 		</div>
 	</body>
@@ -128,37 +102,6 @@
 		slider.slider({
 			interval: 5000
 		});
-
-		// 学生签到 
-		document.getElementById("student-sign").addEventListener('tap', function() {
-			var sessionUser = localStorage.getItem(session_.user_info);
-			if(sessionUser != null) {
-				mui.openWindow({
-					url: 'htm/student/sign.html',
-					id: 'w_student_sign'
-				});
-			} else {
-				mui.openWindow({ // 登录
-					url: 'htm/reg/login.html',
-					id: 'w_login'
-				});
-			}
-		})
-		// 学生答题 
-		document.getElementById("student-question-answer").addEventListener('tap', function() {
-			var sessionUser = localStorage.getItem(session_.user_info);
-			if(sessionUser != null) {
-				mui.openWindow({
-					url: 'htm/student/schedule_list.html',
-					id: 'w_student_schedule_list'
-				});
-			} else {
-				mui.openWindow({ // 登录
-					url: 'htm/reg/login.html',
-					id: 'w_login'
-				});
-			}
-		})
 	</script>
 
 </html>
