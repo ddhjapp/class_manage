@@ -13,7 +13,7 @@ document.getElementById("nav-index").addEventListener("tap", function() {
 		});
 	} else {
 		mui.openWindow({ // 登录
-			url: '/htm/reg/login_student.html',
+			url: '/htm/reg/login_teacher.html',
 			id: 'w_login'
 		});
 	}
@@ -39,7 +39,7 @@ document.getElementById("nav-course").addEventListener("tap", function() {
 		}
 	} else {
 		mui.openWindow({ // 登录
-			url: '/htm/reg/login_student.html',
+			url: '/htm/reg/login_teacher.html',
 			id: 'w_login'
 		});
 	}
@@ -64,7 +64,7 @@ document.getElementById("nav-faq").addEventListener("tap", function() {
 		}
 	} else {
 		mui.openWindow({ // 登录
-			url: '/htm/reg/login_student.html',
+			url: '/htm/reg/login_teacher.html',
 			id: 'w_login'
 		});
 	}

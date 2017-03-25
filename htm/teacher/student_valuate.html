@@ -53,9 +53,8 @@
 							</select>
 						</div>
 						<div class="row mui-input-row">
-							<textarea  id='intro' rows="6" name="intro" class="mui-input-clear question" placeholder="内容"></textarea>
+							<textarea id='intro' rows="6" name="intro" class="mui-input-clear question" placeholder="内容"></textarea>
 						</div>
-						<a href="javascript:void(0)" onclick="TeacherInfo.studentEvaluate();" style="padding:10px 0px;" class="mui-btn mui-btn-primary mui-btn-block">提交</a>
 					</div>
 				</div>
 			</form>
@@ -75,7 +74,7 @@
 		mui.init();
 		mui.plusReady(function() {
 			var v = plus.webview.currentWebview();
-			var id = v.id;
+			var id = v.evaluateId;
 			TeacherInfo.studentEvaluateDetail(id);
 		});
 		//初始化单页view

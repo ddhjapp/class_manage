@@ -10,7 +10,7 @@
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "index_student.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"launch_path": "index_teacher.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",/*开发者名称*/
 		"email": "",/*开发者邮箱地址*/
@@ -465,7 +465,8 @@
 					"assets/jquery/1.12.2/jquery-1.12.2.min.js"
 				],
 				"refer": [
-					"htm/teacher/course_student_valuate.html"
+					"htm/teacher/course_student_valuate.html",
+					"htm/teacher/student_valuate.html"
 				],
 				"priority": 0
 			},
@@ -869,6 +870,28 @@
 					"assets/mui/css/mui.min.css"
 				],
 				"refer": [],
+				"priority": 0
+			},
+			"htm/teacher/student_valuate.html": {
+				"resources": [
+					"assets/jquery/plugins/barrating/js/jquery.barrating.js",
+					"assets/jquery/plugins/barrating/css/barrating.css",
+					"assets/bootstrap/3.3.5/css/bootstrap.min.css",
+					"assets/mui/fonts/mui.ttf",
+					"assets/font/font-awesome-4.7.0/css/font-awesome.min.css",
+					"assets/commons/css/style.css",
+					"assets/mui/css/mui.min.css",
+					"assets/purl.js",
+					"assets/mui/js/mui.view.js",
+					"assets/commons/css/user/info.css",
+					"assets/commons/js/user/teacher/info.js",
+					"assets/mui/js/mui.min.js",
+					"assets/jquery/1.12.2/jquery-1.12.2.min.js",
+					"assets/jquery/plugins/barrating/img/icons@2x.png"
+				],
+				"refer": [
+					"htm/teacher/course_student.html"
+				],
 				"priority": 0
 			}
 		},

@@ -484,12 +484,9 @@
 				if(e.index == 1) {
 					localStorage.clear();
 					mui.toast("退出成功");
-					mui.plusReady(function() {
-						var views = plus.webview.all();
-						for(var key in views) {
-							var v = views[key];
-							plus.webview.close(v);
-						}
+					mui.openWindow({
+						url: '/index.html',
+						id: 'w_app_home'
 					});
 				}
 			})
