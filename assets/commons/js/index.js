@@ -100,6 +100,21 @@ var Index = {
 						});
 					}
 				})
+				// 查看提问
+				document.getElementById("question").addEventListener('tap', function() {
+					var sessionUser = localStorage.getItem(session_.user_info);
+					if(sessionUser != null) {
+						mui.openWindow({
+							url: '/htm/teacher/faq.html',
+							id: 'w_inspection_lesson_list'
+						});
+					} else {
+						mui.openWindow({ // 登录
+							url: 'htm/reg/login_teacher.html',
+							id: 'w_login'
+						});
+					}
+				})
 			}else{
 				// 学生签到 
 				document.getElementById("student-sign").addEventListener('tap', function() {
