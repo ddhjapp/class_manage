@@ -111,7 +111,7 @@ var Index = {
 						});
 					} else {
 						mui.openWindow({ // 登录
-							url: 'htm/reg/regist_student.html',
+							url: 'htm/reg/login_student.html',
 							id: 'w_login'
 						});
 					}
@@ -126,7 +126,7 @@ var Index = {
 						});
 					} else {
 						mui.openWindow({ // 登录
-							url: 'htm/reg/regist_student.html',  
+							url: 'htm/reg/login_student.html',  
 							id: 'w_login'
 						});
 					}
