@@ -13,7 +13,8 @@
 		<script src="assets/commons/js/index.js"></script>
 		<script type="text/javascript">
 			mui.plusReady(function() {
-				var sessionUser = localStorage.getItem(session_.user_info);
+				Index.grid('T0001'); 
+				/*var sessionUser = localStorage.getItem(session_.user_info);
 				if(sessionUser != null) {
 					var userInfo = JSON.parse(sessionUser);
 					var type = userInfo.data.type;
@@ -23,7 +24,7 @@
 						url: '/htm/reg/login.html',
 						id: 'w_login'
 					});
-				}
+				}*/
 			});
 		</script>
 	</head>
@@ -106,7 +107,7 @@
             	描述：九宫格
             -->
 			<ul id="gridMenus" class="mui-table-view mui-grid-view mui-grid-9" style="background-color: white;">
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 teacher">
+				<!--<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 teacher">
 					<a id="teacher-class" href="javascript:void(0)">
 						<span class="mui-icon mui-icon-home"></span>
 						<div class="mui-media-body">教师开课</div>
@@ -141,7 +142,7 @@
 						<span class="mui-icon mui-icon-phone"></span>
 						<div class="mui-media-body">查看提问</div>
 					</a>
-				</li>
+				</li>-->
 			</ul>
 		</div>
 	</body>
@@ -152,89 +153,6 @@
 		slider.slider({
 			interval: 5000
 		});
-
-		// tap为mui封装的单击事件
-		document.getElementById("teacher-class").addEventListener('tap', function() {
-			//var sessionUser = sessionStorage.getItem(session_.user_info);
-			var sessionUser = localStorage.getItem(session_.user_info);
-			console.log('teacher open class:' + sessionUser);
-			if(sessionUser != null) {
-				mui.openWindow({ // 教师课程列表
-					url: 'htm/teacher/lesson_list.html',
-					id: 'w_class_list'
-				});
-			} else {
-				mui.openWindow({ // 登录
-					url: 'htm/reg/login.html',
-					id: 'w_login'
-				});
-			}
-		})
-
-		// 签到查看 
-		document.getElementById("sign").addEventListener('tap', function() {
-			var sessionUser = localStorage.getItem(session_.user_info);
-			if(sessionUser != null) {
-				mui.openWindow({
-					url: 'htm/sign/lesson_list.html',
-					id: 'w_sign_lesson_list'
-				});
-			} else {
-				mui.openWindow({ // 登录
-					url: 'htm/reg/login.html',
-					id: 'w_login'
-				});
-			}
-		})
-
-		// 随机点人 
-		document.getElementById("attendance").addEventListener('tap', function() {
-			//			localStorage.setItem("lcode" , "l1");
-			var sessionUser = localStorage.getItem(session_.user_info);
-			if(sessionUser != null) {
-				mui.openWindow({
-					url: 'htm/rollcall/class_list.html',
-					id: 'w_question_lesson_list'
-				});
-			} else {
-				mui.openWindow({ // 登录
-					url: 'htm/reg/login.html',
-					id: 'w_login'
-				});
-			}
-		})
-
-		// 出题
-		document.getElementById("examination").addEventListener('tap', function() {
-			var sessionUser = localStorage.getItem(session_.user_info);
-			if(sessionUser != null) {
-				mui.openWindow({
-					url: 'htm/question/lesson_list.html',
-					id: 'w_question_lesson_list'
-				});
-			} else {
-				mui.openWindow({ // 登录
-					url: 'htm/reg/login.html',
-					id: 'w_login'
-				});
-			}
-		})
-
-		// 查看答题
-		document.getElementById("answer").addEventListener('tap', function() {
-			var sessionUser = localStorage.getItem(session_.user_info);
-			if(sessionUser != null) {
-				mui.openWindow({
-					url: 'htm/inspection/lesson_list.html',
-					id: 'w_inspection_lesson_list'
-				});
-			} else {
-				mui.openWindow({ // 登录
-					url: 'htm/reg/login.html',
-					id: 'w_login'
-				});
-			}
-		})
 	</script>
 
 </html>

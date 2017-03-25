@@ -1,7 +1,7 @@
-var path = 'http://172.21.0.57:8080/matrix-admin/';
+//var path = 'http://172.21.0.57:8080/matrix-admin/';
 //var path = 'http://stockwyz.xicp.net/matrix-admin/';
 //var path = 'http://192.168.83.1:8080/matrix-admin/';
-//var path = 'http://stockwyz.xicp.net/matrix-admin/';
+var path = 'http://stockwyz.xicp.net/matrix-admin/';
 var imgpath = path + "images/center-edu/"; // 页面基础图片|非头像类型
 var purl = {
 	/**
