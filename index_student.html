@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="assets/jquery/1.12.2/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="assets/mui/js/mui.min.js"></script>
+		<link href="assets/mui/css/mui.css" rel="stylesheet" />
+		<link href="assets/mui/css/icons-extra.css" rel="stylesheet" />
+		<script src="assets/purl.js" type="text/javascript" charset="utf-8"></script>
+		<script src="assets/commons/js/index.js"></script>
+		<script type="text/javascript">
+			mui.plusReady(function() {
+				var sessionUser = localStorage.getItem(session_.user_info);
+				if(sessionUser != null) {
+					var userInfo = JSON.parse(sessionUser);
+					var type = userInfo.data.type;
+					Index.grid(type);
+				} else {
+					mui.openWindow({ // 登录
+						url: '/htm/reg/login.html',
+						id: 'w_login'
+					});
+				}
+			});
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">课程互动</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a id="nav-index" class="mui-tab-item mui-active" href="javascript:void(0)">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a id="nav-course" class="mui-tab-item" href="javascript:void(0)">
+				<span style="font-size: 20px;" class="mui-icon mui-icon-extra mui-icon-extra-order"></span>
+				<span class="mui-tab-label">课程表</span>
+			</a>
+			<a id="nav-faq" class="mui-tab-item" href="javascript:void(0)">
+				<span class="mui-icon mui-icon-chatbubble"></span>
+				<span class="mui-tab-label">答疑</span>
+			</a>
+			<a id="nav-userCenter" class="mui-tab-item" href="javascript:void(0)">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="images/1.jpg">
+							<p class="mui-slider-title">让孩子爱上英语</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/2.jpg">
+							<p class="mui-slider-title">现代教师学导论</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/3.jpg">
+							<p class="mui-slider-title">上班族如何买对房</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/4.jpg">
+							<p class="mui-slider-title">创意</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/5.jpg">
+							<p class="mui-slider-title">天才宝贝</p>
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="images/1.jpg">
+							<p class="mui-slider-title">让孩子爱上英语</p>
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator mui-text-right">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<!--
+            	作者：zero1814@126.com
+            	时间：2017-03-03
+            	描述：九宫格
+            -->
+			<ul id="gridMenus" class="mui-table-view mui-grid-view mui-grid-9" style="background-color: white;">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 student">
+					<a id="student-sign" href="javascript:void(0)">
+						<span class="mui-icon mui-icon-info"></span>
+						<div class="mui-media-body">学生签到</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 student">
+					<a id="student-question-answer" href="javascript:void(0)">
+						<span class="mui-icon mui-icon-info"></span>
+						<div class="mui-media-body">学生答题</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="assets/commons/js/nav.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		var slider = mui("#slider"); // 加载轮播图
+		slider.slider({
+			interval: 5000
+		});
+
+		// 学生签到 
+		document.getElementById("student-sign").addEventListener('tap', function() {
+			var sessionUser = localStorage.getItem(session_.user_info);
+			if(sessionUser != null) {
+				mui.openWindow({
+					url: 'htm/student/sign.html',
+					id: 'w_student_sign'
+				});
+			} else {
+				mui.openWindow({ // 登录
+					url: 'htm/reg/login.html',
+					id: 'w_login'
+				});
+			}
+		})
+		// 学生答题 
+		document.getElementById("student-question-answer").addEventListener('tap', function() {
+			var sessionUser = localStorage.getItem(session_.user_info);
+			if(sessionUser != null) {
+				mui.openWindow({
+					url: 'htm/student/schedule_list.html',
+					id: 'w_student_schedule_list'
+				});
+			} else {
+				mui.openWindow({ // 登录
+					url: 'htm/reg/login.html',
+					id: 'w_login'
+				});
+			}
+		})
+	</script>
+
+</html>
