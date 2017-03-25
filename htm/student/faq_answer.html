@@ -46,31 +46,6 @@
 		</div>
 		<!--
         	作者：zero1814@126.com
-        	时间：2017-03-14
-        	描述：我的答疑
-        -->
-		<div id="faq" class="mui-page">
-			<div class="mui-navbar-inner mui-bar mui-bar-nav">
-				<a type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
-					<span class="mui-icon mui-icon-left-nav"></span>
-				</a>
-				<h1 class="mui-center mui-title">我的答疑</h1>
-			</div>
-			<div class="mui-page-content">
-				<div class="mui-scroll-wrapper">
-					<div class="mui-scroll">
-						<div id="faq-content">
-							<div class="mui-loading">
-								<div class="mui-spinner">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--
-        	作者：zero1814@126.com
         	时间：2017-03-15
         	描述：答疑回答列表
         -->
@@ -122,7 +97,7 @@
 		mui.init();
 		//初始化单页view
 		var viewApi = mui('#app').view({
-			defaultPage: '#faq'
+			defaultPage: '#faq-answer'
 		});
 		//初始化单页的区域滚动
 		mui('.mui-scroll-wrapper').scroll();
@@ -153,7 +128,8 @@
 			});
 		})(mui);
 		mui.plusReady(function() {
-			StudentStudy.faq();
+			var v = plus.webview.currentWebview();
+			StudentStudy.faqAnswer(v.faqId);
 		});
 	</script>
 

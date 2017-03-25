@@ -63,13 +63,12 @@ var StudentStudy = {
 				for(var key in result.data) {
 					var obj = result.data[key];
 					html += '<li class="mui-table-view-cell">';
-					html += '<a href="#faq-answer" onclick="getFAQAnswer(\'' + obj.code + '\');">'
+					html += '<a href="javascript:void(0)" onclick="getFAQAnswer(\'' + obj.code + '\');">';
 					html += '<div class="mui-table-cell mui-col-xs-10">';
 					html += '<h4 class="mui-ellipsis-2">' + obj.content + '</h4>';
 					html += '<p class="mui-h6 mui-ellipsis">课程名称：' + obj.lessonName;
 					html += '<span style="float:right;">' + obj.createTime + '</span>'
 					html += '</p>';
-					html += '</div>';
 					html += '</div>';
 					html += '</a>';
 					html += '</li>';
@@ -80,6 +79,7 @@ var StudentStudy = {
 				html += "</li>";
 			}
 			html += '</ul>';
+			console.log(html);
 			$("#faq-content").html(html);
 		} else {
 			mui.alert(result.msg);
@@ -152,11 +152,12 @@ function getFAQ() {
 	});
 }
 
-function getFAQAnswer(faqId) {
-	var aqContent = document.getElementById("faq-answer-content");
-	if(aqContent.querySelector('.mui-loading')) {
-		setTimeout(function() {
-			StudentStudy.faqAnswer(faqId);
-		}, 500);
-	}
+function getFAQAnswer(faqIdVal) {
+	mui.openWindow({
+		url: '/htm/student/faq_answer.html',
+		id: 'student_faq_answer',
+		extras: {
+			faqId: faqIdVal
+		}
+	});
 }
