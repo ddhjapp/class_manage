@@ -16,8 +16,8 @@ var Index = {
 				html += '</li>';
 			}
 			$("#gridMenus").html(html);
-			
-			if(userType == 'T0001'){
+
+			if(userType == 'T0001') {
 				// tap为mui封装的单击事件
 				document.getElementById("teacher-class").addEventListener('tap', function() {
 					//var sessionUser = sessionStorage.getItem(session_.user_info);
@@ -35,7 +35,7 @@ var Index = {
 						});
 					}
 				})
-		
+
 				// 签到查看 
 				document.getElementById("sign").addEventListener('tap', function() {
 					var sessionUser = localStorage.getItem(session_.user_info);
@@ -51,7 +51,7 @@ var Index = {
 						});
 					}
 				})
-		
+
 				// 随机点人 
 				document.getElementById("attendance").addEventListener('tap', function() {
 					//			localStorage.setItem("lcode" , "l1");
@@ -68,7 +68,7 @@ var Index = {
 						});
 					}
 				})
-		
+
 				// 出题
 				document.getElementById("examination").addEventListener('tap', function() {
 					var sessionUser = localStorage.getItem(session_.user_info);
@@ -84,7 +84,7 @@ var Index = {
 						});
 					}
 				})
-		
+
 				// 查看答题
 				document.getElementById("answer").addEventListener('tap', function() {
 					var sessionUser = localStorage.getItem(session_.user_info);
@@ -115,7 +115,7 @@ var Index = {
 						});
 					}
 				})
-			}else{
+			} else {
 				// 学生签到 
 				document.getElementById("student-sign").addEventListener('tap', function() {
 					var sessionUser = localStorage.getItem(session_.user_info);
@@ -141,17 +141,28 @@ var Index = {
 						});
 					} else {
 						mui.openWindow({ // 登录
-							url: 'htm/reg/login_student.html',  
+							url: 'htm/reg/login_student.html',
+							id: 'w_login'
+						});
+					}
+				})
+				//查看点名
+				document.getElementById("student-question-answer").addEventListener('tap', function() {
+					var sessionUser = localStorage.getItem(session_.user_info);
+					if(sessionUser != null) {
+						mui.openWindow({
+							url: '/htm/rollcall/student_course_rollcall.html',
+							id: 'student_course_rollcall'
+						});
+					} else {
+						mui.openWindow({ // 登录
+							url: 'htm/reg/login_student.html',
 							id: 'w_login'
 						});
 					}
 				})
 			}
-			
-			
-			
-			
-			
+
 		});
 	}
 };

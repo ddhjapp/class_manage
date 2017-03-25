@@ -7,5 +7,9 @@
 		"id": "student-question-answer",
 		"icon": "mui-icon-info",
 		"name": "学生答题"
+	}, {
+		"id": "course-rollcall",
+		"icon": "mui-icon-info",
+		"name": "查看点名"
 	}
 ]
