@@ -232,7 +232,8 @@
 					"htm/student/index.html",
 					"htm/inspection/lesson_list.html",
 					"htm/question/lesson_list.html",
-					"htm/rollcall/student_course_rollcall.html"
+					"htm/rollcall/student_course_rollcall.html",
+					"htm/student/schedule_list.html"
 				],
 				"priority": 0
 			},
@@ -794,7 +795,8 @@
 					"assets/mui/fonts/mui.ttf"
 				],
 				"refer": [
-					"index_student.html"
+					"index_student.html",
+					"htm/reg/regist_student.html"
 				],
 				"priority": 0
 			},
@@ -863,7 +865,10 @@
 					"htm/rollcall/student_course_rollcall.html",
 					"htm/student/schedule_list.html",
 					"index.html",
-					"htm/student/info.html"
+					"htm/student/info.html",
+					"htm/student/sign.html",
+					"htm/student/syllabus.html",
+					"htm/student/faq.html"
 				],
 				"priority": 0
 			},
@@ -871,7 +876,9 @@
 				"resources": [
 					"assets/mui/css/mui.min.css"
 				],
-				"refer": [],
+				"refer": [
+					"htm/student/paper_list.html"
+				],
 				"priority": 0
 			},
 			"htm/teacher/student_valuate.html": {
@@ -893,6 +900,32 @@
 				],
 				"refer": [
 					"htm/teacher/course_student.html"
+				],
+				"priority": 0
+			},
+			"htm/reg/regist_student.html": {
+				"resources": [
+					"assets/mui/css/mui.css",
+					"assets/mui/css/mui.picker.css",
+					"assets/mui/css/mui.poppicker.css",
+					"assets/mui/css/login/style.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"htm/student/question_list.html": {
+				"resources": [
+					"assets/mui/css/mui.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"htm/student/paper_list.html": {
+				"resources": [
+					"assets/mui/css/mui.min.css"
+				],
+				"refer": [
+					"htm/student/question_list.html"
 				],
 				"priority": 0
 			}
